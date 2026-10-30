@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Signal Wayfinding</title>
+<style>
+*{box-sizing:border-box;margin:0}
+body{width:1440px;height:900px;overflow:hidden;background:#f2f5f7;color:#16232e;font-family:"Segoe UI",system-ui,sans-serif;padding:24px}
+nav{display:flex;align-items:center;justify-content:space-between;height:60px;padding:0 12px;font-size:17px;font-weight:600}
+nav b{font-size:26px;letter-spacing:-.02em}
+nav div{display:flex;gap:30px;align-items:center}
+.apply{background:#12a594;color:#06201d;padding:12px 22px;border-radius:4px}
+.panel{background:#16232e;color:#f2f5f7;border-radius:10px;height:768px;display:grid;grid-template-rows:auto 1fr}
+.top{padding:52px 56px 40px;display:grid;grid-template-columns:7fr 4fr;gap:48px;align-items:end}
+h1{font-size:84px;line-height:1;letter-spacing:-.03em;font-weight:700}
+.top p{font-size:22px;line-height:1.4;color:#c6d2da}
+.btn{display:inline-block;margin-top:22px;background:#12a594;color:#06201d;font-weight:700;font-size:22px;padding:16px 24px;border-radius:4px}
+.rows{border-top:1px solid #3a4b58;display:grid;grid-template-rows:repeat(3,1fr)}
+.row{display:grid;grid-template-columns:96px 1fr 1fr 220px;align-items:center;padding:0 56px;border-bottom:1px solid #3a4b58;font-size:38px;font-weight:600;letter-spacing:-.01em}
+.row:last-child{border-bottom:0}
+.row small{font-size:24px;font-weight:400;color:#c6d2da;letter-spacing:0}
+.live{color:#3fdcc9;font-size:24px;text-align:right}
+svg{width:48px;height:48px;stroke:#3fdcc9;fill:none;stroke-width:5;stroke-linecap:square}
+</style></head><body>
+<nav><b>Kinward</b><div><span>How it works</span><span>Why Kinward</span><span>Pricing</span><span>Questions</span><span class="apply">Founding pilot</span></div></nav>
+<section class="panel">
+<div class="top"><h1>Your community's life, beautifully shared.</h1><div><p>Staff post once. It shows up everywhere families and residents look.</p><span class="btn">Apply to be a founding community</span></div></div>
+<div class="rows">
+<div class="row"><svg viewBox="0 0 48 48"><path d="M10 38 38 10M16 10h22v22"/></svg><span>On your website</span><small>Today at Wren Hollow</small><span class="live">Live</span></div>
+<div class="row"><svg viewBox="0 0 48 48"><path d="M6 24h36M26 8l16 16-16 16"/></svg><span>To 214 families</span><small>By text and email, in their language</small><span class="live">Sent</span></div>
+<div class="row"><svg viewBox="0 0 48 48"><path d="M24 6v36M8 26l16 16 16-16"/></svg><span>On large-print paper</span><small>Calendars, menus and flyers</small><span class="live">Ready</span></div>
+</div>
+</section>
+</body></html>

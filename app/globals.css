@@ -1,26 +1,462 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: light;
+  --ink: #26231f;
+  --ink-soft: #544c44;
+  --on-ink: #f6f2ea;
+  --on-ink-soft: #d6cec2;
+  --ink-rule: #4a4640;
+  --signal: #c9743f;
+  --signal-bright: #e0a27e;
+  --signal-ink: #944519;
+  --on-signal: #201008;
+  --mist: #ebe4d9;
+  --steel: #dfd6c8;
+  --paper: #fbf8f3;
+  --rule: #c9beae;
+  --error: #a4262c;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-on-ink: var(--on-ink);
+  --color-on-ink-soft: var(--on-ink-soft);
+  --color-ink-rule: var(--ink-rule);
+  --color-signal: var(--signal);
+  --color-signal-bright: var(--signal-bright);
+  --color-signal-ink: var(--signal-ink);
+  --color-on-signal: var(--on-signal);
+  --color-mist: var(--mist);
+  --color-steel: var(--steel);
+  --color-paper: var(--paper);
+  --color-rule: var(--rule);
+  --color-error: var(--error);
+  --font-display: var(--font-overpass);
+  --font-sans: var(--font-atkinson);
+  --font-data: var(--font-overpass-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  font-size: 112.5%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 8rem;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--mist);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+  scrollbar-color: var(--ink-soft) var(--steel);
+}
+
+main {
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--signal-bright);
+}
+
+:focus-visible {
+  outline: 3px solid var(--signal-ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.on-dark :focus-visible {
+  outline-color: var(--signal-bright);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), system-ui, sans-serif;
+  text-wrap: balance;
+  overflow-wrap: break-word;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  font-weight: 700;
+}
+
+a {
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 2px;
+}
+
+@layer components {
+  .display-1 {
+    font-size: clamp(2.4rem, 5.4vw, 4.5rem);
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+
+  .display-2 {
+    font-size: clamp(2rem, 4.2vw, 3.5rem);
+  }
+
+  .display-3 {
+    font-size: clamp(1.7rem, 3vw, 2.4rem);
+    line-height: 1.1;
+  }
+
+  .lede {
+    font-size: clamp(1.2rem, 1.8vw, 1.4rem);
+    line-height: 1.45;
+  }
+
+  .data {
+    font-family: var(--font-data), ui-monospace, monospace;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* A sign panel: a full-width color field, edge to edge. */
+  .panel {
+    background: var(--ink);
+    color: var(--on-ink);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 3.25rem;
+    padding: 0.7rem 1.4rem;
+    border-radius: 0.25rem;
+    border: 2px solid var(--ink);
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      background-color 160ms ease,
+      border-color 160ms ease,
+      color 160ms ease;
+  }
+
+  .btn svg {
+    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .btn:hover svg {
+    transform: translateX(3px);
+  }
+
+  .btn-primary {
+    background: var(--signal);
+    border-color: var(--signal);
+    color: var(--on-signal);
+  }
+
+  .btn-primary:hover {
+    background: var(--signal-bright);
+    border-color: var(--signal-bright);
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+  }
+
+  .btn-secondary:hover {
+    background: var(--ink);
+    color: var(--on-ink);
+  }
+
+  .btn-ghost-dark {
+    background: transparent;
+    border-color: var(--on-ink);
+    color: var(--on-ink);
+  }
+
+  .btn-ghost-dark:hover {
+    background: var(--on-ink);
+    color: var(--ink);
+  }
+
+  /* Status label. Copper only when the thing is live. */
+  .tag {
+    display: inline-block;
+    padding: 0.3rem 0.6rem;
+    border: 1.5px solid currentColor;
+    border-radius: 0.2rem;
+    font-family: var(--font-display), system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+    white-space: nowrap;
+  }
+
+  .tag-live {
+    background: var(--signal);
+    border-color: var(--signal);
+    color: var(--on-signal);
+  }
+
+  @keyframes signal-on {
+    from {
+      color: var(--ink-rule);
+      opacity: 0.4;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .signal-on {
+    animation: signal-on 520ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--delay, 0ms);
+  }
+
+  /* On narrow screens the photo sits above the text; from 64rem it fills the window. */
+  .hero-photo {
+    --hero-photo: 12rem;
+    height: var(--hero-photo);
+  }
+
+  .hero-copy {
+    padding-top: 12rem;
+  }
+
+  .hero-scrim {
+    background: linear-gradient(to bottom, rgb(38 35 31 / 0) 9rem, var(--ink) 12rem);
+  }
+
+  @media (min-width: 40rem) {
+    .hero-photo {
+      height: 26rem;
+    }
+
+    .hero-copy {
+      padding-top: 26rem;
+    }
+
+    .hero-scrim {
+      background: linear-gradient(to bottom, rgb(38 35 31 / 0) 22rem, var(--ink) 26rem);
+    }
+  }
+
+  @media (min-width: 64rem) {
+    .hero-photo {
+      height: auto;
+    }
+
+    .hero-copy {
+      padding-top: 2.5rem;
+    }
+
+    .hero-scrim {
+      background: linear-gradient(to right, var(--ink) 0, var(--ink) 34%, rgb(38 35 31 / 0.82) 46%, rgb(38 35 31 / 0) 62%);
+    }
+  }
+
+  /* One post travels to each destination, which then reports its status. */
+  .flow-line {
+    stroke-dasharray: 16 84;
+    stroke-dashoffset: 16;
+    opacity: 0;
+  }
+
+  .is-flowing .flow-line {
+    animation: flow-run 4.5s linear infinite;
+    animation-delay: var(--d, 0s);
+  }
+
+  @keyframes flow-run {
+    0% {
+      stroke-dashoffset: 16;
+      opacity: 1;
+    }
+    26% {
+      stroke-dashoffset: -100;
+      opacity: 1;
+    }
+    27%,
+    100% {
+      stroke-dashoffset: -100;
+      opacity: 0;
+    }
+  }
+
+  .is-flowing .flow-status {
+    animation: flow-status 4.5s ease-out infinite;
+    animation-delay: var(--d, 0s);
+  }
+
+  @keyframes flow-status {
+    0%,
+    24% {
+      background: transparent;
+      border-color: var(--rule);
+      color: var(--ink-soft);
+      transform: none;
+    }
+    30% {
+      transform: scale(1.12);
+    }
+    36%,
+    100% {
+      transform: none;
+    }
+  }
+
+  .is-flowing .flow-dest {
+    animation: flow-dest 4.5s ease-out infinite;
+    animation-delay: var(--d, 0s);
+  }
+
+  @keyframes flow-dest {
+    0%,
+    24%,
+    48%,
+    100% {
+      box-shadow: 0 0 0 0 transparent;
+    }
+    30% {
+      box-shadow: 0 0 0 3px var(--signal-bright);
+    }
+  }
+
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+
+  @keyframes reveal {
+    from {
+      opacity: 0.15;
+      transform: translateY(1.25rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes photo-drift {
+    from {
+      transform: scale(1);
+    }
+    to {
+      transform: scale(1.06);
+    }
+  }
+
+  .photo-drift {
+    animation: photo-drift 7s ease-out both;
+  }
+
+  @keyframes status-pop {
+    from {
+      opacity: 0;
+      transform: translateY(0.5rem) scale(0.96);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .status-pop {
+    animation: status-pop 360ms cubic-bezier(0.16, 1, 0.3, 1) both;
+  }
+
+  .panel-wait {
+    opacity: 0.38;
+    filter: saturate(0.2);
+    transition:
+      opacity 360ms ease,
+      filter 360ms ease;
+  }
+
+  .panel-live {
+    opacity: 1;
+    filter: none;
+    transition:
+      opacity 360ms ease,
+      filter 360ms ease;
+  }
+
+  .field-label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+
+  .field {
+    width: 100%;
+    min-height: 3.1rem;
+    padding: 0.6rem 0.8rem;
+    border: 2px solid var(--ink-soft);
+    border-radius: 0.25rem;
+    background: var(--paper);
+    color: var(--ink);
+    font-size: 1rem;
+    caret-color: var(--signal-ink);
+  }
+
+  select.field {
+    appearance: none;
+    padding-right: 2.6rem;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 9l7 7 7-7' fill='none' stroke='%2326231f' stroke-width='3' stroke-linecap='square'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1.2rem;
+  }
+
+  .field[aria-invalid="true"] {
+    border-color: var(--error);
+    box-shadow: inset 0 0 0 1px var(--error);
+  }
+
+  .lift {
+    box-shadow: 0 18px 36px -22px rgb(38 35 31 / 0.5);
+  }
+
+  details > summary {
+    list-style: none;
+    cursor: pointer;
+  }
+
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details[open] .chevron {
+    transform: rotate(180deg);
+  }
+
+  .chevron {
+    transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    animation: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 1ms !important;
+    animation-delay: 0ms !important;
+    transition-duration: 1ms !important;
+  }
 }
