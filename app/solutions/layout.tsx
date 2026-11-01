@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Closing, SolutionsHead } from "../components/sections";
 
 export const metadata: Metadata = {
-  title: "Solutions | Kinward",
+  title: "Solutions | Kinlight",
   description: "Live Website, Post Once, Family Messaging and Conversion Tools. What each one does and what's included.",
 };
 

@@ -94,9 +94,10 @@ export function Hero() {
       <div className={`${wrap} hero-copy pointer-events-none relative z-10 w-full pb-6 lg:py-10`}>
         <div className="pointer-events-auto max-w-[37rem]">
           <h1 id="hero-heading" className="display-1">
-            Post once. Your website and every family get it.
+            Your website, finally as alive as your community.
           </h1>
-          <div className="mt-6">
+          <p className="lede mt-3 max-sm:text-[1.05rem] sm:mt-5">Be one of our founding communities: a website that shows what life is really like there, not a brochure. Ensure families stay engaged and no question is left unanswered.</p>
+          <div className="mt-4 sm:mt-6">
             <HeroOffer />
           </div>
         </div>
@@ -116,7 +117,7 @@ function HeroOffer() {
           </li>
         ))}
       </ul>
-      <BookButton className="mt-5 !min-h-[3.75rem] w-full !px-8 !text-[1.25rem] sm:w-auto" />
+      <BookButton className="mt-3 !min-h-[3.75rem] w-full !px-8 !text-[1.25rem] sm:mt-5 sm:w-auto" />
       <p className="mt-3 text-[0.95rem] text-on-ink">
         From{" "}
         <strong className="text-on-ink">
@@ -340,8 +341,8 @@ export function SolutionDetail({ id }: { id: keyof typeof solutionDetails }) {
 export function Difference() {
   return (
     <>
-      <PageHead id="difference-heading" title="Agencies build websites. Apps reach families. Kinward does both." />
-      <section aria-label="How Kinward compares" className="py-14 sm:py-20">
+      <PageHead id="difference-heading" title="Agencies build websites. Apps reach families. Kinlight does both." />
+      <section aria-label="How Kinlight compares" className="py-14 sm:py-20">
         <div className={`${wrap} grid gap-6 lg:grid-cols-3 lg:grid-rows-[auto_repeat(4,auto)] lg:gap-x-0 lg:gap-y-0`}>
           {comparison.columns.map((column) => (
             <div
@@ -437,7 +438,7 @@ export function About() {
         <div className={`${wrap} grid items-center gap-10 lg:grid-cols-2 lg:gap-14`}>
           <div>
             <h2 id="why-built-heading" className="display-2 max-w-[16ch]">
-              Why we built Kinward.
+              Why we built Kinlight.
             </h2>
             <p className="lede mt-5">Every week, a community produces real news: activities, meals, events, photos.</p>
             <p className="mt-4">Almost none of it reaches the website. Families call the front desk to ask what&apos;s happening. Staff build the same calendar over and over.</p>
@@ -453,13 +454,13 @@ export function About() {
           </h2>
           <div>
             <p className="lede">
-              Kinward is a new product from <CatapultLink />, a California company in Roseville.
+              Kinlight is a new product from <CatapultLink />, a California company in Roseville.
             </p>
             <p className="mt-4">
-              <CatapultLink /> has built and run websites since 2000, and it hosts hundreds of them today. Right now, Kinward works with assisted living and memory care operators in California.
+              <CatapultLink /> has built and run websites since 2000, and it hosts hundreds of them today. Right now, Kinlight works with assisted living and memory care operators in California.
             </p>
             <p className="mt-6">
-              <strong>{contact.name}</strong> leads Kinward as {contact.role}.
+              <strong>{contact.name}</strong> leads Kinlight as {contact.role}.
             </p>
           </div>
         </div>
@@ -594,7 +595,7 @@ export function SiteFooter() {
       <div className={`${wrap} flex flex-wrap items-center justify-between gap-x-8 gap-y-3`}>
         <Wordmark />
         <p>
-          Kinward is a product of <CatapultLink />.
+          Kinlight is a product of <CatapultLink />.
         </p>
         <nav aria-label="Footer" className="w-full">
           <ul className="flex flex-wrap gap-x-5 gap-y-1 font-display font-semibold">

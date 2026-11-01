@@ -144,7 +144,7 @@ export function ApplyForm() {
 
       <label className="mt-6 flex cursor-pointer items-start gap-3">
         <input type="checkbox" checked={consent} onChange={(e) => setConsent(e.target.checked)} className="mt-1 size-6 shrink-0 cursor-pointer accent-[var(--signal-ink)]" />
-        <span>It&apos;s okay for Kinward, from <CatapultLink />, to contact me about this by phone or text. Optional. Message and data rates may apply, and you can opt out at any time.</span>
+        <span>It&apos;s okay for Kinlight, from <CatapultLink />, to contact me about this by phone or text. Optional. Message and data rates may apply, and you can opt out at any time.</span>
       </label>
 
       <button type="submit" className="btn btn-primary mt-6 w-full sm:w-auto">

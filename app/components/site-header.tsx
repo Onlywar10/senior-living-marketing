@@ -1,22 +1,14 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { bookHref, solutions, tabs } from "../content";
 
 
-export function Wordmark({ className = "" }: { className?: string }) {
-  return (
-    <span className={`inline-flex items-center gap-2 font-display text-[1.3rem] font-bold tracking-tight sm:text-[1.6rem] ${className}`}>
-      <span className="inline-flex size-7 items-center justify-center rounded-[0.3rem] bg-ink text-signal-bright sm:size-8">
-        <svg aria-hidden="true" viewBox="0 0 21 21" className="size-[1.15rem] sm:size-[1.35rem]">
-          <g fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" transform="translate(1 1)"><path d="m.5 9.5 9-9 9 9" /><path d="m2.5 7.5v8c0 .5522847.44771525 1 1 1h3c.55228475 0 1-.4477153 1-1v-4c0-.5522847.44771525-1 1-1h2c.5522847 0 1 .4477153 1 1v4c0 .5522847.4477153 1 1 1h3c.5522847 0 1-.4477153 1-1v-8" /></g>
-        </svg>
-      </span>
-      Kinward
-    </span>
-  );
+export function Wordmark({ alt = "Kinlight", className = "h-9 sm:h-11" }: { alt?: string; className?: string }) {
+  return <Image src="/brand/kinlight-logo.png" alt={alt} width={1940} height={587} preload className={`w-auto ${className}`} />;
 }
 
 const tabClass =
@@ -68,8 +60,8 @@ export function SiteHeader() {
   return (
     <header className="z-40 bg-mist lg:sticky lg:top-[2.6rem]">
       <div className="mx-auto flex max-w-[86rem] flex-wrap items-center justify-between gap-x-3 gap-y-1 px-4 py-2 sm:px-10 lg:gap-x-6 lg:py-3">
-        <Link href="/" aria-label="Kinward home" className="rounded-sm no-underline">
-          <Wordmark />
+        <Link href="/" aria-label="Kinlight home" className="rounded-sm no-underline">
+          <Wordmark alt="" />
         </Link>
         <nav aria-label="Main" className="hidden xl:block">
           <ul className="flex gap-x-6">

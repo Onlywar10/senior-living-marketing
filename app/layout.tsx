@@ -20,8 +20,8 @@ const overpassMono = Overpass_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kinward | Post once. Your website and every family get it.",
-  description: "One update from your staff goes on your website, to families by text and email, and onto large-print paper. We build it. No setup fee.",
+  title: "Kinlight | Your website, finally as alive as your community.",
+  description: "Be one of our founding communities: a website that shows what life is really like there, not a brochure. Ensure families stay engaged and no question is left unanswered.",
   robots: { index: false, follow: false },
 };
 

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Examples, NextStep, Closing } from "../components/sections";
 
 export const metadata: Metadata = {
-  title: "Examples | Kinward",
+  title: "Examples | Kinlight",
   description: "See what your senior living community's website could look like.",
 };
 

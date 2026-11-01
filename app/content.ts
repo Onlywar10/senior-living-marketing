@@ -8,7 +8,7 @@ export const contact = {
 
 export const tabs = [
   { href: "/solutions", label: "Solutions" },
-  { href: "/why-kinward", label: "Why Kinward" },
+  { href: "/why-kinlight", label: "Why Kinlight" },
   { href: "/examples", label: "Examples" },
   { href: "/offer", label: "The Offer" },
   { href: "/questions", label: "Questions" },
@@ -159,7 +159,7 @@ export const solutionDetails = {
   conversion: {
     title: "Conversion Tools",
     purpose: "Turns inquiries into booked tours.",
-    next: { href: "/why-kinward", label: "Next: why Kinward" },
+    next: { href: "/why-kinlight", label: "Next: why Kinlight" },
     steps: [
       { title: "Families get answers", body: "Your menus, calendar, floor plans and care levels are right on the site. A website assistant answers questions day or night." },
       { title: "They book a tour", body: "They pick a time online and get a confirmation." },
@@ -203,7 +203,7 @@ export const comparison = {
       cells: ["Rarely touches your website.", "Only inside the app.", "They have to log in.", "Your site isn't part of it."],
     },
     {
-      name: "Kinward",
+      name: "Kinlight",
       highlight: true,
       cells: ["Built for senior living.", "Yes. One post updates it.", "Text and email. Nothing to download.", "You do."],
     },
@@ -243,7 +243,7 @@ export const faqs = [
   },
   {
     q: "Do we have to replace our current website?",
-    a: "Yes. Kinward becomes your website. We build it next to your current one, and you switch once it meets the checklist we agree on.",
+    a: "Yes. Kinlight becomes your website. We build it next to your current one, and you switch once it meets the checklist we agree on.",
   },
   {
     q: "How much staff time does it take?",

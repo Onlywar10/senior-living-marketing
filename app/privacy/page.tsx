@@ -3,7 +3,7 @@ import { CatapultLink } from "../components/catapult-link";
 import { LegalPage } from "../components/legal-page";
 import { contact } from "../content";
 
-export const metadata: Metadata = { title: "Privacy | Kinward", robots: { index: false, follow: false } };
+export const metadata: Metadata = { title: "Privacy | Kinlight", robots: { index: false, follow: false } };
 
 export default function Privacy() {
   return (

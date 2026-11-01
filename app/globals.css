@@ -2,19 +2,19 @@
 
 :root {
   color-scheme: light;
-  --ink: #26231f;
-  --ink-soft: #544c44;
-  --on-ink: #f6f2ea;
-  --on-ink-soft: #d6cec2;
-  --ink-rule: #4a4640;
-  --signal: #c9743f;
-  --signal-bright: #e0a27e;
-  --signal-ink: #944519;
-  --on-signal: #201008;
-  --mist: #ebe4d9;
-  --steel: #dfd6c8;
-  --paper: #fbf8f3;
-  --rule: #c9beae;
+  --ink: #001030;
+  --ink-soft: #46536e;
+  --on-ink: #f5f7fc;
+  --on-ink-soft: #c8d2e6;
+  --ink-rule: #2c3b5c;
+  --signal: #e09a10;
+  --signal-bright: #f6b93b;
+  --signal-ink: #855700;
+  --on-signal: #001030;
+  --mist: #f3f5fa;
+  --steel: #e3e8f2;
+  --paper: #ffffff;
+  --rule: #c6cfdf;
   --error: #a4262c;
 }
 
@@ -182,7 +182,7 @@ a {
     color: var(--ink);
   }
 
-  /* Status label. Copper only when the thing is live. */
+  /* Status label. Amber only when the thing is live. */
   .tag {
     display: inline-block;
     padding: 0.3rem 0.6rem;
@@ -219,16 +219,23 @@ a {
 
   /* On narrow screens the photo sits above the text; from 64rem it fills the window. */
   .hero-photo {
-    --hero-photo: 12rem;
+    --hero-photo: 9.5rem;
     height: var(--hero-photo);
   }
 
   .hero-copy {
-    padding-top: 12rem;
+    padding-top: 9.75rem;
   }
 
   .hero-scrim {
-    background: linear-gradient(to bottom, rgb(38 35 31 / 0) 9rem, var(--ink) 12rem);
+    background: linear-gradient(to bottom, rgb(0 16 48 / 0) 7.5rem, var(--ink) 9.5rem);
+  }
+
+  /* Short laptop screens: keep the button on the first screen. */
+  @media (min-width: 64rem) and (max-height: 50rem) {
+    .hero-copy h1 {
+      font-size: 3.1rem;
+    }
   }
 
   @media (min-width: 40rem) {
@@ -241,7 +248,7 @@ a {
     }
 
     .hero-scrim {
-      background: linear-gradient(to bottom, rgb(38 35 31 / 0) 22rem, var(--ink) 26rem);
+      background: linear-gradient(to bottom, rgb(0 16 48 / 0) 22rem, var(--ink) 26rem);
     }
   }
 
@@ -255,7 +262,7 @@ a {
     }
 
     .hero-scrim {
-      background: linear-gradient(to right, var(--ink) 0, var(--ink) 34%, rgb(38 35 31 / 0.82) 46%, rgb(38 35 31 / 0) 62%);
+      background: linear-gradient(to right, var(--ink) 0, var(--ink) 34%, rgb(0 16 48 / 0.82) 46%, rgb(0 16 48 / 0) 62%);
     }
   }
 
@@ -343,7 +350,7 @@ a {
   select.field {
     appearance: none;
     padding-right: 2.6rem;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 9l7 7 7-7' fill='none' stroke='%2326231f' stroke-width='3' stroke-linecap='square'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 9l7 7 7-7' fill='none' stroke='%23001030' stroke-width='3' stroke-linecap='square'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 0.75rem center;
     background-size: 1.2rem;
@@ -355,7 +362,7 @@ a {
   }
 
   .lift {
-    box-shadow: 0 18px 36px -22px rgb(38 35 31 / 0.5);
+    box-shadow: 0 18px 36px -22px rgb(0 16 48 / 0.5);
   }
 
   details > summary {

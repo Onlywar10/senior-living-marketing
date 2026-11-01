@@ -2,7 +2,7 @@
 version: 1
 slug: "app-page-tsx"
 primary_target: "app/page.tsx"
-related_targets: ["app/solutions/page.tsx","app/why-kinward/page.tsx","app/examples/page.tsx","app/questions/page.tsx","app/offer/page.tsx"]
+related_targets: ["app/solutions/page.tsx","app/why-kinlight/page.tsx","app/examples/page.tsx","app/questions/page.tsx","app/offer/page.tsx","app/about/page.tsx"]
 ---
 
 Scope: the whole Kinward marketing site, six pages in a top menu. Mode: Persuade.
@@ -12,7 +12,7 @@ Chosen by the user on the decision page after asking for "more techy but still p
 ## Direction contract
 
 THESIS: One post, signposted to everywhere it went, the way a well-run building tells you where to go. Refuses the white split-hero software page and the dark neon page.
-OWN-WORLD: Warm charcoal enamel sign panels inset on a warm stone ground (user asked to keep it warm, not saturated yellow). Hairline rows, square-capped drawn arrows, one copper accent reserved for what is live or current.
+OWN-WORLD: Navy sign panels running edge to edge between cool light sections, matching the logo. Hairline rows, drawn arrows, one amber accent for the primary action and what is live.
 STORY: Operators see what it does, see the offer at once, see their headaches, trust Catapult, then book a meeting. Every page leads to Book a meeting. No product prices.
 FIRST VIEWPORT: One charcoal panel split in two: direct headline, one-line pitch, the offer in three short lines and one copper Book a meeting button left; one large photo right. Phones: headline, photo, offer, button.
 FORM: Signal Wayfinding, position 6 on the ordered list. seed:e7a084069a73defc

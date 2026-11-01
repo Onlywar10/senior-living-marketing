@@ -1,13 +1,13 @@
 {
   "schemaVersion": 2,
   "generatedAt": "2026-10-30T21:39:43Z",
-  "title": "Design System: Kinward",
+  "title": "Design System: Kinlight",
   "extensions": {
     "colorMeta": {
       "signal": {
         "role": "primary",
-        "displayName": "Copper Signal",
-        "canonical": "#c9743f",
+        "displayName": "Amber Signal",
+        "canonical": "#e09a10",
         "tonalRamp": [
           "#180500",
           "#3e1900",
@@ -21,8 +21,8 @@
       },
       "signal-bright": {
         "role": "primary",
-        "displayName": "Bright Copper",
-        "canonical": "#e0a27e",
+        "displayName": "Bright Amber",
+        "canonical": "#f6b93b",
         "tonalRamp": [
           "#150702",
           "#3c1a03",
@@ -36,8 +36,8 @@
       },
       "signal-ink": {
         "role": "primary",
-        "displayName": "Copper Ink",
-        "canonical": "#944519",
+        "displayName": "Deep Amber",
+        "canonical": "#855700",
         "tonalRamp": [
           "#180500",
           "#411600",
@@ -51,8 +51,8 @@
       },
       "on-signal": {
         "role": "primary",
-        "displayName": "Kiln Ink",
-        "canonical": "#201008",
+        "displayName": "Navy on Amber",
+        "canonical": "#001030",
         "tonalRamp": [
           "#0f0a08",
           "#2e221c",
@@ -66,8 +66,8 @@
       },
       "ink": {
         "role": "neutral",
-        "displayName": "Warm Charcoal",
-        "canonical": "#26231f",
+        "displayName": "Logo Navy",
+        "canonical": "#001030",
         "tonalRamp": [
           "#0c0b0a",
           "#272522",
@@ -81,8 +81,8 @@
       },
       "ink-soft": {
         "role": "neutral",
-        "displayName": "Worn Charcoal",
-        "canonical": "#544c44",
+        "displayName": "Slate Navy",
+        "canonical": "#46536e",
         "tonalRamp": [
           "#0d0b09",
           "#29241f",
@@ -96,8 +96,8 @@
       },
       "ink-rule": {
         "role": "neutral",
-        "displayName": "Panel Hairline",
-        "canonical": "#4a4640",
+        "displayName": "Navy Hairline",
+        "canonical": "#2c3b5c",
         "tonalRamp": [
           "#0c0b09",
           "#272521",
@@ -111,8 +111,8 @@
       },
       "on-ink": {
         "role": "neutral",
-        "displayName": "Enamel White",
-        "canonical": "#f6f2ea",
+        "displayName": "Soft White",
+        "canonical": "#f5f7fc",
         "tonalRamp": [
           "#0c0b09",
           "#272521",
@@ -126,8 +126,8 @@
       },
       "on-ink-soft": {
         "role": "neutral",
-        "displayName": "Soft Enamel",
-        "canonical": "#d6cec2",
+        "displayName": "Pale Blue",
+        "canonical": "#c8d2e6",
         "tonalRamp": [
           "#0d0b08",
           "#29241e",
@@ -141,8 +141,8 @@
       },
       "mist": {
         "role": "neutral",
-        "displayName": "Warm Stone",
-        "canonical": "#ebe4d9",
+        "displayName": "Cool Mist",
+        "canonical": "#f3f5fa",
         "tonalRamp": [
           "#0c0b09",
           "#28241f",
@@ -156,8 +156,8 @@
       },
       "steel": {
         "role": "neutral",
-        "displayName": "Deep Stone",
-        "canonical": "#dfd6c8",
+        "displayName": "Pale Steel",
+        "canonical": "#e3e8f2",
         "tonalRamp": [
           "#0d0b08",
           "#29241d",
@@ -171,8 +171,8 @@
       },
       "paper": {
         "role": "neutral",
-        "displayName": "Warm Paper",
-        "canonical": "#fbf8f3",
+        "displayName": "White",
+        "canonical": "#ffffff",
         "tonalRamp": [
           "#0c0b0a",
           "#262522",
@@ -186,8 +186,8 @@
       },
       "rule": {
         "role": "neutral",
-        "displayName": "Stone Hairline",
-        "canonical": "#c9beae",
+        "displayName": "Steel Hairline",
+        "canonical": "#c6cfdf",
         "tonalRamp": [
           "#0d0b07",
           "#2a241b",
@@ -321,7 +321,7 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The forward action in a view, on any ground. Copper fill, dark text, optional arrow.",
+      "description": "The forward action in a view, on any ground. Amber fill, dark text, optional arrow.",
       "html": "<button class=\"ds-btn-primary\">Apply to be a founding community <svg aria-hidden=\"true\" viewBox=\"0 0 48 48\" width=\"20\" height=\"20\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"5\" stroke-linecap=\"square\"><path d=\"M6 24h36M26 8l16 16-16 16\"/></svg></button>",
       "css": ".ds-btn-primary{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:3.25rem;padding:.7rem 1.4rem;border-radius:.25rem;border:2px solid var(--ink);font-family:var(--font-overpass), Overpass, system-ui, sans-serif;font-weight:700;font-size:1.05rem;line-height:1.2;text-decoration:none;cursor:pointer;transition:background-color 160ms ease,border-color 160ms ease,color 160ms ease;background:var(--signal);border-color:var(--signal);color:var(--on-signal);} .ds-btn-primary svg{transition:transform 220ms cubic-bezier(.16,1,.3,1);} .ds-btn-primary:hover{background:var(--signal-bright);border-color:var(--signal-bright);} .ds-btn-primary:hover svg{transform:translateX(3px);} .ds-btn-primary:focus-visible{outline:3px solid var(--signal-ink);outline-offset:3px;}"
     },
@@ -345,7 +345,7 @@
       "name": "Status Tags",
       "kind": "chip",
       "refersTo": "tag",
-      "description": "Small bordered labels. Neutral by default, copper only when the thing has happened.",
+      "description": "Small bordered labels. Neutral by default, amber only when the thing has happened.",
       "html": "<span class=\"ds-tag\">Coming</span> <span class=\"ds-tag ds-tag-live\">Ready to print</span>",
       "css": ".ds-tag{display:inline-block;padding:.3rem .6rem;border:1.5px solid currentColor;border-radius:.2rem;font-family:var(--font-overpass), Overpass, system-ui, sans-serif;font-weight:700;font-size:.85rem;letter-spacing:.02em;line-height:1.2;white-space:nowrap;color:var(--ink-soft);} .ds-tag-live{background:var(--signal);border-color:var(--signal);color:var(--on-signal);}"
     },
@@ -361,8 +361,8 @@
       "name": "Header Navigation",
       "kind": "nav",
       "refersTo": "",
-      "description": "Overpass tabs on stone with a 3px underline. Copper Ink marks the current page.",
-      "html": "<nav class=\"ds-nav\" aria-label=\"Main\"><a href=\"#\">How it works</a><a href=\"#\" aria-current=\"page\">Why Kinward</a><a href=\"#\">Pricing</a><a href=\"#\">Questions</a></nav>",
+      "description": "Overpass tabs on stone with a 3px underline. Deep Amber marks the current page.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Main\"><a href=\"#\">How it works</a><a href=\"#\" aria-current=\"page\">Why Kinlight</a><a href=\"#\">Pricing</a><a href=\"#\">Questions</a></nav>",
       "css": ".ds-nav{display:flex;flex-wrap:wrap;gap:1.25rem;background:var(--mist);padding:.75rem 1.25rem;font-family:var(--font-overpass), Overpass, system-ui, sans-serif;color:var(--ink);} .ds-nav a{display:inline-block;padding:.375rem 0;border-bottom:3px solid transparent;font-weight:600;color:inherit;text-decoration:none;} .ds-nav a:hover{border-color:var(--ink);} .ds-nav a[aria-current=page]{border-color:var(--signal-ink);font-weight:700;} .ds-nav a:focus-visible{outline:3px solid var(--signal-ink);outline-offset:3px;}"
     },
     {
@@ -377,7 +377,7 @@
       "name": "Sign Panel with Route Rows",
       "kind": "custom",
       "refersTo": "panel",
-      "description": "The signature: a charcoal panel carrying full-width hairline rows, each with a copper arrow, title, detail and status word.",
+      "description": "The signature: a charcoal panel carrying full-width hairline rows, each with a amber arrow, title, detail and status word.",
       "html": "<section class=\"ds-panel\"><h2 class=\"ds-panel-title\">Your community's life, beautifully shared.</h2><ul class=\"ds-routes\"><li><svg aria-hidden=\"true\" viewBox=\"0 0 48 48\" width=\"32\" height=\"32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"5\" stroke-linecap=\"square\"><path d=\"M10 38 38 10M16 10h22v22\"/></svg><strong>On your website</strong><span>Today at Wren Hollow</span><em>Live</em></li><li><svg aria-hidden=\"true\" viewBox=\"0 0 48 48\" width=\"32\" height=\"32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"5\" stroke-linecap=\"square\"><path d=\"M6 24h36M26 8l16 16-16 16\"/></svg><strong>To 214 families</strong><span>By text and email, in their language</span><em>Sent</em></li><li><svg aria-hidden=\"true\" viewBox=\"0 0 48 48\" width=\"32\" height=\"32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"5\" stroke-linecap=\"square\"><path d=\"M24 6v36M8 26l16 16 16-16\"/></svg><strong>On large-print paper</strong><span>Calendars, menus and flyers</span><em>Ready</em></li></ul></section>",
       "css": ".ds-panel{background:var(--ink);color:var(--on-ink);border-radius:.6rem;overflow:hidden;font-family:var(--font-atkinson), \"Atkinson Hyperlegible Next\", system-ui, sans-serif;} .ds-panel-title{margin:0;padding:1.5rem;font-family:var(--font-overpass), Overpass, system-ui, sans-serif;font-weight:700;font-size:2rem;line-height:1.05;letter-spacing:-.02em;} .ds-routes{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink-rule);} .ds-routes li{display:grid;grid-template-columns:2.5rem minmax(0,1fr) minmax(0,1fr) auto;align-items:center;gap:1rem;padding:1rem 1.5rem;border-bottom:1px solid var(--ink-rule);} .ds-routes li:last-child{border-bottom:0;} .ds-routes svg{color:var(--signal-bright);} .ds-routes strong{font-family:var(--font-overpass), Overpass, system-ui, sans-serif;font-size:1.4rem;line-height:1.25;} .ds-routes span{color:var(--on-ink-soft);} .ds-routes em{font-family:var(--font-overpass), Overpass, system-ui, sans-serif;font-style:normal;font-weight:700;color:var(--signal-bright);}"
     },
@@ -386,7 +386,7 @@
       "kind": "custom",
       "refersTo": "",
       "description": "Full-width link between two charcoal rules, naming the next page in the sequence.",
-      "html": "<a class=\"ds-next\" href=\"#\">Next: how Kinward works <svg aria-hidden=\"true\" viewBox=\"0 0 48 48\" width=\"32\" height=\"32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"5\" stroke-linecap=\"square\"><path d=\"M6 24h36M26 8l16 16-16 16\"/></svg></a>",
+      "html": "<a class=\"ds-next\" href=\"#\">Next: how Kinlight works <svg aria-hidden=\"true\" viewBox=\"0 0 48 48\" width=\"32\" height=\"32\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"5\" stroke-linecap=\"square\"><path d=\"M6 24h36M26 8l16 16-16 16\"/></svg></a>",
       "css": ".ds-next{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.25rem 0;border-block:1px solid var(--ink);font-family:var(--font-overpass), Overpass, system-ui, sans-serif;font-weight:700;font-size:1.7rem;letter-spacing:-.025em;color:var(--ink);text-decoration:none;} .ds-next:hover{color:var(--signal-ink);} .ds-next:focus-visible{outline:3px solid var(--signal-ink);outline-offset:3px;}"
     },
     {
@@ -400,28 +400,28 @@
   ],
   "narrative": {
     "northStar": "Signal Wayfinding",
-    "overview": "Kinward looks the way a well-run building tells you where to go. Warm charcoal enamel sign panels sit inset on a warm stone ground, hairline rows carry the information, and square-capped drawn arrows point to where each thing went. The result reads as technical and professional, and stays warm: every neutral leans toward brown, and the single accent is copper. The site's core picture is one post, signposted to everywhere it went.\n\nThe density is that of good signage: few elements, large type, and each row saying one thing. The base size is 18px, or 22px with the A+ control, because buyers skew older and read between tours on a phone, iPad or office desktop. The system is light only, set in daytime materials, and depth comes from the contrast between panel and ground, with shadow kept to a few objects that sit on top.\n\nThis system refuses saturated yellow, the user's standing direction for the look. It also refuses the white split-hero software page and the dark neon page.",
+    "overview": "Kinlight looks the way a well-run building tells you where to go. Warm charcoal enamel sign panels sit inset on a cool light ground, hairline rows carry the information, and square-capped drawn arrows point to where each thing went. The result reads as technical and professional, and stays warm: every neutral leans toward brown, and the single accent is amber. The site's core picture is one post, signposted to everywhere it went.\n\nThe density is that of good signage: few elements, large type, and each row saying one thing. The base size is 18px, or 22px with the A+ control, because buyers skew older and read between tours on a phone, iPad or office desktop. The system is light only, set in daytime materials, and depth comes from the contrast between panel and ground, with shadow kept to a few objects that sit on top.\n\nThis system refuses saturated yellow, the user's standing direction for the look. It also refuses the white split-hero software page and the dark neon page.",
     "keyCharacteristics": [
-      "Warm charcoal sign panels inset from the page edge, on a warm stone ground.",
+      "Warm charcoal sign panels inset from the page edge, on a cool light ground.",
       "Hairline rows, not cards, as the default way to list things.",
-      "One copper accent, for the primary action and for what is live or current.",
+      "One amber accent, for the primary action and for what is live or current.",
       "Overpass for everything that signposts, Atkinson Hyperlegible Next for everything that is read.",
       "Large type by default, with a persistent larger-text control."
     ],
     "rules": [
       {
         "name": "The Two Jobs Rule",
-        "body": "Copper does two jobs: it marks the way forward (the primary action, route and jump arrows) and it marks what is live or current (status words, live tags, the current page, the booked time). A list arrow that only marks an item stays neutral, and a tag that is not live stays neutral.",
+        "body": "Amber does two jobs: it marks the way forward (the primary action, route and jump arrows) and it marks what is live or current (status words, live tags, the current page, the booked time). A list arrow that only marks an item stays neutral, and a tag that is not live stays neutral.",
         "section": "colors"
       },
       {
-        "name": "The Three Coppers Rule",
-        "body": "Pick the copper by its ground. Fills use Copper Signal with Kiln Ink text (5.3:1), charcoal uses Bright Copper (7.2:1), and light grounds use Copper Ink (5.3:1 on stone, 4.7:1 on deep stone). Copper Signal as text on stone is only 2.75:1, and Copper Ink on charcoal is only 2.3:1.",
+        "name": "The Three Ambers Rule",
+        "body": "Pick the amber by its ground. Fills use Amber Signal with Navy on Amber text (5.3:1), charcoal uses Bright Amber (7.2:1), and light grounds use Deep Amber (5.3:1 on stone, 4.7:1 on deep stone). Amber Signal as text on stone is only 2.75:1, and Deep Amber on charcoal is only 2.3:1.",
         "section": "colors"
       },
       {
         "name": "The Selected Is Ink Rule",
-        "body": "A chosen option in a group inverts to Warm Charcoal with Enamel White text: text size, form intent, language, tour date. Copper waits until the choice is confirmed, as with the booked time in the tour sample.",
+        "body": "A chosen option in a group inverts to Logo Navy with Soft White text: text size, form intent, language, tour date. Amber waits until the choice is confirmed, as with the booked time in the tour sample.",
         "section": "colors"
       },
       {
@@ -441,7 +441,7 @@
       },
       {
         "name": "The Next Door Rule",
-        "body": "Pages form a sequence, and each ends with a full-width next-page row that names where it goes, followed by the closing panel: Home, How it works, Why Kinward, Pricing, Questions, then Founding pilot. Founding pilot ends the sequence, so its form stands alone with no next-page row or closing panel.",
+        "body": "Pages form a sequence, and each ends with a full-width next-page row that names where it goes, followed by the closing panel: Home, How it works, Why Kinlight, Pricing, Questions, then Founding pilot. Founding pilot ends the sequence, so its form stands alone with no next-page row or closing panel.",
         "section": "layout"
       },
       {
@@ -456,8 +456,8 @@
       }
     ],
     "dos": [
-      "Do keep the look technical and professional but warm: charcoal and stone that lean brown, with copper as the only accent.",
-      "Do choose copper by its ground: Copper Signal for fills, Bright Copper on charcoal, Copper Ink on light.",
+      "Do keep the look technical and professional but warm: charcoal and stone that lean brown, with amber as the only accent.",
+      "Do choose amber by its ground: Amber Signal for fills, Bright Amber on charcoal, Deep Amber on light.",
       "Do list things as hairline rows before reaching for cards.",
       "Do keep every font size in rem, so the A+ control scales the whole page.",
       "Do keep buttons and toggles at 2.75rem or taller, with a visible 3px focus ring on every ground.",
@@ -468,8 +468,8 @@
     "donts": [
       "Don't use saturated yellow in any fill, accent or field.",
       "Don't build the white split-hero software page or the dark neon page.",
-      "Don't spend copper on decoration: a list arrow, a tag that is not live or a heading stays neutral.",
-      "Don't use Copper Signal as text on stone, or Copper Ink as text on charcoal.",
+      "Don't spend amber on decoration: a list arrow, a tag that is not live or a heading stays neutral.",
+      "Don't use Amber Signal as text on stone, or Deep Amber as text on charcoal.",
       "Don't put a shadow on a sign panel.",
       "Don't set prose, headings or labels in Overpass Mono.",
       "Don't add eyebrows above headings or section numbers.",
