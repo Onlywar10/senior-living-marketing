@@ -15,6 +15,7 @@ export function useStory<T extends Element>(steps: number, { stepMs = 2800, hold
   const [playing, setPlaying] = useState(true);
   const [inView, setInView] = useState(false);
   const [pinned, setPinned] = useState<number | null>(null);
+  const [restarts, setRestarts] = useState(0);
 
   useEffect(() => {
     if (prefersReducedMotion()) {
@@ -31,7 +32,7 @@ export function useStory<T extends Element>(steps: number, { stepMs = 2800, hold
     if (!playing || !inView) return;
     const timer = window.setInterval(() => setTick((t) => (t + 1) % (steps + holdBeats)), stepMs);
     return () => window.clearInterval(timer);
-  }, [playing, inView, steps, stepMs, holdBeats]);
+  }, [playing, inView, steps, stepMs, holdBeats, restarts]);
 
   function toggle() {
     setTick(0);
@@ -39,13 +40,19 @@ export function useStory<T extends Element>(steps: number, { stepMs = 2800, hold
     setPlaying((value) => !value);
   }
 
-  // Holds on one step, so a reader can stay on it as long as they like.
+  // Jumps to a step and carries on looping from there. With reduced motion it just shows that step.
   function jump(step: number) {
-    setPlaying(false);
-    setPinned(step);
+    if (prefersReducedMotion()) {
+      setPinned(step);
+      return;
+    }
+    setPinned(null);
+    setPlaying(true);
+    setTick(step);
+    setRestarts((count) => count + 1);
   }
 
-  return { ref, step: pinned ?? (ready && playing ? Math.min(tick, steps - 1) : steps - 1), playing, running: playing && inView, toggle, jump };
+  return { ref, step: pinned ?? (ready && playing ? Math.min(tick, steps - 1) : steps - 1), playing, running: playing && inView, restarts, toggle, jump };
 }
 
 // Counts up once on first view. The real value is what renders by default and what

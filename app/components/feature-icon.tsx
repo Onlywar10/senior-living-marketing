@@ -33,10 +33,10 @@ const paths: Record<IconName, string> = {
   shield: "M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6zM8.5 12l2.5 2.5 4.5-5",
 };
 
-export function FeatureIcon({ name }: { name: IconName }) {
+export function FeatureIcon({ name, className = "size-11" }: { name: IconName; className?: string }) {
   return (
-    <span aria-hidden="true" className="flex size-11 shrink-0 items-center justify-center rounded bg-ink text-signal-bright">
-      <svg viewBox="0 0 24 24" className="size-6" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+    <span aria-hidden="true" className={`flex shrink-0 items-center justify-center rounded bg-ink text-signal-bright ${className}`}>
+      <svg viewBox="0 0 24 24" className="size-[55%]" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
         <path d={paths[name]} />
       </svg>
     </span>

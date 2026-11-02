@@ -4,13 +4,11 @@ export type IconName = "globe" | "pages" | "share" | "translate" | "calendar" | 
 
 type Feature = { icon: IconName; name: string; benefit: string };
 type Stat = { lead?: string; value?: number; suffix?: string; big?: string; text: string; source: string; link?: string };
-type Tile = { label: string; value: number; suffix?: string; note?: string; highlight?: boolean };
 
 export type SolutionDetail = {
   groups: { theme: string; features: Feature[] }[];
   proof: Stat[];
   proofHeading: string;
-  scorecard: Tile[];
   faqs: { q: string; a: string }[];
   next: { href: string; label: string };
 };
@@ -61,12 +59,6 @@ export const solutionDetails: Record<SolutionId, SolutionDetail> = {
         link: "Show families what life is really like before they ever tour.",
       },
     ],
-    scorecard: [
-      { label: "Website freshness", value: 96, suffix: "%", note: "of pages up to date", highlight: true },
-      { label: "Posts", value: 14 },
-      { label: "Families reached", value: 214 },
-      { label: "Family update views", value: 142 },
-    ],
     faqs: [
       { q: "Will we lose our Google rankings when we switch?", a: "We redirect your old page addresses to protect your rankings. If the move breaks a page, we fix it." },
       { q: "Who owns the site?", a: "You own your content and family contacts, and you can get a full export." },
@@ -106,12 +98,6 @@ export const solutionDetails: Record<SolutionId, SolutionDetail> = {
         text: "The website calendar, the flyer and the family update become one post.",
         source: "An example of how it works, not a measured result. We'll share real staff-time results after the pilot.",
       },
-    ],
-    scorecard: [
-      { label: "Posts this month", value: 14, note: "14 on the website, 11 to families, 6 printed", highlight: true },
-      { label: "Families reached", value: 214 },
-      { label: "Website freshness", value: 96, suffix: "%" },
-      { label: "Family update views", value: 142 },
     ],
     faqs: [
       { q: "How long does posting take each week?", a: "Our goal is a few minutes: a photo and a sentence from a phone. We measure it with you during the pilot." },
@@ -167,18 +153,12 @@ export const solutionDetails: Record<SolutionId, SolutionDetail> = {
         link: "Real connection with family matters, and it starts with knowing what's happening.",
       },
     ],
-    scorecard: [
-      { label: "Families reached", value: 214, note: "of 221 families", highlight: true },
-      { label: "Family update views", value: 142, note: "this month", highlight: true },
-      { label: "Posts", value: 14 },
-      { label: "Website freshness", value: 96, suffix: "%" },
-    ],
     faqs: [
       { q: "Do families need to download an app?", a: "No. It's texts and email." },
       { q: "How do families sign up?", a: "We load the contacts you already have, and families can sign up themselves and set their preferences." },
       { q: "Can we choose who gets each message?", a: "Yes. Send to one community, a care area or an interest group." },
     ],
-    next: { href: "/solutions/inquiries-tours", label: "Next solution: Inquiries & Tours" },
+    next: { href: "/solutions/more-tours", label: "Next solution: More Tours" },
   },
   inquiries: {
     groups: [
@@ -228,15 +208,9 @@ export const solutionDetails: Record<SolutionId, SolutionDetail> = {
         value: 50,
         suffix: "%",
         text: "of families A Place for Mom helps need a quick solution because of an urgent health need.",
-        source: "A Place for Mom, 2016",
+        source: "A Place for Mom",
         link: "Families in a hurry find answers on your site, at any hour.",
       },
-    ],
-    scorecard: [
-      { label: "Inquiries this month", value: 18, note: "11 from your website, 5 from Google, 2 from referrals", highlight: true },
-      { label: "Website freshness", value: 96, suffix: "%" },
-      { label: "Families reached", value: 214 },
-      { label: "Posts", value: 14 },
     ],
     faqs: [
       { q: "Does this work with our current sales system?", a: "Inquiries go to your sales system where we can connect to it, or to your email. Tell us which one you use and we'll give you a straight answer." },

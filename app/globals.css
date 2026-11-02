@@ -417,6 +417,19 @@ a {
     }
   }
 
+  .spoke-fill {
+    animation: spoke-fill linear both;
+  }
+
+  @keyframes spoke-fill {
+    from {
+      stroke-dashoffset: 1;
+    }
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+
   .progress-fill {
     transform-origin: left;
     animation: progress-fill linear both;

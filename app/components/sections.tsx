@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import { ApplyForm } from "./apply-form";
 import { CatapultLink } from "./catapult-link";
@@ -12,10 +13,9 @@ import { PostFlow } from "./post-flow";
 import { Wordmark } from "./site-header";
 import {
   aboutValues,
+  ourStory,
   bookHref,
   brochureVsLife,
-  catapultPoints,
-  comparison,
   contact,
   examples,
   faqs,
@@ -63,7 +63,11 @@ function Photo({ src, alt, className, position = "object-center", sizes }: { src
   );
 }
 
-function PageHead({ title, lede, id }: { title: string; lede?: string; id: string }) {
+function FiveMark({ className }: { className: string }) {
+  return <span className={`inline-block rounded px-[0.3em] font-display font-bold not-italic ${className}`}>5</span>;
+}
+
+function PageHead({ title, lede, id }: { title: string; lede?: ReactNode; id: string }) {
   return (
     <header className="on-dark panel py-12 sm:py-16">
       <div className={wrap}>
@@ -79,7 +83,7 @@ function PageHead({ title, lede, id }: { title: string; lede?: string; id: strin
 export function SpotsBanner() {
   return (
     <TopLink href="/offer" className="group sticky top-0 z-50 flex h-[2.6rem] items-center justify-center gap-x-4 whitespace-nowrap bg-signal px-4 text-on-signal no-underline">
-      <span className="font-display text-[1.05rem] font-bold tracking-tight sm:text-[1.2rem]">Only 5 spots available</span>
+      <span className="font-display text-[1.05rem] font-bold tracking-tight sm:text-[1.2rem]">Only <FiveMark className="bg-ink text-signal-bright" /> spots available</span>
       <span className="inline-flex items-center gap-1.5 font-display font-bold underline underline-offset-4">
         <span className="hidden sm:inline">See the offer</span>
         <span className="sr-only sm:hidden">See the offer</span>
@@ -276,9 +280,9 @@ export function FoundingOffer() {
     <section aria-labelledby="founding-heading" className="on-dark panel py-16 sm:py-24">
       <div className={wrap}>
         <h2 id="founding-heading" className="display-2">
-          Only 5 spots available.
+          Only <FiveMark className="bg-signal text-on-signal" /> spots available.
         </h2>
-        <p className="lede mt-4 max-w-[44rem] text-on-ink-soft">For California senior living organizations. The pilot starts in March 2027.</p>
+        <p className="lede mt-4 max-w-[44rem] text-on-ink-soft">For senior living organizations. The pilot starts in March 2027.</p>
         <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-14">
           <div>
             <h3 className="font-display text-[1.75rem] font-bold sm:text-[2.1rem]">What you get</h3>
@@ -346,62 +350,10 @@ export function HomeFaq() {
   );
 }
 
-export function Difference() {
-  return (
-    <>
-      <PageHead id="difference-heading" title="Agencies build websites. Apps reach families. Kinlight does both." />
-      <section aria-label="How Kinlight compares" className="py-14 sm:py-20">
-        <div className={`${wrap} grid gap-6 lg:grid-cols-3 lg:grid-rows-[auto_repeat(4,auto)] lg:gap-x-0 lg:gap-y-0`}>
-          {comparison.columns.map((column) => (
-            <div
-              key={column.name}
-              className={`lg:row-span-5 lg:grid lg:grid-rows-subgrid ${column.highlight ? "on-dark z-10 order-first rounded-lg bg-ink p-6 text-on-ink lg:order-none lg:-my-5 lg:px-7 lg:py-5" : "border-t border-ink lg:px-6"}`}
-            >
-              <h2 className={`py-3 font-display text-[1.5rem] font-bold leading-tight ${column.highlight ? "text-on-ink" : ""}`}>{column.name}</h2>
-              {column.cells.map((cell, i) => (
-                <div key={comparison.rows[i]} className={`border-t py-3.5 ${column.highlight ? "border-ink-rule" : "border-rule"}`}>
-                  <p className={`text-[0.9rem] ${column.highlight ? "text-on-ink-soft" : "text-ink-soft"}`}>{comparison.rows[i]}</p>
-                  <p className={column.highlight ? "font-bold" : ""}>{cell}</p>
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
-      </section>
-    </>
-  );
-}
-
-export function Catapult() {
-  return (
-    <section aria-labelledby="catapult-heading" className="on-dark panel">
-      <div className={`${wrap} grid items-center gap-12 py-14 sm:py-20 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-16`}>
-        <div>
-          <h2 id="catapult-heading" className="display-2 max-w-[20ch]">
-            <CatapultLink /> has built and run websites since 2000.
-          </h2>
-          <p className="lede mt-6 max-w-[42rem] text-on-ink-soft">
-            <CatapultLink /> is a California company in Roseville. It hosts hundreds of websites. Some customers run more than 50 sites from one dashboard.
-          </p>
-          <p className="mt-5 max-w-[42rem] font-bold">Now we&apos;re adapting that proven system for senior living.</p>
-        </div>
-        <ul className="border-y border-ink-rule">
-          {catapultPoints.map((point) => (
-            <li key={point} className="grid grid-cols-[2rem_minmax(0,1fr)] gap-2 border-b border-ink-rule py-4 font-bold last:border-b-0">
-              <Arrow dir="e" className="mt-0.5 size-6 text-on-ink-soft" />
-              {point}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  );
-}
-
 export function Pilot() {
   return (
     <>
-      <PageHead id="pilot-heading" title="The Founding Offer" lede="Only up to 5 California organizations get this. The pilot starts in March 2027." />
+      <PageHead id="pilot-heading" title="The Founding Offer" lede={<>Only up to <FiveMark className="bg-signal text-on-signal" /> organizations get this. The pilot starts in March 2027.</>} />
       <section aria-label="The offer" className="py-14 sm:py-20">
         <div className={`${wrap} grid items-start gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-14`}>
           <div>
@@ -438,21 +390,37 @@ export function Pilot() {
   );
 }
 
+function StoryBlocks({ blocks }: { blocks: readonly { kind: string; text: string }[] }) {
+  return (
+    <div className={`${wrap} mx-auto`}>
+      <div className="mx-auto max-w-[44rem]">
+        {blocks.map((block) => {
+          if (block.kind === "lead") return <p key={block.text} className="lede font-bold">{block.text}</p>;
+          if (block.kind === "line") return <h2 key={block.text} className="display-3 reveal mt-12 first:mt-0">{block.text}</h2>;
+          if (block.kind === "strong") return <p key={block.text} className="mt-5 text-[1.15rem] font-bold leading-snug">{block.text}</p>;
+          return <p key={block.text} className="mt-5 first:mt-0">{block.text}</p>;
+        })}
+      </div>
+    </div>
+  );
+}
+
 export function About() {
   return (
     <>
-      <PageHead id="about-heading" title="About Us" lede="We help senior living communities keep their website current and their families close." />
-      <section aria-labelledby="why-built-heading" className="py-14 sm:py-20">
-        <div className={`${wrap} grid items-center gap-10 lg:grid-cols-2 lg:gap-14`}>
-          <div>
-            <h2 id="why-built-heading" className="display-2 max-w-[16ch]">
-              Why we built Kinlight.
-            </h2>
-            <p className="lede mt-5">Every week, a community produces real news: activities, meals, events, photos.</p>
-            <p className="mt-4">Almost none of it reaches the website. Families call the front desk to ask what&apos;s happening. Staff build the same calendar over and over.</p>
-            <p className="mt-4 font-bold">So we built one place to post it, once, for everyone who wants to see it.</p>
-          </div>
-          <Photo src="/photos/mother-daughter-garden.jpg" alt="An older woman in a cream cardigan laughing with her grown daughter on a garden bench." className="aspect-[4/3]" sizes="(min-width: 1024px) 45vw, 95vw" />
+      <PageHead id="about-heading" title="Our Story" lede="Inspired by Family. Built for Connection." />
+      <section aria-label="Our story, part one" className="pb-12 pt-14 sm:pb-16 sm:pt-20">
+        <StoryBlocks blocks={ourStory.before} />
+      </section>
+      <section aria-label="What we learned" className="on-dark panel py-14 sm:py-20">
+        <div className={wrap}>
+          <p className="display-2 reveal mx-auto max-w-[24ch] text-center font-display font-bold">{ourStory.pull}</p>
+        </div>
+      </section>
+      <section aria-label="Our story, part two" className="py-14 sm:py-20">
+        <StoryBlocks blocks={ourStory.after} />
+        <div className={`${wrap} mt-12 sm:mt-16`}>
+          <p className="display-2 reveal mx-auto max-w-[26ch] border-t border-rule pt-10 text-center font-display font-bold text-signal-ink">{ourStory.ending}</p>
         </div>
       </section>
       <section aria-labelledby="who-heading" className="on-dark panel py-14 sm:py-20">
