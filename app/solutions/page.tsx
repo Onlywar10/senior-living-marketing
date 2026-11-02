@@ -1,5 +1,5 @@
-import { SolutionDetail } from "../components/sections";
+import { redirect } from "next/navigation";
 
-export default function LiveWebsitePage() {
-  return <SolutionDetail id="website" />;
+export default function SolutionsPage() {
+  redirect("/solutions/live-website");
 }

@@ -237,10 +237,10 @@ Two structures alternate. **Sign panels** are charcoal, inset from the viewport 
 
 Every page in the sequence opens with a charcoal panel directly under the header, and legal pages use a plain 46rem reading column instead. Section rhythm is 4rem, growing to 6rem from 40rem up, and sections right below a page head use 3.5rem growing to 5rem. Two-column splits arrive at 64rem in uneven 5:7 or 7:5 fractions, and collapse to one column below it. Rows use about 1rem of vertical padding.
 
-The routes are Home (by the wordmark), six text tabs (Solutions, Why Kinlight, Examples, The Offer, Questions, About Us), four Solutions sub-pages reached by tabs and Book a meeting as the one amber button. Below 80rem the tabs and button collapse into a Menu; below 64rem the header stops being sticky.
+The routes are Home (by the wordmark), five text tabs (Solutions, Why Kinlight, Examples, The Offer, About Us), four solution pages reached from the Solutions menu and page tabs, with /solutions opening Live Website and Book a meeting as the one amber button. Below 80rem the tabs and button collapse into a Menu; below 64rem the header stops being sticky.
 
 ### Named Rules
-**The Next Door Rule.** Pages form a sequence, and each ends with a full-width next-page row that names where it goes, followed by the closing panel: Home, Solutions, Why Kinlight, Examples, then The Offer; Questions also leads to The Offer. The Offer ends the sequence, so its form stands alone with no next-page row or closing panel.
+**The Next Door Rule.** Pages form a sequence, and each ends with a full-width next-page row that names where it goes, followed by the closing panel: Home, Solutions, Why Kinlight, Examples, then The Offer. The Offer ends the sequence, so its form stands alone with no next-page row or closing panel.
 
 ## Elevation & Depth
 
@@ -308,6 +308,8 @@ The site's one on-demand moving idea. A composer with a amber button routes a po
 Drawn browser, phone, print and tour-picker mocks on White, always for the fictional Wren Hollow and always captioned as samples.
 
 ### Motion
+
+Home page animations play when they scroll into view, show their finished state by default and under reduced motion, and have a pause. Numbers count up once with `CountUp` (app/components/story.tsx). Sound familiar stays a compact list of problems: it names the pain and only hints at the fix.
 State changes run 160 to 360ms. Arrows, chevrons and signal reveals use `cubic-bezier(0.16, 1, 0.3, 1)`. Under `prefers-reduced-motion`, animations and transitions drop to 1ms and smooth scrolling turns off.
 
 ## Do's and Don'ts

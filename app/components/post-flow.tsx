@@ -47,7 +47,7 @@ function phoneRoute(sy: number, jx: number, ex: number, dy: number, r: number) {
   return { line: `M${jx} ${sy}V${dy - r}Q${jx} ${dy} ${jx + r} ${dy}H${ex}`, arrow: `M${ex - 9} ${dy - 7}L${ex} ${dy}L${ex - 9} ${dy + 7}` };
 }
 
-export function PostFlow() {
+export function PostFlow({ receipt = false }: { receipt?: boolean }) {
   const root = useRef<HTMLDivElement>(null);
   const source = useRef<HTMLDivElement>(null);
   const cards = useRef<(HTMLLIElement | null)[]>([]);
@@ -180,7 +180,7 @@ export function PostFlow() {
 
         <div ref={source} className={`relative z-10 self-center overflow-hidden rounded-lg bg-paper text-ink transition-shadow duration-300 ${caption === 0 && playing ? "shadow-[0_0_0_4px_var(--signal-bright)]" : ""}`}>
           <div className="relative aspect-[16/9]">
-            <Image src="/photos/community-dining.jpg" alt="A caregiver with a smiling resident in a busy community dining room." fill sizes="(min-width: 1024px) 30vw, 95vw" className="object-cover object-[35%_center]" />
+            <Image src="/photos/garden-table.jpg" alt="Three smiling people sitting at a wooden table in a sunny garden." fill sizes="(min-width: 1024px) 30vw, 95vw" className="object-cover object-[center_35%]" />
           </div>
           <div className="flex items-start justify-between gap-3 p-4">
             <div>
@@ -226,6 +226,12 @@ export function PostFlow() {
           })}
         </ul>
       </div>
+      {receipt && (
+        <div className={`mt-5 rounded-lg bg-paper p-4 text-ink transition-opacity duration-500 sm:p-5 ${lit === destinations.length ? "opacity-100" : "opacity-30"}`}>
+          <p className="font-display text-[1.3rem] font-bold">Where it went</p>
+          <p className="mt-1 font-bold sm:text-[1.15rem]">On the website · Sent to 214 families · Ready to print</p>
+        </div>
+      )}
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
         <p className="text-[0.95rem] text-on-ink-soft">Sample community, for illustration.</p>
         <button type="button" onClick={() => setPlaying(!playing)} className="btn btn-ghost-dark !min-h-11 !px-4 !py-1.5 !text-[0.95rem]">

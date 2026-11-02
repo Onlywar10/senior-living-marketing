@@ -1,31 +1,33 @@
 import Image from "next/image";
-import Link from "next/link";
 import { ApplyForm } from "./apply-form";
 import { CatapultLink } from "./catapult-link";
 import { HeroVisual } from "./hero-visual";
-import { BrowserMock, FamilyThread, TourPicker } from "./mocks";
+import { HowSteps } from "./how-steps";
+import { PillarCards } from "./pillar-loops";
+import { TopLink } from "./top-link";
+import { ProblemList } from "./problem-list";
+import { RealLifeCompare } from "./real-life";
+import { CountUp } from "./story";
 import { PostFlow } from "./post-flow";
-import { PostOnceDemo } from "./post-once-demo";
-import { SolutionTabs } from "./solution-tabs";
 import { Wordmark } from "./site-header";
 import {
   aboutValues,
   bookHref,
+  brochureVsLife,
   catapultPoints,
   comparison,
   contact,
   examples,
   faqs,
   heroOffer,
+  howSteps,
   pilotAsks,
   pilotOffer,
   pilotPromises,
-  problems,
   proof,
-  sampleCommunity,
-  solutionDetails,
-  solutions,
   tabs,
+  trustLine,
+  trustPoints,
 } from "../content";
 
 const wrap = "mx-auto max-w-[86rem] px-5 sm:px-10";
@@ -44,12 +46,12 @@ export function Arrow({ dir, className = "size-5" }: { dir: keyof typeof arrowPa
   );
 }
 
-function BookButton({ className = "" }: { className?: string }) {
+export function BookButton({ className = "", label = "Book a meeting" }: { className?: string; label?: string }) {
   return (
-    <Link href={bookHref} className={`btn btn-primary ${className}`}>
-      Book a meeting
+    <TopLink href={bookHref} className={`btn btn-primary ${className}`}>
+      {label}
       <Arrow dir="e" />
-    </Link>
+    </TopLink>
   );
 }
 
@@ -76,14 +78,14 @@ function PageHead({ title, lede, id }: { title: string; lede?: string; id: strin
 
 export function SpotsBanner() {
   return (
-    <Link href="/offer" className="group sticky top-0 z-50 flex h-[2.6rem] items-center justify-center gap-x-4 whitespace-nowrap bg-signal px-4 text-on-signal no-underline">
+    <TopLink href="/offer" className="group sticky top-0 z-50 flex h-[2.6rem] items-center justify-center gap-x-4 whitespace-nowrap bg-signal px-4 text-on-signal no-underline">
       <span className="font-display text-[1.05rem] font-bold tracking-tight sm:text-[1.2rem]">Only 5 spots available</span>
       <span className="inline-flex items-center gap-1.5 font-display font-bold underline underline-offset-4">
         <span className="hidden sm:inline">See the offer</span>
         <span className="sr-only sm:hidden">See the offer</span>
         <Arrow dir="e" className="size-4 transition-transform group-hover:translate-x-1" />
       </span>
-    </Link>
+    </TopLink>
   );
 }
 
@@ -129,18 +131,18 @@ function HeroOffer() {
   );
 }
 
-export function Problem() {
+export function TrustStrip() {
   return (
-    <section aria-labelledby="problem-heading" className="py-16 sm:py-24">
+    <section aria-label="About Catapult" className="border-b border-rule bg-paper py-8">
       <div className={wrap}>
-        <h2 id="problem-heading" className="display-2 max-w-[20ch]">
-          Sound familiar?
-        </h2>
-        <ul className="mt-10 border-b border-ink">
-          {problems.map((problem) => (
-            <li key={problem.stamp} className="reveal grid items-center gap-x-8 gap-y-3 border-t border-ink py-5 md:grid-cols-[1fr_auto]">
-              <p className="max-w-[48rem] font-display text-[1.3rem] font-semibold leading-tight tracking-tight sm:text-[1.6rem]">{problem.text}</p>
-              <span className="tag justify-self-start text-ink-soft md:justify-self-end">{problem.stamp}</span>
+        <p className="font-display text-[1.2rem] font-bold leading-tight sm:text-[1.4rem]">
+          From <CatapultLink />: {trustLine}
+        </p>
+        <ul className="mt-5 grid grid-cols-2 gap-x-6 gap-y-5 lg:grid-cols-4">
+          {trustPoints.map((point) => (
+            <li key={point.rest} className="leading-snug">
+              <span className="block font-display text-[2rem] font-bold leading-none tracking-tight sm:text-[2.5rem]">{"value" in point && point.value ? <CountUp value={point.value} suffix={point.suffix} /> : point.lead}</span>{" "}
+              <span className="mt-0.5 block">{point.rest}</span>
             </li>
           ))}
         </ul>
@@ -149,16 +151,39 @@ export function Problem() {
   );
 }
 
+export function Problem() {
+  return (
+    <section aria-labelledby="problem-heading" className="py-12 sm:py-16">
+      <div className={`${wrap} grid gap-x-14 gap-y-6 lg:grid-cols-[minmax(0,4fr)_minmax(0,8fr)]`}>
+        <div>
+          <h2 id="problem-heading" className="display-2">
+            Sound familiar?
+          </h2>
+          <p className="lede mt-3">It doesn&apos;t have to work this way.</p>
+          <TopLink href="/solutions/live-website" className="mt-3 inline-flex min-h-11 items-center gap-2 font-display font-bold underline underline-offset-4">
+            See the way out
+            <Arrow dir="e" />
+          </TopLink>
+        </div>
+        <ProblemList />
+      </div>
+    </section>
+  );
+}
+
 export function Proof() {
   return (
-    <section aria-label="What the research says" className="bg-steel py-12 sm:py-14">
-      <ul className={`${wrap} grid gap-8 md:grid-cols-3 md:gap-10`}>
+    <section aria-label="What the research says" className="bg-steel py-12 sm:py-16">
+      <ul className={`${wrap} grid gap-10 md:grid-cols-3`}>
         {proof.map((item) => (
           <li key={item.source} className="reveal">
-            <p className="text-[1.1rem] leading-snug">
-              <strong className="font-display font-bold">{item.stat}</strong> {item.rest}
+            <p className="font-display text-[3rem] font-bold leading-none tracking-tight sm:text-[3.5rem]">
+              {"lead" in item && item.lead}
+              <CountUp value={item.value} suffix={item.suffix} />
             </p>
+            <p className="mt-2 text-[1.1rem] leading-snug">{item.rest}</p>
             <p className="mt-2 text-[0.9rem] text-ink-soft">{item.source}</p>
+            <p className="mt-3 border-t border-rule pt-3 font-bold leading-snug">{item.link}</p>
           </li>
         ))}
       </ul>
@@ -182,159 +207,142 @@ export function PostRoutes() {
   );
 }
 
+export function RealLife() {
+  return (
+    <section aria-labelledby="real-life-heading" className="py-16 sm:py-24">
+      <div className={wrap}>
+        <h2 id="real-life-heading" className="display-2">
+          Real life, not a brochure.
+        </h2>
+        <p className="lede mt-4 mb-6 max-w-[46rem]">Most senior living websites are sales brochures. They could describe anywhere. Yours can show what life is really like, today. Drag to see the same community both ways.</p>
+        <RealLifeCompare />
+        <h3 className="display-3 mt-14">What a family actually finds.</h3>
+        <div className="mt-6 hidden grid-cols-[minmax(0,2fr)_minmax(0,4fr)_minmax(0,6fr)] gap-x-6 pb-2 font-display font-bold md:grid" aria-hidden="true">
+          <span />
+          <span className="text-ink-soft">A brochure website</span>
+          <span>Your community on Kinlight</span>
+        </div>
+        <dl className="mt-4 border-b border-ink md:mt-0">
+          {brochureVsLife.map((row) => (
+            <div key={row.topic} className="reveal grid gap-x-6 gap-y-1 border-t border-ink py-3.5 md:grid-cols-[minmax(0,2fr)_minmax(0,4fr)_minmax(0,6fr)]">
+              <dt className="font-display text-[1.2rem] font-bold leading-tight">{row.topic}</dt>
+              <dd className="text-ink-soft">
+                <span className="font-bold md:sr-only">A brochure website: </span>
+                {row.brochure}
+              </dd>
+              <dd className="font-bold">
+                <span className="md:sr-only">On Kinlight: </span>
+                {row.life}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+  );
+}
+
 export function Overview() {
   return (
-    <section aria-labelledby="overview-heading" className="py-16 sm:py-24">
-      <div className={`${wrap} grid items-start gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-14`}>
-        <Photo
-          src="/photos/mother-daughter-garden.jpg"
-          alt="An older woman in a cream cardigan laughing with her grown daughter on a garden bench."
-          className="aspect-[4/3] lg:aspect-[4/5]"
-          sizes="(min-width: 1024px) 40vw, 95vw"
-        />
-        <div>
-          <h2 id="overview-heading" className="display-2 max-w-[18ch]">
-            What you get.
+    <section aria-labelledby="overview-heading" className="bg-steel py-16 sm:py-24">
+      <div className={wrap}>
+        <h2 id="overview-heading" className="display-2">
+          What you get.
+        </h2>
+        <PillarCards />
+      </div>
+    </section>
+  );
+}
+
+export function HowItWorks() {
+  return (
+    <section aria-labelledby="how-heading" className="py-16 sm:py-24">
+      <div className={`${wrap} grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]`}>
+        <div className="lg:sticky lg:top-40 lg:self-start">
+          <h2 id="how-heading" className="display-2 max-w-[14ch]">
+            How it works.
           </h2>
-          <ul className="mt-8 border-b border-rule">
-            {solutions.map((item) => (
-              <li key={item.title} className="reveal border-t border-rule">
-                <Link href={item.href} className="flex items-center justify-between gap-4 py-4 no-underline hover:text-signal-ink">
-                  <span>
-                    <span className="block font-display text-[1.35rem] font-bold leading-tight">{item.title}</span>
-                    <span className="mt-1 block">{item.body}</span>
-                  </span>
-                  <Arrow dir="e" className="size-6" />
-                </Link>
-              </li>
-            ))}
-          </ul>
-          <BookButton className="mt-8" />
+          <p className="lede mt-4">Four steps. We do the heavy lifting.</p>
+        </div>
+        <HowSteps steps={howSteps} />
+      </div>
+    </section>
+  );
+}
+
+export function FoundingOffer() {
+  return (
+    <section aria-labelledby="founding-heading" className="on-dark panel py-16 sm:py-24">
+      <div className={wrap}>
+        <h2 id="founding-heading" className="display-2">
+          Only 5 spots available.
+        </h2>
+        <p className="lede mt-4 max-w-[44rem] text-on-ink-soft">For California senior living organizations. The pilot starts in March 2027.</p>
+        <div className="mt-10 grid gap-10 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)] lg:gap-14">
+          <div>
+            <h3 className="font-display text-[1.75rem] font-bold sm:text-[2.1rem]">What you get</h3>
+            <dl className="mt-4 border-b border-ink-rule">
+              {pilotOffer.map((item) => (
+                <div key={item.title} className="reveal border-t border-ink-rule py-3.5">
+                  <dt className="font-display text-[1.4rem] font-bold leading-tight sm:text-[1.6rem]">{item.title}</dt>
+                  <dd className="mt-1 text-[1.1rem] leading-snug text-on-ink-soft sm:text-[1.2rem]">{item.body}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+          <div>
+            <h3 className="font-display text-[1.75rem] font-bold sm:text-[2.1rem]">What we ask in return</h3>
+            <ul className="mt-4 border-b border-ink-rule">
+              {pilotAsks.map((ask) => (
+                <li key={ask} className="border-t border-ink-rule py-3.5 text-[1.2rem] leading-snug sm:text-[1.4rem]">
+                  {ask}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap lg:flex-col xl:flex-row">
+              <BookButton />
+              <TopLink href="/offer" className="btn btn-ghost-dark">
+                See the full offer
+              </TopLink>
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-export function SolutionsHead() {
+export function FaqList({ items }: { items: readonly { q: string; a: string }[] }) {
   return (
-    <header className="on-dark panel pt-10 sm:pt-14">
-      <div className={`${wrap} pb-8`}>
-        <h1 className="display-2">Solutions</h1>
-        <p className="lede mt-4 max-w-[44rem] text-on-ink-soft">Four tools. Pick one to see exactly what it does.</p>
+    <div className="max-w-[60rem] border-b border-ink">
+      {items.map((faq) => (
+        <details key={faq.q} className="border-t border-ink">
+          <summary className="flex min-h-14 items-center justify-between gap-4 py-4 font-display text-[1.2rem] font-bold leading-tight sm:text-[1.35rem]">
+            {faq.q}
+            <svg aria-hidden="true" viewBox="0 0 24 24" className="chevron size-6 shrink-0">
+              <path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="square" />
+            </svg>
+          </summary>
+          <p className="max-w-[46rem] pb-5">{faq.a}</p>
+        </details>
+      ))}
+    </div>
+  );
+}
+
+export function HomeFaq() {
+  return (
+    <section aria-labelledby="home-faq-heading" className="py-16 sm:py-24">
+      <div className={wrap}>
+        <h2 id="home-faq-heading" className="display-2">
+          Quick answers.
+        </h2>
+        <div className="mt-8">
+          <FaqList items={faqs} />
+        </div>
       </div>
-      <SolutionTabs />
-    </header>
-  );
-}
-
-function SolutionVisual({ id }: { id: keyof typeof solutionDetails }) {
-  if (id === "website") {
-    return (
-      <figure>
-        <div className="lift rounded-lg">
-          <BrowserMock large highlight={false} />
-        </div>
-        <figcaption className="mt-3 text-[0.9rem] text-ink-soft">{sampleCommunity} is a made-up community, for illustration.</figcaption>
-      </figure>
-    );
-  }
-  if (id === "family") {
-    return (
-      <figure className="relative lg:pb-6">
-        <Photo src="/photos/caregiver-resident.jpg" alt="A caregiver in a yellow cardigan holding the hand of an older man in a wicker chair." className="aspect-[4/3] w-full lg:w-[78%]" sizes="(min-width: 1024px) 38vw, 95vw" />
-        <div className="relative z-10 mx-auto -mt-10 w-[15.5rem] lg:absolute lg:bottom-0 lg:right-0 lg:mt-0">
-          <FamilyThread />
-        </div>
-        <figcaption className="mt-3 text-center text-[0.9rem] text-ink-soft lg:absolute lg:bottom-0 lg:left-0 lg:mt-0 lg:text-left">Sample messages.</figcaption>
-      </figure>
-    );
-  }
-  if (id === "conversion") {
-    return (
-      <figure>
-        <div className="lift rounded-lg">
-          <TourPicker />
-        </div>
-        <figcaption className="mt-3 text-[0.9rem] text-ink-soft">Sample screen for a made-up community.</figcaption>
-      </figure>
-    );
-  }
-  return (
-    <Photo src="/photos/activity-table.jpg" alt="A caregiver leaning in close with residents around an activity table." className="aspect-[4/3]" sizes="(min-width: 1024px) 45vw, 95vw" />
-  );
-}
-
-export function SolutionDetail({ id }: { id: keyof typeof solutionDetails }) {
-  const detail = solutionDetails[id];
-  const coming = "coming" in detail ? detail.coming : null;
-  return (
-    <>
-      <section aria-labelledby="solution-heading" className="py-14 sm:py-20">
-        <div className={wrap}>
-          <h2 id="solution-heading" className="display-2">
-            {detail.title}
-          </h2>
-          <p className="lede mt-4 max-w-[42rem]">{detail.purpose}</p>
-          <div className="mt-10 grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
-            <div>
-              <h3 className="font-display text-[1.5rem] font-bold">How it works</h3>
-              <ol className="mt-4 border-b border-rule">
-                {detail.steps.map((step, i) => (
-                  <li key={step.title} className="reveal grid grid-cols-[2.5rem_1fr] gap-2 border-t border-rule py-4">
-                    <span className="flex size-8 items-center justify-center rounded bg-ink font-display font-bold text-on-ink">{i + 1}</span>
-                    <span>
-                      <span className="block font-display text-[1.2rem] font-bold leading-tight">{step.title}</span>
-                      <span className="mt-1 block">{step.body}</span>
-                    </span>
-                  </li>
-                ))}
-              </ol>
-            </div>
-            <SolutionVisual id={id} />
-          </div>
-        </div>
-      </section>
-      {id === "post" && (
-        <section aria-label="Try it" className="bg-steel py-14 sm:py-20">
-          <div className={wrap}>
-            <h3 className="display-3">Press the button and watch one post go out.</h3>
-            <div className="mt-8">
-              <PostOnceDemo />
-            </div>
-          </div>
-        </section>
-      )}
-      <section aria-labelledby="included-heading" className={`py-14 sm:py-20 ${id === "post" ? "" : "bg-steel"}`}>
-        <div className={wrap}>
-          <h3 id="included-heading" className="display-3">
-            What&apos;s included
-          </h3>
-          <ul className="mt-6 grid gap-x-10 md:grid-cols-2">
-            {detail.included.map((item) => (
-              <li key={item} className="reveal grid grid-cols-[1.75rem_1fr] gap-2 border-t border-rule py-3.5">
-                <Arrow dir="e" className="mt-1 size-5 text-ink-soft" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          {coming && (
-            <div className="mt-12">
-              <h3 className="flex flex-wrap items-center gap-3 font-display text-[1.45rem] font-bold">
-                On the way
-                <span className="tag text-ink-soft">Coming</span>
-              </h3>
-              <ul className="mt-4 list-disc space-y-2.5 pl-5 marker:text-ink-soft">
-                {coming.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </div>
-      </section>
-      <NextStep href={detail.next.href} label={detail.next.label} />
-    </>
+    </section>
   );
 }
 
@@ -484,31 +492,6 @@ export function About() {
   );
 }
 
-export function Questions() {
-  return (
-    <>
-      <PageHead id="questions-heading" title="Questions" />
-      <section aria-label="Frequently asked questions" className="py-14 sm:py-20">
-        <div className={wrap}>
-          <div className="max-w-[60rem] border-b border-ink">
-            {faqs.map((faq) => (
-              <details key={faq.q} className="border-t border-ink">
-                <summary className="flex min-h-14 items-center justify-between gap-4 py-4 font-display text-[1.2rem] font-bold leading-tight sm:text-[1.35rem]">
-                  {faq.q}
-                  <svg aria-hidden="true" viewBox="0 0 24 24" className="chevron size-6 shrink-0">
-                    <path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="square" />
-                  </svg>
-                </summary>
-                <p className="max-w-[46rem] pb-5">{faq.a}</p>
-              </details>
-            ))}
-          </div>
-        </div>
-      </section>
-    </>
-  );
-}
-
 export function Examples() {
   return (
     <>
@@ -541,9 +524,9 @@ export function Examples() {
                       {inner}
                     </a>
                   ) : (
-                    <Link href={example.href} className={card}>
+                    <TopLink href={example.href} className={card}>
                       {inner}
-                    </Link>
+                    </TopLink>
                   )}
                 </li>
               );
@@ -559,10 +542,10 @@ export function Examples() {
 export function NextStep({ href, label }: { href: string; label: string }) {
   return (
     <nav aria-label="Next page" className={`${wrap} py-8`}>
-      <Link href={href} className="flex items-center justify-between gap-4 border-y border-ink py-5 font-display text-[1.3rem] font-bold tracking-tight no-underline hover:text-signal-ink sm:text-[1.7rem]">
+      <TopLink href={href} className="flex items-center justify-between gap-4 border-y border-ink py-5 font-display text-[1.3rem] font-bold tracking-tight no-underline hover:text-signal-ink sm:text-[1.7rem]">
         {label}
         <Arrow dir="e" className="size-8" />
-      </Link>
+      </TopLink>
     </nav>
   );
 }
@@ -583,7 +566,7 @@ export function Closing() {
             {contact.email} · {contact.phone}
           </address>
         </div>
-        <Photo src="/photos/activity-table.jpg" alt="A caregiver leaning in close with residents around an activity table." className="aspect-[3/2]" sizes="(min-width: 1024px) 34vw, 95vw" />
+        <Photo src="/photos/chair-exercise.jpg" alt="Older adults in a bright room, arms raised during a seated exercise class." className="aspect-[3/2]" sizes="(min-width: 1024px) 34vw, 95vw" />
       </div>
     </section>
   );
@@ -601,23 +584,23 @@ export function SiteFooter() {
           <ul className="flex flex-wrap gap-x-5 gap-y-1 font-display font-semibold">
             {tabs.map((tab) => (
               <li key={tab.href}>
-                <Link href={tab.href} className="inline-block py-1.5 underline-offset-4 hover:underline">
+                <TopLink href={tab.href} className="inline-block py-1.5 underline-offset-4 hover:underline">
                   {tab.label}
-                </Link>
+                </TopLink>
               </li>
             ))}
           </ul>
         </nav>
         <ul className="flex flex-wrap gap-x-5">
           <li>
-            <Link href="/privacy" className="underline">
+            <TopLink href="/privacy" className="underline">
               Privacy
-            </Link>
+            </TopLink>
           </li>
           <li>
-            <Link href="/accessibility" className="underline">
+            <TopLink href="/accessibility" className="underline">
               Accessibility statement
-            </Link>
+            </TopLink>
           </li>
           <li>© 2026</li>
         </ul>

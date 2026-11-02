@@ -285,6 +285,19 @@ a {
     }
   }
 
+  .compare-range {
+    touch-action: pan-y;
+  }
+
+  .compare-range:focus-visible {
+    opacity: 0.01;
+  }
+
+  .lift:has(.compare-range:focus-visible) {
+    outline: 3px solid var(--signal-ink);
+    outline-offset: 3px;
+  }
+
   @keyframes photo-drift {
     from {
       transform: scale(1);
@@ -306,6 +319,123 @@ a {
     to {
       opacity: 1;
       transform: none;
+    }
+  }
+
+  .field-mock {
+    margin-top: 0.15rem;
+    border: 1px solid var(--rule);
+    border-radius: 0.25rem;
+    padding: 0.35rem 0.6rem;
+  }
+
+  .cork {
+    background: linear-gradient(rgb(205 165 118 / 0.6), rgb(205 165 118 / 0.6)), url("/photos/cork-board.jpg") 0 0 / 18rem auto;
+  }
+
+  .pop-in {
+    animation: pop-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+    animation-delay: var(--d, 0s);
+  }
+
+  @keyframes pop-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.4rem) scale(0.97);
+    }
+  }
+
+  .word-in {
+    animation: word-in 0.2s linear both;
+    animation-delay: var(--d, 0s);
+  }
+
+  @keyframes word-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  .fade-away {
+    animation: fade-away 0.25s linear both;
+    animation-delay: var(--d, 0s);
+  }
+
+  @keyframes fade-away {
+    to {
+      opacity: 0;
+    }
+  }
+
+  .new-flash {
+    animation:
+      pop-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both,
+      new-flash 2s ease-out both;
+    animation-delay: var(--d, 0s);
+  }
+
+  @keyframes new-flash {
+    from {
+      background-color: var(--signal-bright);
+    }
+  }
+
+  .tap-press {
+    animation: tap-press 0.3s ease-out both;
+    animation-delay: var(--d, 0s);
+  }
+
+  @keyframes tap-press {
+    50% {
+      transform: scale(0.93);
+      filter: brightness(0.85);
+    }
+  }
+
+  .shutter-flash {
+    animation: shutter-flash 0.45s ease-out both;
+    animation-delay: 2.4s;
+  }
+
+  @keyframes shutter-flash {
+    0%,
+    100% {
+      opacity: 0;
+    }
+    25% {
+      opacity: 0.9;
+    }
+  }
+
+  .cursor-move {
+    animation: cursor-move 1.6s cubic-bezier(0.45, 0, 0.2, 1) 1s both;
+  }
+
+  @keyframes cursor-move {
+    from {
+      transform: translate(-11rem, -9rem);
+    }
+  }
+
+  .progress-fill {
+    transform-origin: left;
+    animation: progress-fill linear both;
+  }
+
+  @keyframes progress-fill {
+    from {
+      transform: scaleX(0);
+    }
+  }
+
+  .scan-line {
+    top: 0;
+    animation: scan-down 3.2s linear both;
+  }
+
+  @keyframes scan-down {
+    to {
+      top: calc(100% - 0.25rem);
     }
   }
 
@@ -383,7 +513,17 @@ a {
   }
 }
 
+html[lang="zh-Hans"] * {
+  font-family: var(--font-overpass), "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  font-style: normal;
+  letter-spacing: 0;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .scan-line {
+    animation: none;
+    top: 50%;
+  }
   html {
     scroll-behavior: auto;
   }
