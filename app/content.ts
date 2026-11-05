@@ -30,7 +30,7 @@ export const examples = [
     title: "Your communications",
     body: "One post goes out by text and email, in each family's language, and onto large-print paper.",
     image: "/previews/your-communications.png",
-    alt: "Preview of a family text message about an ice cream social, next to a large-print weekly calendar.",
+    alt: "Preview of a family member's phone lock screen showing the weekly highlights text from their mother's community, next to the steps that follow.",
     href: "https://senior-living-demo-five.vercel.app/phones",
     cta: "Open the phone preview",
     external: true,

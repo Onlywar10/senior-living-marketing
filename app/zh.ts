@@ -455,7 +455,7 @@ export const zh: Record<string, string> = {
   "Pottery": "陶艺",
   "Pottery class": "陶艺课",
   "Pottery this morning, the garden club before lunch, and ice cream in the garden at 2.": "上午有陶艺课，午餐前有园艺俱乐部，下午 2 点在花园吃冰淇淋。",
-  "Preview of a family text message about an ice cream social, next to a large-print weekly calendar.": "一条关于冰淇淋聚会的家属短信预览，旁边是大字版周日历。",
+  "Preview of a family member's phone lock screen showing the weekly highlights text from their mother's community, next to the steps that follow.": "家属手机锁屏预览，显示来自其母亲所在社区的每周精选短信，旁边是后续步骤。",
   "Preview of a senior living website with a large headline, photos and buttons to find a community.": "长者生活社区网站预览，有醒目的标题、照片和查找社区的按钮。",
   "Preview of a staff dashboard with families reached, messages sent, tours booked and a website visits chart.": "员工后台预览，显示触达的家庭、发送的消息、预约的参观和网站访问图表。",
   "Previews": "预览",
