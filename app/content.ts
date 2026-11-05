@@ -31,9 +31,9 @@ export const examples = [
     body: "One post goes out by text and email, in each family's language, and onto large-print paper.",
     image: "/previews/your-communications.png",
     alt: "Preview of a family text message about an ice cream social, next to a large-print weekly calendar.",
-    href: "/solutions/post-once",
-    cta: "Watch it work",
-    external: false,
+    href: "https://senior-living-demo-five.vercel.app/phones",
+    cta: "Open the phone preview",
+    external: true,
   },
   {
     title: "Your management portal",
