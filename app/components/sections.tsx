@@ -4,6 +4,8 @@ import { ApplyForm } from "./apply-form";
 import { CatapultLink } from "./catapult-link";
 import { HeroVisual } from "./hero-visual";
 import { HowSteps } from "./how-steps";
+import { OfferPromises } from "./offer-promises";
+import { OfferTimeline } from "./offer-timeline";
 import { PillarCards } from "./pillar-loops";
 import { TopLink } from "./top-link";
 import { ProblemList } from "./problem-list";
@@ -23,7 +25,6 @@ import {
   howSteps,
   pilotAsks,
   pilotOffer,
-  pilotPromises,
   proof,
   tabs,
   trustLine,
@@ -100,7 +101,7 @@ export function Hero() {
       <div className={`${wrap} hero-copy pointer-events-none relative z-10 w-full pb-6 lg:py-10`}>
         <div className="pointer-events-auto max-w-[37rem]">
           <h1 id="hero-heading" className="display-1">
-            Your website, finally as alive as your community.
+            Your <span className="text-signal-bright">website</span>, finally as alive as your community.
           </h1>
           <p className="lede mt-3 max-sm:text-[1.05rem] sm:mt-5">Be one of our founding communities: a website that shows what life is really like there, not a brochure. Ensure families stay engaged and no question is left unanswered.</p>
           <div className="mt-4 sm:mt-6">
@@ -350,38 +351,77 @@ export function HomeFaq() {
   );
 }
 
-export function Pilot() {
+// The Offer page. Its one job is a booked meeting, so it sells the offer and every section
+// ends with "Book a meeting". The fine print (measures, baselines, the beta gate) stays in
+// the agreement, for the meeting.
+export function Offer() {
   return (
     <>
-      <PageHead id="pilot-heading" title="The Founding Offer" lede={<>Only up to <FiveMark className="bg-signal text-on-signal" /> organizations get this. The pilot starts in March 2027.</>} />
-      <section aria-label="The offer" className="py-14 sm:py-20">
-        <div className={`${wrap} grid items-start gap-12 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-14`}>
+      <section aria-labelledby="offer-heading" className="on-dark panel overflow-hidden py-14 sm:py-20">
+        <div className={`${wrap} grid items-center gap-10 lg:grid-cols-[minmax(0,6fr)_minmax(0,6fr)] lg:gap-14`}>
           <div>
-            <dl>
-              {pilotOffer.map((item) => (
-                <div key={item.title} className="reveal border-t border-ink py-4">
-                  <dt className="font-display text-[1.35rem] font-bold leading-tight">{item.title}</dt>
-                  <dd className="mt-1">{item.body}</dd>
-                </div>
+            <p className="tag tag-live">The Founding Offer</p>
+            <h1 id="offer-heading" className="display-1 mt-5 max-w-[16ch]">
+              Your first 3 months are free. Guaranteed.
+            </h1>
+            <p className="lede mt-5 max-w-[38rem] text-on-ink-soft">No setup fee. You only stay on for 9 more months, at our normal price, if we&apos;ve kept every promise. If we haven&apos;t, you owe nothing.</p>
+            <BookButton className="mt-7 !min-h-[3.75rem] w-full !px-8 !text-[1.25rem] sm:w-auto" />
+          </div>
+          <OfferTimeline />
+        </div>
+      </section>
+
+      <section aria-labelledby="promises-heading" className="py-16 sm:py-24">
+        <div className={wrap}>
+          <h2 id="promises-heading" className="display-2">
+            Our promises to you.
+          </h2>
+          <p className="lede mt-4 max-w-[44rem]">Six things we fully control. Keep them all, and you stay. Miss one, and you owe nothing.</p>
+          <div className="mt-8">
+            <OfferPromises />
+          </div>
+          <BookButton className="mt-10" />
+        </div>
+      </section>
+
+      <section aria-labelledby="asks-heading" className="bg-steel py-16 sm:py-24">
+        <div className={`${wrap} grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-14`}>
+          <div>
+            <h2 id="asks-heading" className="display-2 max-w-[14ch]">
+              What we ask in return.
+            </h2>
+            <p className="lede mt-4">Kinlight only shows what your team puts in. That still takes just minutes a week.</p>
+          </div>
+          <div>
+            <ol className="border-b border-ink">
+              {pilotAsks.map((ask, i) => (
+                <li key={ask} className="reveal grid grid-cols-[2.5rem_1fr] items-baseline gap-3 border-t border-ink py-4">
+                  <span className="font-display text-[1.6rem] font-bold leading-none text-signal-ink">{i + 1}</span>
+                  <span className="text-[1.2rem] font-bold leading-snug sm:text-[1.4rem]">{ask}</span>
+                </li>
               ))}
-            </dl>
-            <h2 className="mt-8 font-display text-[1.6rem] font-bold">Our promises</h2>
-            <div className="mt-4 grid gap-4 sm:grid-cols-2">
-              {pilotPromises.map((promise) => (
-                <div key={promise.title} className="rounded-md bg-paper p-5">
-                  <h3 className="font-display text-[1.25rem] font-bold">{promise.title}</h3>
-                  <p className="mt-1.5">{promise.body}</p>
-                </div>
-              ))}
-            </div>
-            <h2 className="mt-10 font-display text-[1.6rem] font-bold">What we need from you</h2>
-            <ul className="mt-3 list-disc space-y-1.5 pl-5 marker:text-ink-soft">
-              {pilotAsks.map((ask) => (
-                <li key={ask}>{ask}</li>
+            </ol>
+            <BookButton className="mt-8" />
+          </div>
+        </div>
+      </section>
+
+      {/* No on-dark here: the only focusable things sit in the white form, which needs the dark focus ring. */}
+      <section aria-labelledby="spots-heading" className="panel py-16 sm:py-24">
+        <div className={`${wrap} grid items-start gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,6fr)] lg:gap-14`}>
+          <div>
+            <h2 id="spots-heading" className="display-2 max-w-[14ch]">
+              Only <FiveMark className="bg-signal text-on-signal" /> founding spots.
+            </h2>
+            <p className="lede mt-4 text-on-ink-soft">For senior living organizations. The pilot starts in March 2027.</p>
+            <ul className="mt-8 flex gap-2" aria-hidden="true">
+              {[0, 1, 2, 3, 4].map((spot) => (
+                <li key={spot} className="reveal size-10 rounded-full border-2 border-signal-bright sm:size-12" />
               ))}
             </ul>
+            <p className="mt-8 max-w-[34rem] text-on-ink-soft">Book an 18-minute meeting. We&apos;ll show you the site, walk you through the agreement and see if the offer fits.</p>
           </div>
-          <div id="book" className="lift overflow-hidden rounded-lg bg-paper">
+          <div id="book" className="lift overflow-hidden rounded-lg bg-paper text-ink">
             <ApplyForm />
           </div>
         </div>

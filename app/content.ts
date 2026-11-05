@@ -49,7 +49,7 @@ export const examples = [
 export const sampleCommunity = "Wren Hollow";
 
 // The short version of the offer, on the first screen.
-export const heroOffer = ["We build it. No setup fee.", "You pay nothing until it hits the results we agree on."];
+export const heroOffer = ["Your first 3 months free, guaranteed. No setup fee.", "You only stay on if we keep every promise. If not, you owe nothing."];
 
 // Ordered by what each one costs an owner, most expensive first.
 export const problems = [
@@ -134,7 +134,7 @@ export const ourStory = {
 export const aboutValues = [
   { title: "Your site is yours.", body: "Your website and family contacts belong to you. You can take a full copy of your information at any time." },
   { title: "We tell you what's real.", body: "If we haven't built something yet, we say \u201ccoming.\u201d We don't sell what doesn't exist." },
-  { title: "We earn it first.", body: "Founding communities pay nothing until the results we agree on are met." },
+  { title: "We earn it first.", body: "Founding communities get their first 3 months free, and only stay on if we've kept every promise." },
   { title: "We speak plain English.", body: "No jargon. If we can't explain it simply, it's our problem, not yours." },
 ];
 
@@ -150,32 +150,35 @@ export const brochureVsLife = [
 
 export const howSteps = [
   { title: "Book a meeting.", body: "We learn about your communities, show you what your site could look like, and check the fit." },
-  { title: "We build it.", body: "We move your current site over, with no broken pages and no lost search rankings. We set up your calendars, menus and family list." },
+  { title: "We build it.", body: "Your new website is up and running within 30 days, moved over with nothing lost. We set up your calendars, menus and family list." },
   { title: "Your team posts.", body: "A few minutes a week. Or take a photo of your paper calendar and we'll turn it into a live one." },
-  { title: "We check the results we agreed on.", body: "You pay nothing until we hit them." },
+  { title: "We keep our promises.", body: "Your first 3 months are free. If we miss a promise, you owe nothing." },
 ];
 
+// The offer, from the alpha agreement (vault: 07 Deliverables/Alpha Agreement). Sell it here; the fine print is for the meeting.
 export const pilotOffer = [
-  { title: "We build your new website.", body: "No setup fee. We build it next to your current site and set everything up with your team." },
-  { title: "You pay nothing until it works.", body: "We agree on the results first. You pay nothing until they're met." },
+  { title: "Your first 3 months are free.", body: "Guaranteed, with no setup fee. We build your new website and set everything up with your team." },
+  { title: "You only stay if we deliver.", body: "Kept every promise? You stay on for 9 more months at our normal price. Missed one? You owe nothing." },
   { title: "You help shape it.", body: "You get a direct line to our team and a say in what we build next." },
 ];
 
+// Our promises, benefit first. Each is one we fully control, so together they are the guarantee.
 export const pilotPromises = [
-  { title: "Always current", body: "If a menu or calendar is more than 7 days out of date because of us, that month is free." },
-  { title: "Safe switch", body: "No broken pages and no lost search rankings when we move your site, or we fix it and credit a month." },
+  { title: "Your website, up and running in 30 days.", body: "Built beside your current site and moved over with nothing lost, with calendars, menus and family texting ready to go.", stamp: "30 days" },
+  { title: "Real life on every community page.", body: "This week's menu, the activity calendar and recent news, on every page, every week.", stamp: "Every week" },
+  { title: "No inquiry left waiting.", body: "Every inquiry gets an instant reply, day or night, and reaches your team within minutes.", stamp: "Day or night" },
+  { title: "Found on Google and AI search.", body: "Your communities show up correctly on Google and in AI tools like ChatGPT.", stamp: "Google + AI" },
+  { title: "One post reaches the website, families and print.", body: "Your staff post once. It reaches your website, families' phones in their own language, and large-print paper. Nothing goes out without your approval.", stamp: "Post once" },
+  { title: "A monthly scorecard.", body: "Every month you see it working, in plain numbers.", stamp: "Every month" },
 ];
 
-export const pilotAsks = [
-  "A named contact, and a staff champion in each community",
-  "Weekly posts, honest feedback and short surveys, so we can measure results",
-  "A switch to the new site once it meets our agreed checklist, and a case study if we hit the results",
-];
+// What we ask in return. Kept short: the details are for the meeting.
+export const pilotAsks = ["Use Kinlight every week: post what's happening and keep calendars and menus current.", "Share your family contacts, in any form.", "Give us honest feedback, so we can make it better."];
 
 export const faqs = [
   {
     q: "Will we lose our Google rankings when we switch?",
-    a: "We redirect your old page addresses so your rankings carry over. If the move breaks a page or costs you rankings, we fix it and credit a month.",
+    a: "We redirect every old page address so your rankings carry over. Moving you over with nothing lost is one of our promises. If we miss it, you owe nothing.",
   },
   {
     q: "Who owns our website and family contacts?",
