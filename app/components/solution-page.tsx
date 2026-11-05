@@ -41,7 +41,7 @@ export function SolutionPage({ id }: { id: SolutionId }) {
     <>
       <section aria-labelledby="solution-heading" className="on-dark panel overflow-hidden pt-6 sm:pt-8">
         <SolutionTabs />
-        {id === "website" ? (
+        {id === "website" || id === "family" ? (
           <div className={`${wrap} pb-12 pt-7`}>
             <div className="flex flex-wrap items-end justify-between gap-x-10 gap-y-4">
               <div className="max-w-[52rem]">
@@ -55,6 +55,17 @@ export function SolutionPage({ id }: { id: SolutionId }) {
             <div className="mt-5">
               <SignatureScene id={id} />
             </div>
+          </div>
+        ) : id === "inquiries" ? (
+          <div className={`${wrap} grid grid-cols-[minmax(0,1fr)] items-center gap-8 pb-12 pt-7 xl:grid-cols-[minmax(0,1fr)_41.5rem]`}>
+            <div>
+              <p className="lede italic text-on-ink-soft">&ldquo;{solution.problem}&rdquo;</p>
+              <h1 id="solution-heading" className="display-2 mt-3 xl:!text-[2.6rem]">
+                {solution.promise}
+              </h1>
+              <BookButton className="mt-6 !min-h-[3.75rem] w-full !px-8 !text-[1.2rem] sm:w-auto" />
+            </div>
+            <SignatureScene id={id} />
           </div>
         ) : (
           <div className={`${wrap} pb-14 pt-10 sm:pb-20 sm:pt-12`}>
@@ -97,30 +108,6 @@ export function SolutionPage({ id }: { id: SolutionId }) {
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      <section aria-labelledby="scorecard-heading" className="py-12 sm:py-16">
-        <div className={wrap}>
-          <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-            <h2 id="scorecard-heading" className="display-3">
-              Your monthly scorecard.
-            </h2>
-            <span className="tag text-ink-soft">Sample numbers</span>
-          </div>
-          <dl className="mt-6 grid grid-cols-2 gap-3 lg:grid-cols-4">
-            {detail.scorecard.map((tile) => (
-              <div key={tile.label} className={`flex flex-col-reverse justify-end rounded-lg p-4 ${tile.highlight ? "on-dark bg-ink text-on-ink" : "bg-paper"}`}>
-                <dt className="mt-1 leading-snug">
-                  <span className="block font-bold">{tile.label}</span>
-                  {tile.note && <span className={`block text-[0.9rem] ${tile.highlight ? "text-on-ink-soft" : "text-ink-soft"}`}>{tile.note}</span>}
-                </dt>
-                <dd className={`font-display text-[2.4rem] font-bold leading-none tracking-tight ${tile.highlight ? "text-signal-bright" : ""}`}>
-                  <CountUp value={tile.value} suffix={tile.suffix} />
-                </dd>
-              </div>
-            ))}
-          </dl>
         </div>
       </section>
 

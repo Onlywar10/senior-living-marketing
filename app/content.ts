@@ -8,7 +8,6 @@ export const contact = {
 
 export const tabs = [
   { href: "/solutions/live-website", label: "Solutions" },
-  { href: "/why-kinlight", label: "Why Kinlight" },
   { href: "/examples", label: "Examples" },
   { href: "/offer", label: "The Offer" },
   { href: "/about", label: "About Us" },
@@ -32,9 +31,9 @@ export const examples = [
     body: "One post goes out by text and email, in each family's language, and onto large-print paper.",
     image: "/previews/your-communications.png",
     alt: "Preview of a family text message about an ice cream social, next to a large-print weekly calendar.",
-    href: "/solutions/post-once",
-    cta: "Watch it work",
-    external: false,
+    href: "https://senior-living-demo-five.vercel.app/phones",
+    cta: "Open the phone preview",
+    external: true,
   },
   {
     title: "Your management portal",
@@ -50,7 +49,7 @@ export const examples = [
 export const sampleCommunity = "Wren Hollow";
 
 // The short version of the offer, on the first screen.
-export const heroOffer = ["We build it. No setup fee.", "You pay nothing until it hits the results we agree on."];
+export const heroOffer = ["Your first 3 months free, guaranteed. No setup fee.", "You only stay on if we keep every promise. If not, you owe nothing."];
 
 // Ordered by what each one costs an owner, most expensive first.
 export const problems = [
@@ -101,40 +100,42 @@ export const solutions = [
   { id: "website", href: "/solutions/live-website", title: "Live Website", problem: "Our website is a brochure. It still shows last month's calendar.", promise: "A website that shows what life is really like there, not a brochure." },
   { id: "post", href: "/solutions/post-once", title: "Post Once", problem: "Our activities team builds the same calendar three times.", promise: "One post reaches your website, your families and paper." },
   { id: "family", href: "/solutions/family-connection", title: "Family Connection", problem: "Families call the front desk to ask what's happening this week.", promise: "Families who feel close to daily life, in their own language." },
-  { id: "inquiries", href: "/solutions/inquiries-tours", title: "Inquiries & Tours", problem: "Inquiries sit overnight, and families can't find what they need.", promise: "Every inquiry reaches your team, and your site is built for Google and AI search." },
+  { id: "inquiries", href: "/solutions/more-tours", title: "More Tours", problem: "Inquiries sit overnight, and families can't find what they need.", promise: "Every inquiry reaches your team, and your site is built for Google and AI search." },
 ] as const;
+
+// The founder's story on the About page, in Adam's words.
+export const ourStory = {
+  before: [
+    { kind: "lead", text: "For our founder, Adam Bowen, the inspiration behind our mission began with his grandfather, Lester Byers." },
+    { kind: "p", text: "When Grandpa Lester reached a point in his life where he needed additional care, our family faced a challenge that countless others know all too well: finding a senior living community where he would feel comfortable, engaged, and genuinely cared for." },
+    { kind: "p", text: "We spent countless hours researching communities, reading reviews, and scheduling visits. Too often, the websites we encountered offered little more than polished photographs and sales brochures. There was very little meaningful information about daily life, available activities, or what residents and their families could actually expect." },
+    { kind: "p", text: "Despite our best efforts, Grandpa Lester moved between several communities as we searched for the right fit and the quality of care he deserved." },
+    { kind: "line", text: "But finding the right community was only part of the challenge." },
+    { kind: "p", text: "Once Grandpa Lester moved in, staying connected to his daily life proved just as difficult." },
+    { kind: "p", text: "We wanted to encourage him to participate in activities, make friends, and enjoy everything his community had to offer. But we often didn't know what was happening or when. Finding out about upcoming events, daily activities, or even something as simple as the weekly menu frequently meant making phone calls and asking questions." },
+    { kind: "strong", text: "Information wasn't readily available. Staying involved required constant effort." },
+    { kind: "p", text: "And that experience made us realize something important." },
+  ],
+  pull: "Moving into a senior living community shouldn't mean becoming disconnected from family.",
+  after: [
+    { kind: "p", text: "For older adults, family involvement can be an important source of encouragement, companionship, and emotional well-being. Yet when families don't know what's happening in a community, opportunities to connect, participate, and encourage their loved ones can easily be missed." },
+    { kind: "line", text: "We believe technology can help change that." },
+    { kind: "p", text: "That's why we're building a platform designed to bring senior living communities, residents, and their families closer together." },
+    { kind: "p", text: "By making community calendars, activities, dining menus, announcements, events, and other important information easily accessible, we help families stay informed and actively involved in their loved ones' lives." },
+    { kind: "p", text: "When families know what's happening, they can encourage participation, plan visits around special events, start meaningful conversations, and celebrate everyday moments together—even when they can't be there in person." },
+    { kind: "p", text: "For senior living communities, our platform provides an opportunity to showcase the care, experiences, and sense of belonging they work hard to create, while building stronger, more transparent relationships with families." },
+    { kind: "line", text: "Our mission goes beyond building better websites." },
+    { kind: "p", text: "We want to make it easier for families to find the right community, remain connected after move-in, and continue playing an active role in the lives of the people they love." },
+    { kind: "p", text: "Because we believe that stronger family connections can contribute to happier, more engaged residents and a better quality of life." },
+  ],
+  ending: "Finding the right community is just the beginning. Staying connected is what matters every day.",
+};
 
 export const aboutValues = [
   { title: "Your site is yours.", body: "Your website and family contacts belong to you. You can take a full copy of your information at any time." },
   { title: "We tell you what's real.", body: "If we haven't built something yet, we say \u201ccoming.\u201d We don't sell what doesn't exist." },
-  { title: "We earn it first.", body: "Founding communities pay nothing until the results we agree on are met." },
+  { title: "We earn it first.", body: "Founding communities get their first 3 months free, and only stay on if we've kept every promise." },
   { title: "We speak plain English.", body: "No jargon. If we can't explain it simply, it's our problem, not yours." },
-];
-
-export const comparison = {
-  rows: ["Website", "Up to date?", "Families", "Who owns it"],
-  columns: [
-    {
-      name: "A website agency",
-      cells: ["A nice site.", "Only when you ask and pay.", "Not part of the job.", "Sometimes they do."],
-    },
-    {
-      name: "An engagement app",
-      cells: ["Rarely touches your website.", "Only inside the app.", "They have to log in.", "Your site isn't part of it."],
-    },
-    {
-      name: "Kinlight",
-      highlight: true,
-      cells: ["Built for senior living.", "Yes. One post updates it.", "Text and email. Nothing to download.", "You do."],
-    },
-  ],
-};
-
-export const catapultPoints = [
-  "One dashboard for many sites",
-  "Approval before anything goes out",
-  "Accessibility checked every month",
-  "Text and email translated into 100+ languages",
 ];
 
 // What a family finds on each kind of site, for the Real life section. Sample wording.
@@ -149,32 +150,35 @@ export const brochureVsLife = [
 
 export const howSteps = [
   { title: "Book a meeting.", body: "We learn about your communities, show you what your site could look like, and check the fit." },
-  { title: "We build it.", body: "We move your current site over, with no broken pages and no lost search rankings. We set up your calendars, menus and family list." },
+  { title: "We build it.", body: "Your new website is up and running within 30 days, moved over with nothing lost. We set up your calendars, menus and family list." },
   { title: "Your team posts.", body: "A few minutes a week. Or take a photo of your paper calendar and we'll turn it into a live one." },
-  { title: "We check the results we agreed on.", body: "You pay nothing until we hit them." },
+  { title: "We keep our promises.", body: "Your first 3 months are free. If we miss a promise, you owe nothing." },
 ];
 
+// The offer, from the alpha agreement (vault: 07 Deliverables/Alpha Agreement). Sell it here; the fine print is for the meeting.
 export const pilotOffer = [
-  { title: "We build your new website.", body: "No setup fee. We build it next to your current site and set everything up with your team." },
-  { title: "You pay nothing until it works.", body: "We agree on the results first. You pay nothing until they're met." },
+  { title: "Your first 3 months are free.", body: "Guaranteed, with no setup fee. We build your new website and set everything up with your team." },
+  { title: "You only stay if we deliver.", body: "Kept every promise? You stay on for 9 more months at our normal price. Missed one? You owe nothing." },
   { title: "You help shape it.", body: "You get a direct line to our team and a say in what we build next." },
 ];
 
+// Our promises, benefit first. Each is one we fully control, so together they are the guarantee.
 export const pilotPromises = [
-  { title: "Always current", body: "If a menu or calendar is more than 7 days out of date because of us, that month is free." },
-  { title: "Safe switch", body: "No broken pages and no lost search rankings when we move your site, or we fix it and credit a month." },
+  { title: "Your website, up and running in 30 days.", body: "Built beside your current site and moved over with nothing lost, with calendars, menus and family texting ready to go.", stamp: "30 days" },
+  { title: "Real life on every community page.", body: "This week's menu, the activity calendar and recent news, on every page, every week.", stamp: "Every week" },
+  { title: "No inquiry left waiting.", body: "Every inquiry gets an instant reply, day or night, and reaches your team within minutes.", stamp: "Day or night" },
+  { title: "Found on Google and AI search.", body: "Your communities show up correctly on Google and in AI tools like ChatGPT.", stamp: "Google + AI" },
+  { title: "One post reaches the website, families and print.", body: "Your staff post once. It reaches your website, families' phones in their own language, and large-print paper. Nothing goes out without your approval.", stamp: "Post once" },
+  { title: "A monthly scorecard.", body: "Every month you see it working, in plain numbers.", stamp: "Every month" },
 ];
 
-export const pilotAsks = [
-  "A named contact, and a staff champion in each community",
-  "Weekly posts, honest feedback and short surveys, so we can measure results",
-  "A switch to the new site once it meets our agreed checklist, and a case study if we hit the results",
-];
+// What we ask in return. Kept short: the details are for the meeting.
+export const pilotAsks = ["Use Kinlight every week: post what's happening and keep calendars and menus current.", "Share your family contacts, in any form.", "Give us honest feedback, so we can make it better."];
 
 export const faqs = [
   {
     q: "Will we lose our Google rankings when we switch?",
-    a: "We redirect your old page addresses so your rankings carry over. If the move breaks a page or costs you rankings, we fix it and credit a month.",
+    a: "We redirect every old page address so your rankings carry over. Moving you over with nothing lost is one of our promises. If we miss it, you owe nothing.",
   },
   {
     q: "Who owns our website and family contacts?",

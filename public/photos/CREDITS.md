@@ -15,9 +15,10 @@ All from Pexels, under the Pexels License. Swap for real community photography b
 - garden-club.jpg: https://www.pexels.com/photo/7849457/
 - family-hug.jpg: https://www.pexels.com/photo/3768168/
 - chair-exercise.jpg: https://www.pexels.com/photo/11674389/
-- lounge-visit.jpg: https://www.pexels.com/photo/18459198/
 - plants-couple.jpg: https://www.pexels.com/photo/7728935/
 - cork-board.jpg (cropped to bare cork): https://www.pexels.com/photo/6475579/
+- woman-texting.jpg: https://www.pexels.com/photo/6146966/
+- family-barbecue.jpg: https://www.pexels.com/photo/8841120/
 - pottery-class.jpg: https://www.pexels.com/photo/6023607/
 - ice-cream.jpg: https://www.pexels.com/photo/16015237/
 - chicken-bowl.jpg (cropped to the dish): https://www.pexels.com/photo/27969846/

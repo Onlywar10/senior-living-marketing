@@ -141,26 +141,26 @@ export function RealLifeCompare() {
   const [pos, setPos] = useState(50);
   const touched = useRef(false);
 
-  // The first time it's seen, sweep across the whole page, then settle in the middle.
+  // While it's in view, keep sweeping across the whole page and settling in the middle,
+  // until someone takes the slider or a button themselves.
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let frame = 0;
     const ease = (f: number) => 1 - (1 - f) ** 3;
     const seen = new IntersectionObserver(
       ([entry]) => {
+        cancelAnimationFrame(frame);
         if (!entry.isIntersecting) return;
-        seen.disconnect();
         const start = performance.now();
         const tick = (now: number) => {
           if (touched.current) return;
-          const t = now - start;
+          const t = (now - start) % 9000;
           if (t < 1700) {
             setPos(Math.round(100 - 92 * ease(t / 1700)));
           } else if (t < 2700) {
             setPos(Math.round(8 + 42 * ease((t - 1700) / 1000)));
           } else {
             setPos(50);
-            return;
           }
           frame = requestAnimationFrame(tick);
         };

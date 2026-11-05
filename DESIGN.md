@@ -237,7 +237,7 @@ Two structures alternate. **Sign panels** are charcoal, inset from the viewport 
 
 Every page in the sequence opens with a charcoal panel directly under the header, and legal pages use a plain 46rem reading column instead. Section rhythm is 4rem, growing to 6rem from 40rem up, and sections right below a page head use 3.5rem growing to 5rem. Two-column splits arrive at 64rem in uneven 5:7 or 7:5 fractions, and collapse to one column below it. Rows use about 1rem of vertical padding.
 
-The routes are Home (by the wordmark), five text tabs (Solutions, Why Kinlight, Examples, The Offer, About Us), four solution pages reached from the Solutions menu and page tabs, with /solutions opening Live Website and Book a meeting as the one amber button. Below 80rem the tabs and button collapse into a Menu; below 64rem the header stops being sticky.
+The routes are Home (by the wordmark), four text tabs (Solutions, Examples, The Offer, About Us), four solution pages reached from the Solutions menu and page tabs, with /solutions opening Live Website and Book a meeting as the one amber button. Below 80rem the tabs and button collapse into a Menu; below 64rem the header stops being sticky.
 
 ### Named Rules
 **The Next Door Rule.** Pages form a sequence, and each ends with a full-width next-page row that names where it goes, followed by the closing panel: Home, Solutions, Why Kinlight, Examples, then The Offer. The Offer ends the sequence, so its form stands alone with no next-page row or closing panel.

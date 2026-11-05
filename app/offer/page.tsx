@@ -1,15 +1,11 @@
 import type { Metadata } from "next";
-import { Pilot } from "../components/sections";
+import { Offer } from "../components/sections";
 
 export const metadata: Metadata = {
   title: "The Founding Offer | Kinlight",
-  description: "We build it. No setup fee. You pay nothing until it hits the results we agree on.",
+  description: "Your first 3 months free, guaranteed, with no setup fee. You only stay on if we keep every promise. If not, you owe nothing.",
 };
 
 export default function OfferPage() {
-  return (
-    <>
-      <Pilot />
-    </>
-  );
+  return <Offer />;
 }
