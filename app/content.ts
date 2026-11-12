@@ -7,7 +7,7 @@ export const contact = {
 };
 
 export const tabs = [
-  { href: "/solutions/live-website", label: "Solutions" },
+  { href: "/solutions/family-connection", label: "Solutions" },
   { href: "/examples", label: "Examples" },
   { href: "/offer", label: "The Offer" },
   { href: "/about", label: "About Us" },
@@ -51,13 +51,13 @@ export const sampleCommunity = "Wren Hollow";
 // The short version of the offer, on the first screen.
 export const heroOffer = ["Your first 3 months free, guaranteed. No setup fee.", "You only stay on if we keep every promise. If not, you owe nothing."];
 
-// Ordered by what each one costs an owner, most expensive first.
+// What it's like now, everyday life first, then what it costs the business.
 export const problems = [
-  { text: "Inquiries sit overnight. By morning, that family called someone else.", stamp: "Lost move-in" },
-  { text: "Families can't find your prices, so they move on.", stamp: "Lost prospect" },
+  { text: "Families call the front desk to ask what's happening.", stamp: "Staff time" },
   { text: "Your website shows last month's calendar.", stamp: "Lost trust" },
   { text: "Staff build the same calendar three times.", stamp: "Wasted hours" },
-  { text: "Families call the front desk to ask what's happening.", stamp: "Staff time" },
+  { text: "Families can't find your prices, so they move on.", stamp: "Lost prospect" },
+  { text: "Inquiries sit overnight. By morning, that family called someone else.", stamp: "Lost move-in" },
 ];
 
 // Catapult proof points for the band under the hero. Wording deliberately leaves out schools.
@@ -69,39 +69,25 @@ export const trustPoints = [
   { lead: "Monthly", rest: "accessibility checks" },
 ];
 
-export const proof = [
-  {
-    lead: "Almost ",
-    value: 15,
-    suffix: "%",
-    rest: "In assisted living, residents and families who feel engaged are almost 15% more likely to recommend their community.",
-    source: "Holleran, benchmarks from 200,000+ people, via McKnight's Senior Living",
-    link: "Kinlight keeps families in the loop every week, by text and email.",
-  },
-  {
-    lead: "About ",
-    value: 15,
-    suffix: "%",
-    rest: "larger share of move-ins when replying within 30 minutes instead of within 24 hours.",
-    source: "A Place for Mom, study of 3,700+ communities",
-    link: "Kinlight sends every inquiry straight to your team, by email or to your CRM.",
-  },
-  {
-    value: 45,
-    suffix: "%",
-    rest: "Loneliness is linked to a 45% higher risk of death in older adults, and social isolation to a 29% higher risk.",
-    source: "Perissinotto et al., 2012; Holt-Lunstad et al., 2015",
-    link: "Kinlight sends the week's highlights and photos to every family, in their language.",
-  },
-];
+// The one statistic on the home page: the only one strong enough to keep.
+export const proof = {
+  value: 45,
+  suffix: "%",
+  rest: "Loneliness is linked to a 45% higher risk of death in older adults, and social isolation to a 29% higher risk.",
+  source: "Perissinotto et al., 2012; Holt-Lunstad et al., 2015",
+  link: "Kinlight invites families into their parent's everyday life: the week's highlights and photos, and invitations to join in, all in their own language.",
+};
 
-// The four solutions. Same names and order in the menu, on the home page and on their pages.
+// The four solutions, engagement first. Same names and order in the menu, on the home page and on their pages.
 export const solutions = [
+  { id: "family", href: "/solutions/family-connection", title: "Family Connection", problem: "Families call the front desk to ask what's happening this week.", promise: "Families who feel close to daily life, in their own language." },
   { id: "website", href: "/solutions/live-website", title: "Live Website", problem: "Our website is a brochure. It still shows last month's calendar.", promise: "A website that shows what life is really like there, not a brochure." },
   { id: "post", href: "/solutions/post-once", title: "Post Once", problem: "Our activities team builds the same calendar three times.", promise: "One post reaches your website, your families and paper." },
-  { id: "family", href: "/solutions/family-connection", title: "Family Connection", problem: "Families call the front desk to ask what's happening this week.", promise: "Families who feel close to daily life, in their own language." },
-  { id: "inquiries", href: "/solutions/more-tours", title: "More Tours", problem: "Inquiries sit overnight, and families can't find what they need.", promise: "Every inquiry reaches your team, and your site is built for Google and AI search." },
+  { id: "inquiries", href: "/solutions/more-tours", title: "Every Inquiry Answered", problem: "Inquiries sit overnight, and families can't find what they need.", promise: "Every inquiry reaches your team, and your site is built for Google and AI search." },
 ] as const;
+
+/** Where "Solutions" opens: the first solution. */
+export const solutionsHref = solutions[0].href;
 
 // The founder's story on the About page, in Adam's words.
 export const ourStory = {
@@ -193,3 +179,43 @@ export const faqs = [
     a: "Nothing. Families get texts and email.",
   },
 ];
+
+// The people Kinlight brings closer to everyday life, for the section after the hero. Engagement first; the people
+// choosing where to live next come last, as a hint rather than the headline.
+export const circle = {
+  heading: "Everyone in your community, closer to everyday life.",
+  lede: "Built for the people who run your community. Loved by families. Used by residents. And the people choosing where to live next can see it too.",
+  items: [
+    { who: "Residents", title: "Know what's on, and join in.", body: "Every week, each resident gets a link to their own week: what's happening, with the activities they'll enjoy picked out. One tap saves their seat." },
+    { who: "Families", title: "Feel part of everyday life.", body: "The week's highlights and photos by text and email, in their own language. They can RSVP to family events and know what to ask about when they call.", href: "https://senior-living-demo-five.vercel.app/phones", cta: "See a family's phone" },
+    { who: "Your team", title: "Minutes a week, not hours.", body: "Post an activity once. It reaches residents, families, your website and paper. Each morning, everyone sees what needs them today.", href: "https://senior-living-demo-five.vercel.app/staff", cta: "Open the staff area" },
+    { who: "Your next residents", title: "See what makes you different.", body: "This week's activities, meals and photos on your website, so the people deciding where to live see real life, not a brochure.", href: "https://senior-living-demo-five.vercel.app/", cta: "Open a community website" },
+  ],
+};
+
+// The lifecycle, from a family's first search to years of living there.
+export const lifecycle = {
+  heading: "From first look to fifth year.",
+  lede: "Kinlight is there at every stage, for the resident and the family beside them.",
+  stages: [
+    { stage: "Looking", title: "A family searches at 11 at night.", body: "They find this week's calendar, tonight's dinner and real photos, and their question gets an answer straight away." },
+    { stage: "Deciding", title: "They come to see for themselves.", body: "They book a tour at any hour. Your team sees it on their day, with what the family asked." },
+    { stage: "Moving in", title: "Welcome, from day one.", body: "Their interests are noted, family members are invited to join, and a welcome post goes up with their permission." },
+    { stage: "Living there", title: "Something good every week.", body: "Their week page picks out what they'll enjoy, with a reminder before it starts. One tap saves a seat." },
+    { stage: "Staying close", title: "Family, in the loop.", body: "Highlights, photos and what's coming, every week, in each family's language. Families who feel close stay close." },
+  ],
+};
+
+// What the founding communities will measure. No borrowed statistics: our own numbers, from the monthly scorecard.
+export const pilotMeasures = {
+  heading: "What our founding communities will measure.",
+  lede: "No borrowed statistics. We'll measure what changes in your community, every month, and show you in plain numbers.",
+  items: [
+    "Families reached each week",
+    "Residents who sign up from their week page",
+    "Questions answered, and how fast",
+    "Staff minutes each week",
+    "Inquiries and tours, before and after",
+  ],
+  note: "With your permission, we'll share what we learn with other operators after the first 3 months.",
+};

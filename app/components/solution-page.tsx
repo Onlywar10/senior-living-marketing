@@ -1,6 +1,6 @@
 import { solutions } from "../content";
 import { solutionDetails, type SolutionId } from "../solutions-content";
-import { FeatureIcon } from "./feature-icon";
+import { FeatureAccordion, FeatureList } from "./feature-card";
 import { BookButton, Closing, FaqList, NextStep } from "./sections";
 import { SignatureScene } from "./signature-scenes";
 import { SolutionTabs } from "./solution-tabs";
@@ -82,7 +82,7 @@ export function SolutionPage({ id }: { id: SolutionId }) {
         )}
       </section>
 
-      {id !== "post" && proofSection}
+      {id !== "post" && detail.proof.length > 0 && proofSection}
 
       <section aria-labelledby="included-heading" className="bg-steel py-16 sm:py-24">
         <div className={wrap}>
@@ -90,24 +90,17 @@ export function SolutionPage({ id }: { id: SolutionId }) {
             What&apos;s included.
           </h2>
           <p className="lede mt-3 max-w-[46rem]">We&apos;re building this with our founding communities. Ask us what&apos;s ready today.</p>
-          <div className="mt-8 grid gap-10">
-            {detail.groups.map((group) => (
-              <div key={group.theme}>
-                <h3 className="font-display text-[1.5rem] font-bold leading-tight sm:text-[1.75rem]">{group.theme}</h3>
-                <ul className="mt-3 grid gap-3 md:grid-cols-2">
-                  {group.features.map((feature) => (
-                    <li key={feature.name} className="reveal flex gap-3.5 rounded-lg bg-paper p-4">
-                      <FeatureIcon name={feature.icon} />
-                      <div>
-                        <p className="font-display text-[1.2rem] font-bold leading-tight">{feature.name}</p>
-                        <p className="mt-1 leading-snug">{feature.benefit}</p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
+          {detail.groups.some((group) => group.features.some((feature) => feature.visual)) && <p className="mt-2 font-bold">Tap a feature to see it in action.</p>}
+          <FeatureAccordion>
+            <div className="mt-8 grid gap-10">
+              {detail.groups.map((group) => (
+                <div key={group.theme}>
+                  <h3 className="font-display text-[1.5rem] font-bold leading-tight sm:text-[1.75rem]">{group.theme}</h3>
+                  <FeatureList features={group.features} />
+                </div>
+              ))}
+            </div>
+          </FeatureAccordion>
         </div>
       </section>
 

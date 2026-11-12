@@ -20,8 +20,8 @@ const overpassMono = Overpass_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Kinlight | Your website, finally as alive as your community.",
-  description: "Be one of our founding communities: a website that shows what life is really like there, not a brochure. Ensure families stay engaged and no question is left unanswered.",
+  title: "Kinlight | Your next resident is choosing a lifestyle, not an apartment.",
+  description: "Kinlight shares everyday life in your community with residents and families every week, and shows the people choosing where to live what makes you different.",
   robots: { index: false, follow: false },
 };
 

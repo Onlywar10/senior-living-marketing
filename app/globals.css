@@ -345,6 +345,43 @@ a {
     }
   }
 
+  /* Demo screenshots in the feature graphics: scroll down the page, swap to a second screen, then spotlight a part. */
+  .shot-pan {
+    animation: shot-pan var(--dur, 1.6s) cubic-bezier(0.65, 0, 0.35, 1) var(--d, 0s) both;
+  }
+
+  @keyframes shot-pan {
+    from {
+      transform: translateY(var(--from, 0%));
+    }
+    to {
+      transform: translateY(var(--to, 0%));
+    }
+  }
+
+  .shot-in {
+    animation: shot-in 0.7s ease-out var(--d, 0s) both;
+  }
+
+  @keyframes shot-in {
+    from {
+      opacity: 0;
+    }
+  }
+
+  .spot {
+    animation:
+      spot-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) var(--d, 0s) both,
+      fade-away 0.3s linear var(--o, 999s) forwards;
+  }
+
+  @keyframes spot-in {
+    from {
+      opacity: 0;
+      transform: scale(1.06);
+    }
+  }
+
   .word-in {
     animation: word-in 0.2s linear both;
     animation-delay: var(--d, 0s);

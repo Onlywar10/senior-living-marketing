@@ -17,6 +17,11 @@ import {
   aboutValues,
   ourStory,
   bookHref,
+  circle,
+  lifecycle,
+  pilotMeasures,
+  proof,
+  solutionsHref,
   brochureVsLife,
   contact,
   examples,
@@ -25,7 +30,6 @@ import {
   howSteps,
   pilotAsks,
   pilotOffer,
-  proof,
   tabs,
   trustLine,
   trustPoints,
@@ -101,9 +105,9 @@ export function Hero() {
       <div className={`${wrap} hero-copy pointer-events-none relative z-10 w-full pb-6 lg:py-10`}>
         <div className="pointer-events-auto max-w-[37rem]">
           <h1 id="hero-heading" className="display-1">
-            Your <span className="text-signal-bright">website</span>, finally as alive as your community.
+            Your next resident is choosing a <span className="text-signal-bright">lifestyle</span>, not an apartment.
           </h1>
-          <p className="lede mt-3 max-sm:text-[1.05rem] sm:mt-5">Be one of our founding communities: a website that shows what life is really like there, not a brochure. Ensure families stay engaged and no question is left unanswered.</p>
+          <p className="lede mt-3 max-sm:text-[1.05rem] sm:mt-5">Show them what makes your community different. Kinlight shares everyday life with your residents and their families, every week, so everyone feels part of it.</p>
           <div className="mt-4 sm:mt-6">
             <HeroOffer />
           </div>
@@ -165,7 +169,7 @@ export function Problem() {
             Sound familiar?
           </h2>
           <p className="lede mt-3">It doesn&apos;t have to work this way.</p>
-          <TopLink href="/solutions/live-website" className="mt-3 inline-flex min-h-11 items-center gap-2 font-display font-bold underline underline-offset-4">
+          <TopLink href={solutionsHref} className="mt-3 inline-flex min-h-11 items-center gap-2 font-display font-bold underline underline-offset-4">
             See the way out
             <Arrow dir="e" />
           </TopLink>
@@ -176,22 +180,20 @@ export function Problem() {
   );
 }
 
+/** The one statistic worth keeping: why connection matters. */
 export function Proof() {
   return (
-    <section aria-label="What the research says" className="bg-steel py-12 sm:py-16">
-      <ul className={`${wrap} grid gap-10 md:grid-cols-3`}>
-        {proof.map((item) => (
-          <li key={item.source} className="reveal">
-            <p className="font-display text-[3rem] font-bold leading-none tracking-tight sm:text-[3.5rem]">
-              {"lead" in item && item.lead}
-              <CountUp value={item.value} suffix={item.suffix} />
-            </p>
-            <p className="mt-2 text-[1.1rem] leading-snug">{item.rest}</p>
-            <p className="mt-2 text-[0.9rem] text-ink-soft">{item.source}</p>
-            <p className="mt-3 border-t border-rule pt-3 font-bold leading-snug">{item.link}</p>
-          </li>
-        ))}
-      </ul>
+    <section aria-label="Why connection matters" className="bg-steel py-12 sm:py-16">
+      <div className={`${wrap} reveal grid items-center gap-6 md:grid-cols-[auto_minmax(0,1fr)] md:gap-12`}>
+        <p className="font-display text-[4rem] font-bold leading-none tracking-tight sm:text-[5.5rem]">
+          <CountUp value={proof.value} suffix={proof.suffix} />
+        </p>
+        <div className="max-w-[44rem]">
+          <p className="text-[1.2rem] leading-snug sm:text-[1.35rem]">{proof.rest}</p>
+          <p className="mt-2 text-[0.9rem] text-ink-soft">{proof.source}</p>
+          <p className="mt-3 border-t border-rule pt-3 font-bold leading-snug">{proof.link}</p>
+        </div>
+      </div>
     </section>
   );
 }
@@ -201,9 +203,9 @@ export function PostRoutes() {
     <section aria-labelledby="routes-heading" className="on-dark panel overflow-hidden py-14 sm:py-20">
       <div className={wrap}>
         <h2 id="routes-heading" className="display-2">
-          One post. Three places. Done.
+          One activity. Everyone who cares about it.
         </h2>
-        <p className="lede mt-4 max-w-[40rem] text-on-ink-soft">Your staff stop doing the same job three times.</p>
+        <p className="lede mt-4 max-w-[44rem] text-on-ink-soft">Post Thursday&apos;s bus trip once. Residents see it on their week page, families get it by text, and it&apos;s on your website and on paper. Its photos show the next family what life here is like.</p>
         <div className="mt-10">
           <PostFlow />
         </div>
@@ -564,9 +566,9 @@ export function Closing() {
       <div className={`${wrap} grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-[minmax(0,7fr)_minmax(0,5fr)]`}>
         <div>
           <h2 id="closing-heading" className="display-2 max-w-[18ch]">
-            Want this for your community?
+            Tell your community&apos;s story.
           </h2>
-          <p className="lede mt-5 text-on-ink-soft">Book an 18-minute meeting. We&apos;ll show you the site and see if the offer fits.</p>
+          <p className="lede mt-5 text-on-ink-soft">Residents who join in, families who feel close, and a community your next residents can see for themselves. Book an 18-minute meeting. We&apos;ll show you the site and see if the offer fits.</p>
           <BookButton className="mt-7 !min-h-[3.75rem] w-full !px-8 !text-[1.25rem] sm:w-auto" />
           <address className="mt-8 not-italic">
             <strong>{contact.name}</strong>, {contact.role}, <CatapultLink />
@@ -614,5 +616,85 @@ export function SiteFooter() {
         </ul>
       </div>
     </footer>
+  );
+}
+
+export function Circle() {
+  return (
+    <section aria-labelledby="circle-heading" className="py-16 sm:py-24">
+      <div className={wrap}>
+        <h2 id="circle-heading" className="display-2 max-w-[22ch]">
+          {circle.heading}
+        </h2>
+        <p className="lede mt-4 max-w-[46rem]">{circle.lede}</p>
+        <ul className="mt-10 grid gap-x-10 gap-y-8 md:grid-cols-2">
+          {circle.items.map((item) => (
+            <li key={item.who} className="reveal border-t-2 border-ink pt-4">
+              <p className="font-display text-[0.95rem] font-bold uppercase tracking-[0.06em] text-signal-ink">{item.who}</p>
+              <h3 className="mt-1 font-display text-[1.6rem] font-bold leading-tight sm:text-[1.85rem]">{item.title}</h3>
+              <p className="mt-2 text-[1.1rem] leading-snug">{item.body}</p>
+              {"href" in item && item.href && (
+                <a href={item.href} target="_blank" rel="noopener" className="mt-3 inline-flex min-h-11 items-center gap-2 font-display font-bold underline underline-offset-4">
+                  {item.cta}
+                  <Arrow dir="ne" className="size-4" />
+                  <span className="sr-only">(opens in a new tab)</span>
+                </a>
+              )}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+}
+
+export function Lifecycle() {
+  return (
+    <section aria-labelledby="lifecycle-heading" className="bg-steel py-16 sm:py-24">
+      <div className={wrap}>
+        <h2 id="lifecycle-heading" className="display-2 max-w-[20ch]">
+          {lifecycle.heading}
+        </h2>
+        <p className="lede mt-4 max-w-[44rem]">{lifecycle.lede}</p>
+        <ol className="mt-10 grid gap-6 md:grid-cols-5 md:gap-4">
+          {lifecycle.stages.map((s, i) => (
+            <li key={s.stage} className="reveal rounded-md border border-rule bg-paper p-4">
+              <p className="flex items-center gap-2 font-display text-[0.95rem] font-bold uppercase tracking-[0.06em] text-signal-ink">
+                <span className="data inline-grid size-7 place-items-center rounded-full bg-ink text-[0.85rem] text-on-ink">{i + 1}</span>
+                {s.stage}
+              </p>
+              <h3 className="mt-3 font-display text-[1.25rem] font-bold leading-tight">{s.title}</h3>
+              <p className="mt-2 leading-snug">{s.body}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+export function PilotMeasures() {
+  return (
+    <section aria-labelledby="measures-heading" className="py-16 sm:py-24">
+      <div className={`${wrap} grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]`}>
+        <div>
+          <h2 id="measures-heading" className="display-2 max-w-[16ch]">
+            {pilotMeasures.heading}
+          </h2>
+          <p className="lede mt-4">{pilotMeasures.lede}</p>
+        </div>
+        <div>
+          <ul className="border-b border-ink">
+            {pilotMeasures.items.map((m) => (
+              <li key={m} className="reveal flex items-center gap-3 border-t border-ink py-3.5 font-display text-[1.25rem] font-bold leading-tight sm:text-[1.4rem]">
+                <Arrow dir="e" className="size-5 text-signal-ink" />
+                {m}
+              </li>
+            ))}
+          </ul>
+          <p className="mt-5 text-[1.05rem] text-ink-soft">{pilotMeasures.note}</p>
+        </div>
+      </div>
+    </section>
   );
 }

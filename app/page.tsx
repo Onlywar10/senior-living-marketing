@@ -1,19 +1,23 @@
-import { Closing, FoundingOffer, Hero, HomeFaq, HowItWorks, NextStep, Overview, PostRoutes, Problem, Proof, RealLife, TrustStrip } from "./components/sections";
+import { Circle, Closing, FoundingOffer, Hero, HomeFaq, HowItWorks, Lifecycle, NextStep, Overview, PilotMeasures, PostRoutes, Problem, Proof, RealLife, TrustStrip } from "./components/sections";
+import { solutionsHref } from "./content";
 
 export default function Home() {
   return (
     <>
       <Hero />
       <TrustStrip />
-      <Problem />
+      <Circle />
       <Proof />
+      <Problem />
       <PostRoutes />
       <RealLife />
+      <Lifecycle />
       <Overview />
       <HowItWorks />
+      <PilotMeasures />
       <FoundingOffer />
       <HomeFaq />
-      <NextStep href="/solutions/live-website" label="Next: see the solutions" />
+      <NextStep href={solutionsHref} label="Next: see the solutions" />
       <Closing />
     </>
   );

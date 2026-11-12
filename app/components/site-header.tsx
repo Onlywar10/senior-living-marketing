@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { bookHref, solutions, tabs } from "../content";
+import { bookHref, solutions, tabs, solutionsHref } from "../content";
 import { LanguageToggle } from "./language-toggle";
 import { TopLink } from "./top-link";
 
@@ -31,7 +31,7 @@ function SolutionsTab({ current }: { current: boolean }) {
         if (event.key === "Escape") setOpen(false);
       }}
     >
-      <TopLink href="/solutions/live-website" aria-current={current ? "page" : undefined} className={tabClass}>
+      <TopLink href={solutionsHref} aria-current={current ? "page" : undefined} className={tabClass}>
         Solutions
         <svg aria-hidden="true" viewBox="0 0 24 24" className={`chevron size-4 ${open ? "rotate-180" : ""}`}>
           <path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="square" />
@@ -68,7 +68,7 @@ export function SiteHeader() {
         <nav aria-label="Main" className="hidden xl:block">
           <ul className="flex gap-x-6">
             {tabs.map((link) =>
-              link.href === "/solutions/live-website" ? (
+              link.href === solutionsHref ? (
                 <SolutionsTab key={link.href} current={pathname.startsWith("/solutions")} />
               ) : (
                 <li key={link.href}>
@@ -103,7 +103,7 @@ export function SiteHeader() {
                 >
                   {link.label}
                 </TopLink>
-                {link.href === "/solutions/live-website" && (
+                {link.href === solutionsHref && (
                   <ul className="pb-2">
                     {solutions.map((item) => (
                       <li key={item.href}>
