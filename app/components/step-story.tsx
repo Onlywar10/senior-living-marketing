@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { Fragment, useLayoutEffect, useRef, useState, type CSSProperties, type ReactNode } from "react";
 import { sampleCommunity } from "../content";
-import { useStory } from "./story";
+import { HOLD_CLASS, useStory } from "./story";
 
 // Each step runs 7 seconds, as two 3.5-second beats.
 const BEAT_MS = 3500;
@@ -60,7 +60,7 @@ function headerHeight(width: number) {
 
 // All the steps at once, with the current one enlarged. It loops for as long as it's in view.
 export function StepStory({ stages, captions, beats }: { stages: Stage[]; captions: string[]; beats: number[] }) {
-  const { ref, step, playing, running, restarts, toggle, jump } = useStory<HTMLDivElement>(beats.length, { stepMs: BEAT_MS, holdBeats: 0 });
+  const { ref, step, playing, live, held, running, restarts, toggle, jump } = useStory<HTMLDivElement>(beats.length, { stepMs: BEAT_MS, holdBeats: 0 });
   const beat = beats[step];
   const row = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState<{ width: number; height: number } | null>(null);
@@ -102,10 +102,10 @@ export function StepStory({ stages, captions, beats }: { stages: Stage[]; captio
 
   return (
     <div ref={ref}>
-      <div ref={row} className={`flex items-start ${stacked ? "flex-wrap content-start" : ""}`} style={{ gap: GAP, height: rowHeight }}>
+      <div ref={row} className={`flex items-start ${stacked ? "flex-wrap content-start" : ""} ${held ? HOLD_CLASS : ""}`} style={{ gap: GAP, height: rowHeight }}>
         {stages.map((stage, i) => {
           const current = step >= stage.from && step <= stage.to;
-          const animate = current && playing;
+          const animate = current && live;
           const scale = current ? 1 : small / big;
           return (
             <div
@@ -115,7 +115,7 @@ export function StepStory({ stages, captions, beats }: { stages: Stage[]; captio
             >
               <button
                 type="button"
-                onClick={() => jump(stage.from)}
+                onClick={() => jump(stage.to, stage.from)}
                 aria-current={current ? "step" : undefined}
                 style={size ? { height: current || !stacked ? header : 44 } : undefined}
                 className={`flex w-full items-center gap-2 overflow-hidden pb-2 text-left font-display font-bold leading-tight ${current ? "text-signal-bright" : "text-on-ink-soft hover:text-on-ink"}`}
@@ -143,16 +143,16 @@ export function StepStory({ stages, captions, beats }: { stages: Stage[]; captio
                 role={current ? "img" : undefined}
                 aria-label={current ? stage.alt : undefined}
                 aria-hidden={current ? undefined : true}
-                onClick={current ? undefined : () => jump(stage.from)}
+                onClick={() => jump(stage.to, stage.from)}
                 style={size ? { height: size.height * scale } : undefined}
-                className={`relative overflow-hidden rounded-lg ${stacked ? "" : `transition-[height] ${EASE}`} ${current ? "" : "cursor-pointer"}`}
+                className={`relative cursor-pointer overflow-hidden rounded-lg ${stacked ? "" : `transition-[height] ${EASE}`}`}
               >
                 <div
                   data-screen=""
                   style={size ? { width: big, height: size.height, transform: `scale(${scale})` } : undefined}
                   className={size ? `absolute left-0 top-0 origin-top-left ${stacked ? "" : `transition-transform ${EASE}`}` : ""}
                 >
-                  <Fragment key={current ? restarts : 0}>{stage.screen({ step, current, animate, playing })}</Fragment>
+                  <Fragment key={current ? restarts : 0}>{stage.screen({ step, current, animate, playing: live })}</Fragment>
                 </div>
               </div>
             </div>
@@ -162,7 +162,7 @@ export function StepStory({ stages, captions, beats }: { stages: Stage[]; captio
       <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
         <p className="text-[0.95rem] text-on-ink-soft">Sample community, for illustration.</p>
         <button type="button" onClick={toggle} className="btn btn-ghost-dark !min-h-11 !px-4 !py-1.5 !text-[0.95rem]">
-          {playing ? "Pause animation" : "Play animation"}
+          {playing ? "Pause animation" : "Resume animation"}
         </button>
       </div>
     </div>

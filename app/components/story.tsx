@@ -8,52 +8,84 @@ function prefersReducedMotion() {
 
 // Plays a numbered story when it scrolls into view, holds the end, then replays. The last
 // step is the default, so it reads correctly without JavaScript or with reduced motion.
+//
+// Three modes:
+// - playing: the story runs.
+// - paused: frozen exactly where it was (timer and CSS animations). Resume carries on from that spot.
+// - still: one step shown finished, with no animation. Clicking a card does this; Resume plays from that card.
+type Mode = "playing" | "paused" | "still";
+
 export function useStory<T extends Element>(steps: number, { stepMs = 2800, holdBeats = 2 } = {}) {
   const ref = useRef<T>(null);
   const [tick, setTick] = useState(0);
-  const [ready, setReady] = useState(false);
-  const [playing, setPlaying] = useState(true);
+  const [mode, setMode] = useState<Mode>("playing");
   const [inView, setInView] = useState(false);
-  const [pinned, setPinned] = useState<number | null>(null);
+  // In "still": the step shown, and where Resume starts. Null shows the finished story.
+  const [still, setStill] = useState<{ show: number; from: number } | null>(null);
   const [restarts, setRestarts] = useState(0);
+  // Time already spent on the current step, so a pause doesn't lose its place.
+  const spent = useRef(0);
 
   useEffect(() => {
     if (prefersReducedMotion()) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setPlaying(false);
+      setMode("still");
     }
-    setReady(true);
     const seen = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), { threshold: 0.4 });
     if (ref.current) seen.observe(ref.current);
     return () => seen.disconnect();
   }, []);
 
+  const running = mode === "playing" && inView;
+
   useEffect(() => {
-    if (!playing || !inView) return;
-    const timer = window.setInterval(() => setTick((t) => (t + 1) % (steps + holdBeats)), stepMs);
-    return () => window.clearInterval(timer);
-  }, [playing, inView, steps, stepMs, holdBeats, restarts]);
+    if (!running) return;
+    const start = performance.now();
+    let fired = false;
+    const timer = window.setTimeout(() => {
+      fired = true;
+      spent.current = 0;
+      setTick((t) => (t + 1) % (steps + holdBeats));
+    }, Math.max(0, stepMs - spent.current));
+    return () => {
+      window.clearTimeout(timer);
+      if (!fired) spent.current += performance.now() - start;
+    };
+  }, [running, tick, steps, stepMs, holdBeats, restarts]);
 
-  function toggle() {
-    setTick(0);
-    setPinned(null);
-    setPlaying((value) => !value);
-  }
-
-  // Jumps to a step and carries on looping from there. With reduced motion it just shows that step.
-  function jump(step: number) {
-    if (prefersReducedMotion()) {
-      setPinned(step);
-      return;
-    }
-    setPinned(null);
-    setPlaying(true);
+  function restartAt(step: number) {
+    spent.current = 0;
+    setStill(null);
     setTick(step);
     setRestarts((count) => count + 1);
+    setMode("playing");
   }
 
-  return { ref, step: pinned ?? (ready && playing ? Math.min(tick, steps - 1) : steps - 1), playing, running: playing && inView, restarts, toggle, jump };
+  function resume() {
+    if (mode === "paused") setMode("playing");
+    else restartAt(still?.from ?? 0);
+  }
+
+  function toggle() {
+    if (mode === "playing") setMode("paused");
+    else resume();
+  }
+
+  // Shows one card, finished and paused. `from` is where Resume picks up (the card's first beat).
+  function jump(show: number, from = show) {
+    spent.current = 0;
+    setStill({ show, from });
+    setMode("still");
+  }
+
+  const live = mode !== "still";
+  const step = live ? Math.min(tick, steps - 1) : (still?.show ?? steps - 1);
+  // `live`: the step's animation is on screen (running or frozen). `held`: it's frozen.
+  return { ref, step, playing: mode === "playing", live, held: live && !running, running, restarts, toggle, jump };
 }
+
+/** Class that freezes every CSS animation inside, so a paused story keeps its exact frame. */
+export const HOLD_CLASS = "anim-hold";
 
 // Counts up once on first view. The real value is what renders by default and what
 // screen readers get.

@@ -190,7 +190,6 @@ export function Proof() {
         </p>
         <div className="max-w-[44rem]">
           <p className="text-[1.2rem] leading-snug sm:text-[1.35rem]">{proof.rest}</p>
-          <p className="mt-2 text-[0.9rem] text-ink-soft">{proof.source}</p>
           <p className="mt-3 border-t border-rule pt-3 font-bold leading-snug">{proof.link}</p>
         </div>
       </div>

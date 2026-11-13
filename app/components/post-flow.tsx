@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useEffect, useRef, useState } from "react";
 import { sampleCommunity } from "../content";
+import { HOLD_CLASS } from "./story";
 
 const destinations = [
   { title: "On your website", detail: `Today at ${sampleCommunity}`, status: "Live", image: "/previews/your-website.png", position: "object-left-top" },
@@ -56,7 +57,12 @@ export function PostFlow({ receipt = false }: { receipt?: boolean }) {
   const time = useRef(finished);
   const [size, setSize] = useState({ w: 0, h: 0 });
   const [routes, setRoutes] = useState<Route[]>([]);
-  const [playing, setPlaying] = useState(true);
+  // playing: runs. paused: frozen where it was, and Resume carries on from there. still: one moment shown
+  // (a clicked card, or the finished story with reduced motion); Resume plays on from that card.
+  const [mode, setMode] = useState<"playing" | "paused" | "still">("playing");
+  const [still, setStill] = useState({ show: finished, from: 0 });
+  const playingNow = useRef(true);
+  const playing = mode === "playing";
   const [inView, setInView] = useState(false);
   const [caption, setCaption] = useState(captions.length - 1);
   const [lit, setLit] = useState(destinations.length);
@@ -64,11 +70,11 @@ export function PostFlow({ receipt = false }: { receipt?: boolean }) {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       // eslint-disable-next-line react-hooks/set-state-in-effect
-      setPlaying(false);
+      setMode("still");
     }
     const seen = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) time.current = 0;
+        if (entry.isIntersecting && playingNow.current) time.current = 0;
         setInView(entry.isIntersecting);
       },
       { threshold: 0.35 },
@@ -108,7 +114,7 @@ export function PostFlow({ receipt = false }: { receipt?: boolean }) {
       const running = playing && inView;
       if (running) time.current = (time.current + (now - last) / 1000) % loop;
       last = now;
-      const t = playing ? time.current : finished;
+      const t = mode === "still" ? still.show : time.current;
       lineTimes.forEach(([start, end], i) => {
         const path = lines.current[i];
         const head = heads.current[i];
@@ -132,9 +138,27 @@ export function PostFlow({ receipt = false }: { receipt?: boolean }) {
     }
     frame = requestAnimationFrame(draw);
     return () => cancelAnimationFrame(frame);
-  }, [playing, inView, routes]);
+  }, [playing, mode, still, inView, routes]);
 
-  const posted = caption > 0 || !playing;
+  useEffect(() => {
+    playingNow.current = playing;
+  }, [playing]);
+
+  function toggle() {
+    if (mode === "playing") setMode("paused");
+    else {
+      if (mode === "still") time.current = still.from;
+      setMode("playing");
+    }
+  }
+
+  // Clicking a destination stops on the moment it arrives. Resume replays that line and carries on.
+  function showCard(i: number) {
+    setStill({ show: lineTimes[i][1], from: Math.max(0, lineTimes[i][0] - 0.3) });
+    setMode("still");
+  }
+
+  const posted = caption > 0;
 
   return (
     <div>
@@ -143,7 +167,7 @@ export function PostFlow({ receipt = false }: { receipt?: boolean }) {
           {captions[caption].text}
         </span>
       </p>
-      <div ref={root} className="relative grid gap-y-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,2fr)_minmax(0,6fr)]">
+      <div ref={root} className={`relative grid gap-y-8 lg:grid-cols-[minmax(0,4fr)_minmax(0,2fr)_minmax(0,6fr)] ${mode === "paused" ? HOLD_CLASS : ""}`}>
         <svg aria-hidden="true" width={size.w} height={size.h} viewBox={`0 0 ${size.w || 1} ${size.h || 1}`} className="pointer-events-none absolute inset-0 z-0" fill="none">
           {routes.map((r) => (
             <path key={r.line} d={r.line} stroke="var(--ink-rule)" strokeWidth="2.5" strokeDasharray="2 7" strokeLinecap="round" />
@@ -178,7 +202,7 @@ export function PostFlow({ receipt = false }: { receipt?: boolean }) {
           ))}
         </svg>
 
-        <div ref={source} className={`relative z-10 self-center overflow-hidden rounded-lg bg-paper text-ink transition-shadow duration-300 ${caption === 0 && playing ? "shadow-[0_0_0_4px_var(--signal-bright)]" : ""}`}>
+        <div ref={source} className={`relative z-10 self-center overflow-hidden rounded-lg bg-paper text-ink transition-shadow duration-300 ${caption === 0 && mode !== "still" ? "shadow-[0_0_0_4px_var(--signal-bright)]" : ""}`}>
           <div className="relative aspect-[16/9]">
             <Image src="/photos/garden-table.jpg" alt="Three smiling people sitting at a wooden table in a sunny garden." fill sizes="(min-width: 1024px) 30vw, 95vw" className="object-cover object-[center_35%]" />
           </div>
@@ -203,7 +227,17 @@ export function PostFlow({ receipt = false }: { receipt?: boolean }) {
                 ref={(el) => {
                   cards.current[i] = el;
                 }}
-                className={`grid grid-cols-[5.5rem_minmax(0,1fr)_auto] items-center gap-x-3 overflow-hidden rounded-lg bg-paper pr-3 text-ink transition-all duration-300 sm:grid-cols-[9rem_minmax(0,1fr)_auto] sm:gap-x-4 sm:pr-5 ${arrived ? "opacity-100 shadow-[0_0_0_3px_var(--signal-bright)]" : "opacity-50"}`}
+                role="button"
+                tabIndex={0}
+                aria-label={`${d.title}: pause the animation here`}
+                onClick={() => showCard(i)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    showCard(i);
+                  }
+                }}
+                className={`grid cursor-pointer grid-cols-[5.5rem_minmax(0,1fr)_auto] items-center gap-x-3 overflow-hidden rounded-lg bg-paper pr-3 text-ink transition-all duration-300 sm:grid-cols-[9rem_minmax(0,1fr)_auto] sm:gap-x-4 sm:pr-5 ${arrived ? "opacity-100 shadow-[0_0_0_3px_var(--signal-bright)]" : "opacity-50"}`}
               >
                 <span className="relative block h-full min-h-[5.5rem] self-stretch bg-steel sm:min-h-[6.5rem]">
                   <Image src={d.image} alt="" fill sizes="10rem" className={`object-cover ${d.position}`} />
@@ -234,8 +268,8 @@ export function PostFlow({ receipt = false }: { receipt?: boolean }) {
       )}
       <div className="mt-5 flex flex-wrap items-center justify-between gap-3">
         <p className="text-[0.95rem] text-on-ink-soft">Sample community, for illustration.</p>
-        <button type="button" onClick={() => setPlaying(!playing)} className="btn btn-ghost-dark !min-h-11 !px-4 !py-1.5 !text-[0.95rem]">
-          {playing ? "Pause animation" : "Play animation"}
+        <button type="button" onClick={toggle} className="btn btn-ghost-dark !min-h-11 !px-4 !py-1.5 !text-[0.95rem]">
+          {playing ? "Pause animation" : "Resume animation"}
         </button>
       </div>
     </div>

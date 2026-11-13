@@ -8,8 +8,8 @@ import { LanguageToggle } from "./language-toggle";
 import { TopLink } from "./top-link";
 
 
-export function Wordmark({ alt = "Kinlight", className = "h-9 sm:h-11" }: { alt?: string; className?: string }) {
-  return <Image src="/brand/kinlight-logo.png" alt={alt} width={1940} height={587} preload className={`w-auto ${className}`} />;
+export function Wordmark({ alt = "Kinlight", className = "h-12 sm:h-16" }: { alt?: string; className?: string }) {
+  return <Image src="/brand/kinlight-logo.png" alt={alt} width={1494} height={541} preload className={`w-auto ${className}`} />;
 }
 
 const tabClass =

@@ -3,7 +3,7 @@ import { sampleCommunity } from "../content";
 
 // Quick graphics for the expandable feature cards on the solution pages. Each one plays once
 // when its card opens (the animation classes take a --d delay). Most use real screens from our
-// demo site (public/features/demo, captured from seniorLivingDemo with the clock pinned to
+// demo site (public/features/demo, captured from seniorLivingDemo, staff area as of Nov 12 with Automations, with the clock pinned to
 // Thursday, November 12, 10:20 am); a few ideas that a screen can't show better stay as simple
 // drawings. The caption under each says the same thing in words, so the graphic is hidden from
 // screen readers. Names, numbers and people are made-up samples.
@@ -160,16 +160,18 @@ function DemoScreen({ url, base, swap, pan, spots }: { url: string; base: Shot; 
 const site = "wrenhaven.example/alder-bend";
 const staff = "wrenhaven.example/staff";
 
+// ---------- Live Website ----------
+
 function CommunityPage() {
   return (
     <DemoScreen
       url={site}
-      base={shot("home-day1", 2388)}
-      pan={{ to: 1000, at: 0.6, dur: 1.8 }}
-      swap={{ shot: shot("home-day2", 2434), at: 5.4 }}
+      base={shot("home-day1", 3200)}
+      pan={{ to: 960, at: 0.6, dur: 1.8 }}
+      swap={{ shot: shot("home-day2", 3200), at: 5.4 }}
       spots={[
-        { box: { x: 110, y: 1059, w: 1220, h: 815 }, at: 2.6, until: 5, label: "Today at Alder Bend: what's on right now", place: "inside", align: "right" },
-        { box: { x: 110, y: 1100, w: 640, h: 66 }, at: 6, label: "The next morning, it has moved on by itself" },
+        { box: { x: 110, y: 1060, w: 1220, h: 780 }, at: 2.6, until: 5, label: "Today at Alder Bend: what's happening right now", place: "inside", align: "right" },
+        { box: { x: 110, y: 1103, w: 516, h: 61 }, at: 6, label: "The next morning, it has moved on by itself" },
       ]}
     />
   );
@@ -183,7 +185,7 @@ function Translated() {
       swap={{ shot: shot("top-es"), at: 2.6 }}
       spots={[
         { box: { x: 1091, y: 2, w: 239, h: 38 }, at: 0.6, until: 2.4, label: "One tap for Español or 中文", align: "right" },
-        { box: { x: 110, y: 250, w: 631, h: 584 }, at: 3, label: "The whole page, in Spanish", place: "inside" },
+        { box: { x: 110, y: 293, w: 616, h: 326 }, at: 3, label: "The whole page, in Spanish" },
       ]}
     />
   );
@@ -192,10 +194,14 @@ function Translated() {
 function CalendarImport() {
   return (
     <DemoScreen
-      url={`${site}/calendar`}
-      base={shot("calendar", 1300)}
-      pan={{ to: 400, at: 0.6 }}
-      spots={[{ box: { x: 812, y: 870, w: 167, h: 420 }, at: 2.4, label: "Today, marked for families", place: "above" }]}
+      url={`${staff}/post`}
+      base={shot("imp-white")}
+      swap={{ shot: shot("imp-white2", 2231), at: 3 }}
+      spots={[
+        { box: { x: 280, y: 275, w: 1132, h: 463 }, at: 0.6, until: 2.8, label: "A photo of the whiteboard. Kinlight reads it" },
+        { box: { x: 299, y: 290, w: 1094, h: 138 }, at: 3.4, until: 5.2, label: "It proposes the week: new, changed and cancelled" },
+        { box: { x: 1168, y: 357, w: 226, h: 72 }, at: 5.4, label: "Your staff check only what's unclear", align: "right" },
+      ]}
     />
   );
 }
@@ -203,23 +209,11 @@ function CalendarImport() {
 function Stale() {
   return (
     <DemoScreen
-      url={`${staff}/today`}
-      base={shot("today-ev", 3114)}
-      pan={{ to: 2214, at: 0.6, dur: 2.2 }}
-      spots={[{ box: { x: 280, y: 2848, w: 640, h: 210 }, at: 3, label: "A nudge for the page's owner", place: "above" }]}
-    />
-  );
-}
-
-function Numbers() {
-  return (
-    <DemoScreen
-      url={`${staff}/reports`}
-      base={shot("reports", 2578)}
-      pan={{ to: 1700, at: 0.6, dur: 2 }}
+      url={`${staff}/website`}
+      base={shot("web-fresh")}
       spots={[
-        { box: { x: 280, y: 1943, w: 557, h: 579 }, at: 2.8, until: 4.6, label: "This month next to last month", place: "above" },
-        { box: { x: 281, y: 2205, w: 555, h: 42 }, at: 4.8, label: "Website visits, up 18%", place: "above" },
+        { box: { x: 280, y: 246, w: 1132, h: 399 }, at: 0.6, until: 2.6, label: "Every page, its owner and when it's due" },
+        { box: { x: 299, y: 495, w: 1094, h: 66 }, at: 2.8, label: "Due tomorrow: a nudge for its owner" },
       ]}
     />
   );
@@ -228,12 +222,26 @@ function Numbers() {
 function Studio() {
   return (
     <DemoScreen
-      url={`${staff}/calendar/menus`}
-      base={shot("menus", 1300)}
-      pan={{ to: 380, at: 0.6 }}
+      url={`${staff}/menus`}
+      base={shot("menus", 1400)}
+      pan={{ to: 500, at: 2.8 }}
       spots={[
-        { box: { x: 907, y: 446, w: 504, h: 232 }, at: 2.4, until: 4.2, label: "One publish: website, family digest and print", align: "right" },
-        { box: { x: 906, y: 697, w: 506, h: 481 }, at: 4.4, label: "The printed menu card, filled in for you", place: "above", align: "right" },
+        { box: { x: 280, y: 188, w: 1132, h: 340 }, at: 0.6, until: 2.6, label: "The kitchen's menus, in one place" },
+        { box: { x: 280, y: 803, w: 1132, h: 317 }, at: 4.6, label: "Live today, on the website and everywhere else", place: "above" },
+      ]}
+    />
+  );
+}
+
+function Numbers() {
+  return (
+    <DemoScreen
+      url={`${staff}/reports`}
+      base={shot("scorecard", 3330)}
+      pan={{ to: 2380, at: 0.6, dur: 2 }}
+      spots={[
+        { box: { x: 280, y: 2687, w: 557, h: 587 }, at: 2.8, until: 4.6, label: "This month next to last month", place: "above" },
+        { box: { x: 281, y: 2949, w: 556, h: 42 }, at: 4.8, label: "Website visits, up 18%", place: "above" },
       ]}
     />
   );
@@ -243,10 +251,11 @@ function Approval() {
   return (
     <DemoScreen
       url={`${staff}/today`}
-      base={shot("today")}
+      base={shot("today", 1800)}
+      pan={{ to: 900, at: 0.6, dur: 1.8 }}
       spots={[
-        { box: { x: 280, y: 275, w: 640, h: 335 }, at: 0.6, until: 2.6, label: "Waiting for the executive director" },
-        { box: { x: 299, y: 545, w: 132, h: 48 }, at: 2.8, label: "One tap to approve and publish" },
+        { box: { x: 280, y: 1280, w: 667, h: 388 }, at: 2.6, until: 4.6, label: "A holiday menu, waiting for the executive director", place: "above" },
+        { box: { x: 301, y: 1541, w: 132, h: 48 }, at: 4.8, label: "One tap to approve and publish" },
       ]}
     />
   );
@@ -259,8 +268,8 @@ function Access() {
       base={shot("top-en")}
       swap={{ shot: shot("top-large"), at: 2.8 }}
       spots={[
-        { box: { x: 756, y: 2, w: 328, h: 38 }, at: 0.6, until: 2.6, label: "Text size and high contrast, on every page" },
-        { box: { x: 110, y: 295, w: 631, h: 553 }, at: 3.2, label: "Bigger text, in one tap", place: "inside" },
+        { box: { x: 756, y: 2, w: 184, h: 38 }, at: 0.6, until: 2.6, label: "Text size and high contrast, on every page" },
+        { box: { x: 110, y: 304, w: 631, h: 270 }, at: 3.2, label: "Bigger text, in one tap" },
       ]}
     />
   );
@@ -273,7 +282,7 @@ function Compliance() {
       base={shot("footer")}
       spots={[
         { box: { x: 110, y: 853, w: 176, h: 16 }, at: 0.6, until: 2.4, label: "Your license number", place: "above" },
-        { box: { x: 998, y: 850, w: 148, h: 22 }, at: 2.6, label: "Privacy policy and accessibility statement", place: "above", align: "right" },
+        { box: { x: 998, y: 850, w: 150, h: 22 }, at: 2.6, label: "Privacy policy and accessibility statement", place: "above", align: "right" },
       ]}
     />
   );
@@ -285,11 +294,11 @@ function OneStep() {
   return (
     <DemoScreen
       url={`${staff}/post`}
-      base={shot("post-event", 1693)}
-      pan={{ to: 793, at: 0.6 }}
+      base={shot("post-rest", 2281)}
+      pan={{ to: 1381, at: 2.8, dur: 2 }}
       spots={[
-        { box: { x: 299, y: 1232, w: 505, h: 150 }, at: 2.4, until: 4.4, label: "Website, family text, Sunday email and print", place: "above" },
-        { box: { x: 841, y: 1061, w: 571, h: 577 }, at: 4.6, label: "Each one, in the right form", place: "above", align: "right" },
+        { box: { x: 299, y: 372, w: 620, h: 44 }, at: 0.6, until: 2.6, label: "See it on the website, in the newsletter, in texts and on each week page" },
+        { box: { x: 299, y: 1924, w: 846, h: 220 }, at: 5, label: "Then Kinlight does the rest", place: "above" },
       ]}
     />
   );
@@ -299,10 +308,10 @@ function WhereItWent() {
   return (
     <DemoScreen
       url={`${staff}/post`}
-      base={shot("went")}
+      base={shot("post-added")}
       spots={[
-        { box: { x: 299, y: 203, w: 1094, h: 63 }, at: 0.6, until: 2.4, label: "Posted, in one step" },
-        { box: { x: 299, y: 284, w: 1094, h: 271 }, at: 2.6, label: "Where it went: 186 families, 140 residents and print" },
+        { box: { x: 280, y: 275, w: 1132, h: 130 }, at: 0.6, until: 2.4, label: "On the calendar, and 12 residents invited" },
+        { box: { x: 299, y: 418, w: 1094, h: 220 }, at: 2.6, label: "Everything Kinlight did, in one list" },
       ]}
     />
   );
@@ -312,9 +321,12 @@ function LargePrint() {
   return (
     <DemoScreen
       url={`${staff}/settings`}
-      base={shot("settings", 2332)}
-      pan={{ to: 560, at: 0.6 }}
-      spots={[{ box: { x: 855, y: 708, w: 557, h: 672 }, at: 2.4, label: "Calendars, menus and flyers, ready in large print", place: "above", align: "right" }]}
+      base={shot("set-print", 1302)}
+      pan={{ to: 402, at: 2.8 }}
+      spots={[
+        { box: { x: 280, y: 244, w: 1132, h: 520 }, at: 0.6, until: 2.6, label: "Calendars, menus and flyers, ready in large print" },
+        { box: { x: 299, y: 799, w: 260, h: 402 }, at: 4.6, label: "A QR check-in sign for each activity", place: "above" },
+      ]}
     />
   );
 }
@@ -322,12 +334,12 @@ function LargePrint() {
 function PrintStudio() {
   return (
     <DemoScreen
-      url={`${staff}/post`}
-      base={shot("post-flyer", 1693)}
-      pan={{ to: 793, at: 0.6 }}
+      url={`${staff}/menus`}
+      base={shot("imp-menu", 1600)}
+      pan={{ to: 520, at: 0.6 }}
       spots={[
-        { box: { x: 299, y: 962, w: 505, h: 141 }, at: 2.4, until: 4.2, label: "Drop in a flyer or PDF", place: "above" },
-        { box: { x: 1134, y: 1061, w: 278, h: 577 }, at: 4.4, label: "The printed copy, in your brand", place: "above", align: "right" },
+        { box: { x: 299, y: 706, w: 539, h: 430 }, at: 2.4, until: 4.2, label: "Drop in the kitchen's PDF", place: "above" },
+        { box: { x: 854, y: 706, w: 539, h: 579 }, at: 4.4, label: "Kinlight reads it and asks only what's unclear", place: "above", align: "right" },
       ]}
     />
   );
@@ -337,11 +349,12 @@ function Library() {
   return (
     <DemoScreen
       url={`${staff}/post`}
-      base={shot("post-event", 1693)}
-      swap={{ shot: shot("post-template", 1693), at: 2.8 }}
+      base={shot("post-event", 1810)}
+      swap={{ shot: shot("post-template", 1900), at: 2.8 }}
+      pan={{ to: 900, at: 3.4 }}
       spots={[
-        { box: { x: 299, y: 382, w: 505, h: 67 }, at: 0.6, until: 2.6, label: "Start from a template" },
-        { box: { x: 299, y: 833, w: 505, h: 113 }, at: 3.2, label: "Filled in for you, ready to edit", place: "above" },
+        { box: { x: 311, y: 464, w: 1070, h: 59 }, at: 0.6, until: 2.6, label: "Start from a template, or copy a past event" },
+        { box: { x: 299, y: 1299, w: 1094, h: 336 }, at: 5.2, label: "Filled in for you, ready to edit", place: "above" },
       ]}
     />
   );
@@ -350,12 +363,11 @@ function Library() {
 function PhotoPost() {
   return (
     <DemoScreen
-      url={`${staff}/post`}
-      base={shot("post-photo", 1635)}
+      url={`${staff}/today`}
+      base={shot("sheet")}
       spots={[
-        { box: { x: 299, y: 465, w: 505, h: 120 }, at: 0.6, until: 2.4, label: "Take a photo, or pick one" },
-        { box: { x: 299, y: 685, w: 505, h: 113 }, at: 2.6, until: 4.4, label: "Add a sentence", place: "above" },
-        { box: { x: 841, y: 213, w: 571, h: 489 }, at: 4.6, label: "Ready for the website and families", align: "right" },
+        { box: { x: 840, y: 280, w: 580, h: 100 }, at: 0.6, until: 2.4, label: "Each activity asks for photos", align: "right" },
+        { box: { x: 840, y: 451, w: 139, h: 40 }, at: 2.6, label: "Add them from your phone" },
       ]}
     />
   );
@@ -363,24 +375,15 @@ function PhotoPost() {
 
 function WritingHelp() {
   return (
-    <Frame className="items-center gap-3 max-sm:flex-col sm:gap-4">
-      <div className="w-full max-w-[13rem] shrink-0 rounded-md border border-rule bg-paper p-3 shadow-[0_8px_18px_-14px_rgb(0_16_48/0.6)]">
-        <div className="aspect-[4/3] rounded bg-[linear-gradient(135deg,#f0a35b,#b5562a_60%,#3b2a24)]" />
-        <p className="mt-2 font-bold leading-snug">&ldquo;Pumpkin carving in the Courtyard&rdquo;</p>
-        <p className="text-[0.8rem] text-ink-soft">A photo and a line from your phone</p>
-      </div>
-      <Arrow />
-      <div className="pop-in w-full rounded-md border border-rule bg-paper p-3 shadow-[0_8px_18px_-14px_rgb(0_16_48/0.6)]" style={at(0.8)}>
-        <span className="tag !text-[0.75rem]">Draft</span>
-        <p className="mt-2 font-display font-bold">Pumpkin carving in the Courtyard</p>
-        <p className="new-flash mt-1 leading-snug text-ink-soft" style={at(1.4)}>
-          Our residents brought their best ideas to the Courtyard for pumpkin carving this afternoon. Vote for your favorite in the Lobby on Friday!
-        </p>
-        <p className="pop-in mt-3 flex items-center gap-2 font-bold" style={at(2.6)}>
-          <Tick /> Your staff check it, then post
-        </p>
-      </div>
-    </Frame>
+    <DemoScreen
+      url={`${staff}/newsletter`}
+      base={shot("newsletter", 1300)}
+      spots={[
+        { box: { x: 280, y: 490, w: 1132, h: 196 }, at: 0.6, until: 2.6, label: "Drafted from the week's events and photos", place: "above" },
+        { box: { x: 668, y: 505, w: 116, h: 23 }, at: 2.8, until: 4.4, label: "Marked so your staff know to check it" },
+        { box: { x: 281, y: 305, w: 1130, h: 84 }, at: 4.6, label: "Your staff check it, then send" },
+      ]}
+    />
   );
 }
 
@@ -390,11 +393,12 @@ function TextAndEmail() {
   return (
     <DemoScreen
       url={`${staff}/post`}
-      base={shot("post-event", 1693)}
-      pan={{ to: 300, at: 0.6 }}
+      base={shot("post-texts", 1285)}
+      swap={{ shot: shot("post-news", 1134), at: 3.6 }}
+      pan={{ to: 234, at: 0.6 }}
       spots={[
-        { box: { x: 841, y: 446, w: 278, h: 601 }, at: 2.4, until: 4.2, label: "A text to each family", place: "above" },
-        { box: { x: 841, y: 1061, w: 278, h: 577 }, at: 4.4, label: "And the Sunday email", place: "above" },
+        { box: { x: 299, y: 558, w: 400, h: 509 }, at: 1.8, until: 3.4, label: "The texts each resident gets" },
+        { box: { x: 299, y: 508, w: 640, h: 437 }, at: 4.2, label: "And the story in the Sunday email", place: "above" },
       ]}
     />
   );
@@ -404,10 +408,12 @@ function RightFamilies() {
   return (
     <DemoScreen
       url={`${staff}/post`}
-      base={shot("post-event", 1693)}
-      swap={{ shot: shot("post-event-lantern", 1693), at: 3.4 }}
-      pan={{ to: 600, at: 0.6 }}
-      spots={[{ box: { x: 299, y: 1119, w: 505, h: 97 }, at: 2.4, label: "Everyone, or just Lantern families", place: "above" }]}
+      base={shot("announce")}
+      swap={{ shot: shot("announce-lantern"), at: 3 }}
+      spots={[
+        { box: { x: 299, y: 420, w: 1094, h: 145 }, at: 0.6, until: 2.8, label: "Everyone, a floor or a care area" },
+        { box: { x: 300, y: 489, w: 191, h: 44 }, at: 3.4, label: "Just Lantern families: 21" },
+      ]}
     />
   );
 }
@@ -415,13 +421,12 @@ function RightFamilies() {
 function FamilyLanguage() {
   return (
     <DemoScreen
-      url={`${staff}/post`}
-      base={shot("post-event", 1693)}
-      swap={{ shot: shot("post-event-es", 1693), at: 3.8 }}
-      pan={{ to: 300, at: 0.6 }}
+      url={`${staff}/automations`}
+      base={shot("auto-preview")}
+      swap={{ shot: shot("auto-preview-es"), at: 2.6 }}
       spots={[
-        { box: { x: 1020, y: 455, w: 87, h: 38 }, at: 2.2, until: 3.6, label: "The same text, in Spanish", align: "right" },
-        { box: { x: 841, y: 446, w: 278, h: 601 }, at: 4.2, label: "Each family, in their own language", place: "above" },
+        { box: { x: 980, y: 96, w: 205, h: 38 }, at: 0.6, until: 2.4, label: "English, Español or 中文", align: "right" },
+        { box: { x: 1060, y: 140, w: 280, h: 280 }, at: 3, label: "The same message, in each person's language", align: "right" },
       ]}
     />
   );
@@ -431,10 +436,10 @@ function ManagerApproval() {
   return (
     <DemoScreen
       url={`${staff}/settings`}
-      base={shot("settings", 2332)}
+      base={shot("set-approvals", 1500)}
       spots={[
-        { box: { x: 855, y: 188, w: 557, h: 502 }, at: 0.6, until: 3, label: "Who approves what", align: "right" },
-        { box: { x: 1000, y: 637, w: 298, h: 34 }, at: 3.2, label: "Emergencies skip approval", align: "right" },
+        { box: { x: 280, y: 244, w: 1132, h: 492 }, at: 0.6, until: 3, label: "Who approves what" },
+        { box: { x: 1106, y: 485, w: 272, h: 61 }, at: 3.2, label: "Lantern family requests go to Maribel", align: "right" },
       ]}
     />
   );
@@ -443,10 +448,12 @@ function ManagerApproval() {
 function Delivery() {
   return (
     <DemoScreen
-      url={`${staff}/reports`}
-      base={shot("reports", 2578)}
-      pan={{ to: 400, at: 0.6 }}
-      spots={[{ box: { x: 281, y: 727, w: 741, h: 59 }, at: 2.4, label: "98.6% delivered, in 6 languages" }]}
+      url={`${staff}/automations`}
+      base={shot("auto-log", 1500)}
+      spots={[
+        { box: { x: 280, y: 165, w: 1132, h: 180 }, at: 0.6, until: 2.6, label: "This week: 99% delivered" },
+        { box: { x: 280, y: 540, w: 1132, h: 330 }, at: 2.8, label: "Every message, who got it and what happened", place: "above" },
+      ]}
     />
   );
 }
@@ -455,11 +462,11 @@ function OwnAddress() {
   return (
     <DemoScreen
       url={`${staff}/post`}
-      base={shot("post-event", 1693)}
-      pan={{ to: 793, at: 0.6 }}
+      base={shot("post-news", 1134)}
+      pan={{ to: 234, at: 0.6 }}
       spots={[
-        { box: { x: 841, y: 1061, w: 278, h: 577 }, at: 2.4, until: 4.2, label: "The Sunday email", place: "above" },
-        { box: { x: 886, y: 1222, w: 190, h: 13 }, at: 4.4, label: "From your community's own address", place: "above" },
+        { box: { x: 299, y: 508, w: 640, h: 437 }, at: 2, until: 3.8, label: "The Sunday email" },
+        { box: { x: 300, y: 509, w: 638, h: 84 }, at: 4, label: "From your community's own address" },
       ]}
     />
   );
@@ -468,10 +475,13 @@ function OwnAddress() {
 function Rsvps() {
   return (
     <DemoScreen
-      url={`${staff}/today`}
-      base={shot("today-ev", 3114)}
-      pan={{ to: 400, at: 0.6, dur: 1.4 }}
-      spots={[{ box: { x: 280, y: 749, w: 640, h: 281 }, at: 2.2, label: "An RSVP for 3, from a text", place: "above" }]}
+      url={`${staff}/reports/families`}
+      base={shot("rep-families", 1834)}
+      pan={{ to: 934, at: 0.6 }}
+      spots={[
+        { box: { x: 280, y: 1330, w: 1132, h: 448 }, at: 2.4, until: 4.2, label: "Every family reply Kinlight handled", place: "above" },
+        { box: { x: 299, y: 1511, w: 1094, h: 70 }, at: 4.4, label: "A seat for Frank: he's asked first, then it's booked", place: "above" },
+      ]}
     />
   );
 }
@@ -480,11 +490,10 @@ function Attendance() {
   return (
     <DemoScreen
       url={`${staff}/today`}
-      base={shot("attend1")}
-      swap={{ shot: shot("attend2"), at: 2.6 }}
+      base={shot("attend")}
       spots={[
-        { box: { x: 980, y: 96, w: 440, h: 452 }, at: 0.6, until: 2.4, label: "Tap names at the door", align: "right" },
-        { box: { x: 980, y: 516, w: 72, h: 23 }, at: 3.4, label: "7 present, saved" },
+        { box: { x: 840, y: 319, w: 580, h: 40 }, at: 0.6, until: 2.4, label: "Tap names, scan the QR code or snap the sheet", align: "right" },
+        { box: { x: 840, y: 370, w: 580, h: 520 }, at: 2.6, label: "Who came, saved for your reports", place: "inside", align: "right" },
       ]}
     />
   );
@@ -493,11 +502,11 @@ function Attendance() {
 function Replies() {
   return (
     <DemoScreen
-      url={`${staff}/today`}
-      base={shot("today-ev", 3114)}
+      url={`${staff}/messages`}
+      base={shot("comms")}
       spots={[
-        { box: { x: 280, y: 168, w: 1132, h: 48 }, at: 0.6, until: 2.4, label: "181 of 186 families reached this week" },
-        { box: { x: 280, y: 275, w: 640, h: 462 }, at: 2.6, label: "A reply, translated, for the right person" },
+        { box: { x: 654, y: 165, w: 758, h: 540 }, at: 0.6, until: 2.6, label: "Each family's messages, in one thread", align: "right" },
+        { box: { x: 671, y: 241, w: 724, h: 43 }, at: 2.8, label: "Bills and health always go to a person", align: "right" },
       ]}
     />
   );
@@ -506,11 +515,12 @@ function Replies() {
 function Suggestions() {
   return (
     <DemoScreen
-      url={`${staff}/calendar`}
-      base={shot("calendar-staff", 1842)}
+      url={`${staff}/feedback`}
+      base={shot("feedback", 2968)}
+      pan={{ to: 1643, at: 0.6, dur: 2 }}
       spots={[
-        { box: { x: 1112, y: 251, w: 300, h: 630 }, at: 0.6, until: 2.8, label: "Ideas from paper slips and QR codes", place: "above", align: "right" },
-        { box: { x: 1131, y: 417, w: 262, h: 59 }, at: 3, label: "Made it onto the calendar", align: "right" },
+        { box: { x: 280, y: 1734, w: 668, h: 760 }, at: 2.8, until: 4.6, label: "Ideas from paper slips and QR codes", place: "inside", align: "right" },
+        { box: { x: 363, y: 2532, w: 566, h: 69 }, at: 4.8, label: "On the calendar, and the resident was told", place: "above" },
       ]}
     />
   );
@@ -519,24 +529,24 @@ function Suggestions() {
 function Surveys() {
   return (
     <DemoScreen
-      url={`${staff}/reports/surveys`}
-      base={shot("surveys", 1486)}
-      pan={{ to: 586, at: 3 }}
+      url={`${staff}/surveys`}
+      base={shot("sv-list", 1688)}
+      swap={{ shot: shot("sv-reports", 2217), at: 3.2 }}
       spots={[
-        { box: { x: 280, y: 374, w: 743, h: 526 }, at: 0.6, until: 2.8, label: "The family survey, before and now", place: "above" },
-        { box: { x: 280, y: 918, w: 557, h: 429 }, at: 4.8, label: "A two-minute staff pulse each month", place: "above" },
+        { box: { x: 280, y: 369, w: 1132, h: 615 }, at: 0.6, until: 3, label: "Your own surveys, each with its reply rate", place: "inside", align: "right" },
+        { box: { x: 280, y: 515, w: 743, h: 547 }, at: 3.6, label: "Results by question, and how they changed", place: "above" },
       ]}
     />
   );
 }
 
-// ---------- More Tours ----------
+// ---------- Every Inquiry Answered ----------
 
 function FloorPlans() {
   return (
     <DemoScreen
       url={`${site}/floor-plans`}
-      base={shot("floor", 2700)}
+      base={shot("floor", 3200)}
       pan={{ to: 1800, at: 0.6, dur: 2 }}
       spots={[
         { box: { x: 110, y: 2007, w: 389, h: 652 }, at: 2.8, until: 4.6, label: "Each plan, and what's open now", place: "above" },
@@ -550,11 +560,11 @@ function Waitlist() {
   return (
     <DemoScreen
       url={`${staff}/prospects`}
-      base={shot("prospects", 2377)}
-      pan={{ to: 1180, at: 0.6 }}
+      base={shot("prospects", 1783)}
+      pan={{ to: 883, at: 0.6 }}
       spots={[
-        { box: { x: 693, y: 1433, w: 125, h: 34 }, at: 2.4, until: 4.2, label: "Your team marks one open", align: "right" },
-        { box: { x: 855, y: 1326, w: 557, h: 790 }, at: 4.4, label: "The waitlist hears first, with a tour link", place: "above", align: "right" },
+        { box: { x: 299, y: 1436, w: 705, h: 28 }, at: 2.4, until: 4.2, label: "Your team marks one open" },
+        { box: { x: 299, y: 1470, w: 705, h: 110 }, at: 4.4, label: "The waitlist hears first, with a tour link" },
       ]}
     />
   );
@@ -564,7 +574,7 @@ function InquiryForm() {
   return (
     <DemoScreen
       url={`${site}/tour`}
-      base={shot("tour", 2700)}
+      base={shot("tour", 3200)}
       pan={{ to: 1750, at: 0.6, dur: 2 }}
       spots={[{ box: { x: 110, y: 1915, w: 832, h: 673 }, at: 2.8, label: "Families tell you who it's for and what they need", place: "above" }]}
     />
@@ -579,7 +589,7 @@ function Assistant() {
       swap={{ shot: shot("chat2"), at: 3.6 }}
       spots={[
         { box: { x: 1010, y: 152, w: 410, h: 660 }, at: 0.6, until: 3.4, label: "Answers from your own website", place: "inside", align: "right" },
-        { box: { x: 1020, y: 520, w: 380, h: 135 }, at: 4.2, label: "Doesn't know? It says so, and gives your number", place: "above", align: "right" },
+        { box: { x: 1020, y: 330, w: 380, h: 170 }, at: 4.2, label: "Doesn't know? It says so, and gives your number", place: "above", align: "right" },
       ]}
     />
   );
@@ -589,10 +599,10 @@ function SalesSystem() {
   return (
     <DemoScreen
       url={`${staff}/prospects`}
-      base={shot("prospects", 2377)}
+      base={shot("prospects", 1783)}
       spots={[
-        { box: { x: 280, y: 250, w: 462, h: 420 }, at: 0.6, until: 2.6, label: "Every inquiry, and where it came from" },
-        { box: { x: 742, y: 247, w: 280, h: 640 }, at: 2.8, label: "An instant reply, day or night", place: "above", align: "right" },
+        { box: { x: 280, y: 165, w: 1132, h: 345 }, at: 0.6, until: 2.6, label: "Every inquiry, and where it came from" },
+        { box: { x: 1041, y: 529, w: 371, h: 120 }, at: 2.8, label: "Sent on to your sales system", align: "right" },
       ]}
     />
   );
@@ -602,7 +612,7 @@ function TourBooking() {
   return (
     <DemoScreen
       url={`${site}/tour`}
-      base={shot("tour", 2700)}
+      base={shot("tour", 3200)}
       pan={{ to: 800, at: 0.6 }}
       spots={[
         { box: { x: 110, y: 1004, w: 832, h: 235 }, at: 2.4, until: 4.2, label: "Families pick a day", place: "above" },
@@ -616,9 +626,9 @@ function TourConfirm() {
   return (
     <DemoScreen
       url={`${site}/tour`}
-      base={shot("tourdone", 1400)}
-      pan={{ to: 500, at: 0.6 }}
-      spots={[{ box: { x: 110, y: 765, w: 812, h: 470 }, at: 2.4, label: "Booked, with a confirmation by email and text", place: "above" }]}
+      base={shot("tourdone", 2378)}
+      pan={{ to: 600, at: 0.6 }}
+      spots={[{ box: { x: 110, y: 765, w: 812, h: 940 }, at: 2.4, label: "Booked, with a confirmation by email and text", place: "inside", align: "right" }]}
     />
   );
 }
@@ -627,10 +637,10 @@ function Search() {
   return (
     <DemoScreen
       url={`${staff}/reports/search`}
-      base={shot("search", 1593)}
+      base={shot("rep-search", 1552)}
       spots={[
-        { box: { x: 280, y: 251, w: 1132, h: 124 }, at: 0.6, until: 2.4, label: "How families find you on Google" },
-        { box: { x: 280, y: 393, w: 557, h: 430 }, at: 2.6, label: "Your place for each search", place: "above" },
+        { box: { x: 280, y: 229, w: 1132, h: 105 }, at: 0.6, until: 2.4, label: "How families find you on Google" },
+        { box: { x: 280, y: 352, w: 557, h: 430 }, at: 2.6, label: "Your place for each search", place: "above" },
       ]}
     />
   );
@@ -640,11 +650,11 @@ function AiChecks() {
   return (
     <DemoScreen
       url={`${staff}/reports/search`}
-      base={shot("search", 1593)}
-      pan={{ to: 693, at: 2.8 }}
+      base={shot("rep-search", 1552)}
+      pan={{ to: 652, at: 2.8 }}
       spots={[
-        { box: { x: 855, y: 393, w: 557, h: 430 }, at: 0.6, until: 2.6, label: "What AI tools say when families ask", place: "above", align: "right" },
-        { box: { x: 280, y: 841, w: 1132, h: 696 }, at: 4.6, label: "What we found, and fixed", place: "above" },
+        { box: { x: 855, y: 352, w: 557, h: 430 }, at: 0.6, until: 2.6, label: "What AI tools say when families ask", place: "above", align: "right" },
+        { box: { x: 280, y: 800, w: 1132, h: 696 }, at: 4.6, label: "What we found, and fixed", place: "above" },
       ]}
     />
   );
@@ -654,11 +664,11 @@ function BusinessProfile() {
   return (
     <DemoScreen
       url={`${staff}/post`}
-      base={shot("post-public", 1952)}
-      pan={{ to: 1052, at: 2.6 }}
+      base={shot("post-public", 2344)}
+      pan={{ to: 1444, at: 2.6, dur: 2 }}
       spots={[
-        { box: { x: 299, y: 485, w: 505, h: 38 }, at: 0.6, until: 2.4, label: "A public event" },
-        { box: { x: 841, y: 1655, w: 278, h: 241 }, at: 4.4, label: "Also posted to your Google Business Profile", place: "above" },
+        { box: { x: 299, y: 636, w: 265, h: 40 }, at: 0.6, until: 2.4, label: "A public event" },
+        { box: { x: 311, y: 2001, w: 822, h: 196 }, at: 4.8, label: "Also on your Google Business Profile, in Search and Maps", place: "above" },
       ]}
     />
   );

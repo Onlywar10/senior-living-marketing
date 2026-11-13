@@ -8,7 +8,7 @@ import { useLang } from "./language-toggle";
 import type { IconName } from "../solutions-content";
 import { FeatureIcon } from "./feature-icon";
 import { ClickCursor, timed } from "./step-story";
-import { useStory } from "./story";
+import { HOLD_CLASS, useStory } from "./story";
 
 const STEP_MS = 7000;
 
@@ -215,12 +215,12 @@ function spokeEnd(i: number) {
 }
 
 export function ToursStory() {
-  const { ref, step, playing, running, restarts, toggle, jump } = useStory<HTMLDivElement>(spokes.length, { stepMs: STEP_MS, holdBeats: 0 });
+  const { ref, step, playing, live, held, running, restarts, toggle, jump } = useStory<HTMLDivElement>(spokes.length, { stepMs: STEP_MS, holdBeats: 0 });
   const active = spokes[step];
 
   return (
     <div ref={ref} className="min-w-0">
-      <div className="xl:relative xl:aspect-[800/660]">
+      <div className={`xl:relative xl:aspect-[800/660] ${held ? HOLD_CLASS : ""}`}>
         <svg aria-hidden="true" viewBox="0 0 800 660" className="absolute inset-0 hidden size-full xl:block" fill="none">
           <ellipse cx="400" cy="330" rx="312" ry="285" stroke="var(--ink-rule)" strokeWidth="2" strokeDasharray="3 7" />
           {spokes.map((spoke, i) => {
@@ -229,15 +229,15 @@ export function ToursStory() {
             return (
               <g key={spoke.title}>
                 <path d={path} stroke="var(--ink-rule)" strokeWidth="3" />
-                {(i <= step || !playing) && (
+                {(i <= step || !live) && (
                   <path
-                    key={i === step && playing ? `running-${restarts}` : "full"}
+                    key={i === step && live ? `running-${restarts}` : "full"}
                     d={path}
                     pathLength={1}
                     stroke="var(--signal-bright)"
                     strokeWidth="3"
                     strokeDasharray="1"
-                    className={i === step && playing ? "spoke-fill" : ""}
+                    className={i === step && live ? "spoke-fill" : ""}
                     style={{ animationDuration: `${STEP_MS}ms`, animationPlayState: running ? "running" : "paused" }}
                   />
                 )}
@@ -257,17 +257,17 @@ export function ToursStory() {
           </div>
           <span aria-hidden="true" className="block h-1.5 shrink-0 bg-steel">
             <span
-              key={playing ? `running-${step}-${restarts}` : "full"}
+              key={live ? `running-${step}-${restarts}` : "full"}
               style={{ animationDuration: `${STEP_MS}ms`, animationPlayState: running ? "running" : "paused" }}
-              className={`block h-full bg-signal ${playing ? "progress-fill" : ""}`}
+              className={`block h-full bg-signal ${live ? "progress-fill" : ""}`}
             />
           </span>
           <div className="min-h-0 flex-1 px-3.5 pb-3 pt-2.5">
-            <div key={`${step}-${restarts}`} className={playing ? "status-pop" : ""}>
+            <div key={`${step}-${restarts}`} className={live ? "status-pop" : ""}>
               <p className="font-display text-[1.15rem] font-bold leading-tight">{active.title}</p>
               <p className="mb-2 mt-0.5 text-[0.95rem] leading-snug text-ink-soft">{active.caption}</p>
               <div aria-hidden="true">
-                <active.Mock animate={playing} />
+                <active.Mock animate={live} />
               </div>
             </div>
           </div>
@@ -298,7 +298,7 @@ export function ToursStory() {
 
         <p className="mt-3 text-[0.95rem] text-on-ink-soft xl:absolute xl:bottom-0 xl:left-0 xl:mt-0 xl:w-[20%] xl:leading-tight">Sample community, for illustration.</p>
         <button type="button" onClick={toggle} className="btn btn-ghost-dark mt-2 !min-h-11 !px-4 !py-1.5 !text-[0.95rem] xl:absolute xl:bottom-0 xl:right-0 xl:mt-0">
-          {playing ? "Pause animation" : "Play animation"}
+          {playing ? "Pause animation" : "Resume animation"}
         </button>
       </div>
     </div>

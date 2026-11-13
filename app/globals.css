@@ -569,6 +569,13 @@ html[lang="zh-Hans"] * {
   letter-spacing: 0;
 }
 
+/* A paused story: every animation inside stops on its current frame, and resumes from it. */
+.anim-hold *:not(.reveal),
+.anim-hold *::before,
+.anim-hold *::after {
+  animation-play-state: paused !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .scan-line {
     animation: none;

@@ -30,7 +30,7 @@ export const examples = [
     title: "Your communications",
     body: "One post goes out by text and email, in each family's language, and onto large-print paper.",
     image: "/previews/your-communications.png",
-    alt: "Preview of a family member's phone lock screen showing the weekly highlights text from their mother's community, next to the steps that follow.",
+    alt: "Preview of the demo's page for families: the Community news step, with the website sign-up form where families pick their language and choose text, email or both.",
     href: "https://senior-living-demo-five.vercel.app/phones",
     cta: "Open the phone preview",
     external: true,
@@ -74,7 +74,6 @@ export const proof = {
   value: 45,
   suffix: "%",
   rest: "Loneliness is linked to a 45% higher risk of death in older adults, and social isolation to a 29% higher risk.",
-  source: "Perissinotto et al., 2012; Holt-Lunstad et al., 2015",
   link: "Kinlight invites families into their parent's everyday life: the week's highlights and photos, and invitations to join in, all in their own language.",
 };
 
@@ -186,7 +185,7 @@ export const circle = {
   heading: "Everyone in your community, closer to everyday life.",
   lede: "Built for the people who run your community. Loved by families. Used by residents. And the people choosing where to live next can see it too.",
   items: [
-    { who: "Residents", title: "Know what's on, and join in.", body: "Every week, each resident gets a link to their own week: what's happening, with the activities they'll enjoy picked out. One tap saves their seat." },
+    { who: "Residents", title: "Know what's going on, and join in.", body: "Every week, each resident gets a link to their own week: what's happening, with the activities they'll enjoy picked out. One tap saves their seat." },
     { who: "Families", title: "Feel part of everyday life.", body: "The week's highlights and photos by text and email, in their own language. They can RSVP to family events and know what to ask about when they call.", href: "https://senior-living-demo-five.vercel.app/phones", cta: "See a family's phone" },
     { who: "Your team", title: "Minutes a week, not hours.", body: "Post an activity once. It reaches residents, families, your website and paper. Each morning, everyone sees what needs them today.", href: "https://senior-living-demo-five.vercel.app/staff", cta: "Open the staff area" },
     { who: "Your next residents", title: "See what makes you different.", body: "This week's activities, meals and photos on your website, so the people deciding where to live see real life, not a brochure.", href: "https://senior-living-demo-five.vercel.app/", cta: "Open a community website" },
@@ -198,7 +197,7 @@ export const lifecycle = {
   heading: "From first look to fifth year.",
   lede: "Kinlight is there at every stage, for the resident and the family beside them.",
   stages: [
-    { stage: "Looking", title: "A family searches at 11 at night.", body: "They find this week's calendar, tonight's dinner and real photos, and their question gets an answer straight away." },
+    { stage: "Looking", title: "A family searches at 11 at night.", body: "They find this week's calendar, tonight's dinner and real photos, and their question gets an answer right away." },
     { stage: "Deciding", title: "They come to see for themselves.", body: "They book a tour at any hour. Your team sees it on their day, with what the family asked." },
     { stage: "Moving in", title: "Welcome, from day one.", body: "Their interests are noted, family members are invited to join, and a welcome post goes up with their permission." },
     { stage: "Living there", title: "Something good every week.", body: "Their week page picks out what they'll enjoy, with a reminder before it starts. One tap saves a seat." },
