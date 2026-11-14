@@ -72,7 +72,7 @@ export const solutionDetails: Record<SolutionId, SolutionDetail> = {
       {
         theme: "Print made easy",
         features: [
-          { icon: "print", name: "Large-print calendars, menus and flyers", benefit: "The same post, ready to print in standard and large type.", visual: "large-print", caption: "Settings has this month's large-print calendars, menus and flyers, plus a QR check-in sign for each activity, ready to print." },
+          { icon: "print", name: "Large-print calendars, menus and flyers", benefit: "The same post, ready to print in standard and large type.", visual: "large-print", caption: "Settings has this month's large-print calendars, menus and flyers, plus check-in cards for new residents, ready to print." },
           { icon: "palette", name: "Design studio for print", benefit: "Print templates in your community's brand.", visual: "print-studio", caption: "Drop in the kitchen's PDF or a photo. Kinlight reads it, asks only about what's unclear, then prints it in your community's brand." },
           { icon: "book", name: "Content library", benefit: "Activity ideas and templates, so nothing starts empty.", visual: "library", caption: "Start from a template like Bus trip, or copy a past event. The details and the schedule fill in, ready for your staff to edit." },
         ],
@@ -117,14 +117,14 @@ export const solutionDetails: Record<SolutionId, SolutionDetail> = {
         theme: "Bring them in",
         features: [
           { icon: "ticket", name: "Event RSVPs", benefit: "Families RSVP from a link in the text or email.", visual: "rsvps", caption: "When a family asks for a seat by text, Kinlight checks with their resident first, then confirms. Every reply it handled shows up in your reports." },
-          { icon: "users", name: "Attendance tracking", benefit: "Tap names on a phone, or take a photo of the sign-in sheet.", visual: "attendance", caption: "Open the activity on a phone and tap who came, or let residents check in with the QR sign. Attendance is saved for your reports." },
+          { icon: "users", name: "Attendance tracking", benefit: "Tap names on a phone, scan residents' check-in cards, or take a photo of the sign-in sheet.", visual: "attendance", caption: "Open the activity on a phone and tap who came, or scan each resident's check-in card at the door. Residents never scan anything. Attendance is saved for your reports." },
         ],
       },
       {
         theme: "Hear back",
         features: [
           { icon: "reply", name: "Reach and replies", benefit: "See how many families you reached. Replies go to the right person.", visual: "replies", caption: "Family replies land in Communications, translated. Kinlight handles simple ones, and bills, health and open questions always go to the right person." },
-          { icon: "idea", name: "Resident suggestions", benefit: "On paper or by QR code, logged for your activity team.", visual: "suggestions", caption: "Ideas from paper slips and QR codes are collected for your activity team. When one makes the calendar, the resident is told." },
+          { icon: "idea", name: "Resident suggestions", benefit: "On a paper slip or told to staff, logged for your activity team.", visual: "suggestions", caption: "Ideas from paper slips and conversations are collected for your activity team. When one makes the calendar, the resident is told." },
           { icon: "survey", name: "Surveys", benefit: "Build your own from templates, for residents, families and staff. Printable, or read aloud.", visual: "surveys", caption: "Staff build their own surveys from templates, the way they add an event. Results come back by question, with the change since last time and themes from what people wrote." },
         ],
       },
@@ -149,25 +149,26 @@ export const solutionDetails: Record<SolutionId, SolutionDetail> = {
   inquiries: {
     groups: [
       {
-        theme: "Show what families need",
+        theme: "Answer every question",
         features: [
-          { icon: "home", name: "Apartments and floor plans", benefit: "Floor plans, what's included, care levels and what's open, kept up to date by your staff.", visual: "floor-plans", caption: "Each floor plan shows what's open now. Families can ask for an alert when one opens." },
-          { icon: "alert", name: "Waitlist and availability alerts", benefit: "When your team marks an apartment open, the waitlist gets a message with a tour link.", visual: "waitlist", caption: "When your team marks an apartment open, everyone on that plan's waitlist gets a message with a tour link." },
+          { icon: "chat", name: "A website chat that knows your community", benefit: "It answers real questions about daily life from your own website: tonight's dinner, this week's activities, what's open. Any hour, in many languages. Most chats only push a tour.", visual: "assistant", caption: "The chat answers from your own website. When it doesn't know, it says so and gives your phone number." },
+          { icon: "mail", name: "Inquiry form", benefit: "An “ask about living here” form on every community site.", visual: "inquiry-form", caption: "Families tell you who they're asking for and what they need, right from the community site." },
+          { icon: "reply", name: "Straight to your front desk", benefit: "Every inquiry gets an automatic reply, day or night, and reaches your front desk as a conversation they answer by text or email.", visual: "front-desk", caption: "Inquiries arrive in Communications like any other conversation. Your front desk replies by text or email, and can forward them to your sales system." },
         ],
       },
       {
-        theme: "Get every inquiry to your team",
+        theme: "Show what families need",
         features: [
-          { icon: "mail", name: "Inquiry form", benefit: "An “ask about living here” form on every community site.", visual: "inquiry-form", caption: "Families tell you who they're asking for and what they need, right from the community site." },
-          { icon: "chat", name: "Website assistant", benefit: "An AI chat that answers from your own content, and says so when it doesn't know.", visual: "assistant", caption: "The chat answers from your own website. When it doesn't know, it says so and gives your phone number." },
-          { icon: "send", name: "Sent to your sales system", benefit: "Every inquiry goes to your sales system or email, marked with where it came from.", visual: "sales-system", caption: "Every inquiry comes in marked with where it came from, like Google or ChatGPT, and gets an instant reply. We send it on to your sales system or email." },
+          { icon: "home", name: "Apartments and floor plans", benefit: "Floor plans, what's included, care levels and what's open, kept up to date by your front desk.", visual: "floor-plans", caption: "Each floor plan shows what's open now. Families can ask for an alert when one opens." },
+          { icon: "alert", name: "Waitlist and availability alerts", benefit: "When your front desk marks an apartment open, the waitlist gets a message with a tour link.", visual: "waitlist", caption: "When your team marks an apartment open, everyone on that plan's waitlist gets a message with a tour link." },
         ],
       },
       {
         theme: "Make touring easy",
         features: [
-          { icon: "calendar", name: "Online tour booking", benefit: "Families pick a time, day or night.", visual: "tour-booking", caption: "Families pick a day and an open time for their tour, at any hour." },
-          { icon: "check", name: "Tour confirmations", benefit: "Families who ask get a confirmation.", visual: "tour-confirm", caption: "Once they book, families see their tour details and get a confirmation by email and text." },
+          { icon: "calendar", name: "Online tour booking", benefit: "Families pick a time on the website or in the chat, day or night.", visual: "tour-booking", caption: "Families pick a day and an open time for their tour, at any hour." },
+          { icon: "check", name: "Confirmations and reminders", benefit: "The family gets a confirmation and a reminder, and your front desk hears about every booking.", visual: "tour-confirm", caption: "Once they book, families see their tour details and get a confirmation by email and text." },
+          { icon: "users", name: "Today's tours", benefit: "Your front desk sees each day's tours and marks who came, so you know how many tours really happened." },
         ],
       },
       {
@@ -183,7 +184,7 @@ export const solutionDetails: Record<SolutionId, SolutionDetail> = {
     proof: [
     ],
     faqs: [
-      { q: "Does this work with our current sales system?", a: "Inquiries go to your sales system where we can connect to it, or to your email. Tell us which one you use and we'll give you a straight answer." },
+      { q: "Is this a CRM?", a: "No. Kinlight isn't a CRM. Inquiries and tour requests come to your front desk, and you can forward them to your sales system." },
       { q: "What does the chat say if it doesn't know an answer?", a: "It says it doesn't know, rather than guessing, and points the family to your inquiry form." },
       { q: "Do we have to show prices?", a: "No. Your site shows floor plans, what's included, care levels and what's open. Ask us about prices in your meeting." },
     ],

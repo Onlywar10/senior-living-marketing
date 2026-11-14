@@ -471,7 +471,7 @@ export function About() {
           </h2>
           <div>
             <p className="lede">
-              Kinlight is a new product from <CatapultLink />, a California company in Roseville.
+              Kinlight is a new product from <CatapultLink />, a company based in Roseville, California.
             </p>
             <p className="mt-4">
               <CatapultLink /> has built and run websites since 2000, and it hosts hundreds of them today. Right now, Kinlight works with assisted living and memory care operators in California.

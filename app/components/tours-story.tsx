@@ -112,22 +112,22 @@ function PlansMock({ animate }: Mock) {
 function ChatMock({ animate }: Mock) {
   return (
     <div className="grid gap-1.5 text-[0.95rem]">
-      <p className="ml-10 rounded-2xl rounded-br-sm bg-ink px-3 py-1 leading-snug text-on-ink">Do you have memory care?</p>
+      <p className="ml-10 rounded-2xl rounded-br-sm bg-ink px-3 py-1 leading-snug text-on-ink">Mom loves music. What&apos;s on this week?</p>
       <p {...timed(animate, "pop-in", 1)} className={`mr-5 rounded-2xl rounded-bl-sm bg-steel px-3 py-1 leading-snug ${animate ? "pop-in" : ""}`}>
-        Yes, we do. Would you like to come see it? You can book a tour here.
+        A sing-along Thursday at 2 in the lounge, and a piano concert on Saturday.
       </p>
       <p {...timed(animate, "pop-in", 2.8)} className={`ml-10 rounded-2xl rounded-br-sm bg-ink px-3 py-1 leading-snug text-on-ink ${animate ? "pop-in" : ""}`}>
-        Can Mom bring her cat?
+        Can we come see it?
       </p>
       <p {...timed(animate, "pop-in", 3.9)} className={`mr-5 rounded-2xl rounded-bl-sm bg-steel px-3 py-1 leading-snug ${animate ? "pop-in" : ""}`}>
-        I don&apos;t know that one, so I won&apos;t guess. Our team can answer here.
+        Of course. Pick a time and I&apos;ll book your tour.
       </p>
     </div>
   );
 }
 
 function InquiryMock({ animate }: Mock) {
-  const trail = ["From your website", "Sent to your sales system"];
+  const trail = ["Answered right away", "Waiting for your front desk"];
   return (
     <div>
       <p className="field-mock">Looking for: memory care for my mom</p>
@@ -198,8 +198,8 @@ const spokes: { title: string; tag?: string; icon: IconName; caption: string; Mo
   { title: "Show up in AI answers", tag: "GEO", icon: "spark", caption: "Your facts stay easy for ChatGPT and Google's AI to read.", Mock: AiMock },
   { title: "Your Google Business Profile", icon: "globe", caption: "Kept current with your events and menus.", Mock: ProfileMock },
   { title: "Floor plans and what's open", icon: "home", caption: "Families see what's included and what's open, kept up to date.", Mock: PlansMock },
-  { title: "Instant answers", icon: "chat", caption: "An AI chat answers from your own content, day or night.", Mock: ChatMock },
-  { title: "Inquiries to your team", tag: "Conversion", icon: "mail", caption: "Every inquiry goes to your sales system or email, marked with where it came from.", Mock: InquiryMock },
+  { title: "Instant answers", icon: "chat", caption: "The chat answers real questions about daily life, in many languages, day or night.", Mock: ChatMock },
+  { title: "Inquiries to your team", tag: "Conversion", icon: "mail", caption: "Every inquiry gets a reply right away and reaches your front desk.", Mock: InquiryMock },
   { title: "Tour booking", tag: "Conversion", icon: "calendar", caption: "Families pick a time, day or night.", Mock: BookingMock },
   { title: "Apartment alerts", icon: "alert", caption: "When your team marks an apartment open, the waitlist gets a message with a tour link.", Mock: AlertMock },
 ];

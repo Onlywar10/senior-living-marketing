@@ -325,7 +325,6 @@ function LargePrint() {
       pan={{ to: 402, at: 2.8 }}
       spots={[
         { box: { x: 280, y: 244, w: 1132, h: 520 }, at: 0.6, until: 2.6, label: "Calendars, menus and flyers, ready in large print" },
-        { box: { x: 299, y: 799, w: 260, h: 402 }, at: 4.6, label: "A QR check-in sign for each activity", place: "above" },
       ]}
     />
   );
@@ -492,7 +491,7 @@ function Attendance() {
       url={`${staff}/today`}
       base={shot("attend")}
       spots={[
-        { box: { x: 840, y: 319, w: 580, h: 40 }, at: 0.6, until: 2.4, label: "Tap names, scan the QR code or snap the sheet", align: "right" },
+        { box: { x: 840, y: 319, w: 580, h: 40 }, at: 0.6, until: 2.4, label: "Tap names, scan check-in cards or snap the sheet", align: "right" },
         { box: { x: 840, y: 370, w: 580, h: 520 }, at: 2.6, label: "Who came, saved for your reports", place: "inside", align: "right" },
       ]}
     />
@@ -519,7 +518,7 @@ function Suggestions() {
       base={shot("feedback", 2968)}
       pan={{ to: 1643, at: 0.6, dur: 2 }}
       spots={[
-        { box: { x: 280, y: 1734, w: 668, h: 760 }, at: 2.8, until: 4.6, label: "Ideas from paper slips and QR codes", place: "inside", align: "right" },
+        { box: { x: 280, y: 1734, w: 668, h: 760 }, at: 2.8, until: 4.6, label: "Ideas from residents' paper slips", place: "inside", align: "right" },
         { box: { x: 363, y: 2532, w: 566, h: 69 }, at: 4.8, label: "On the calendar, and the resident was told", place: "above" },
       ]}
     />
@@ -595,14 +594,14 @@ function Assistant() {
   );
 }
 
-function SalesSystem() {
+function FrontDesk() {
   return (
     <DemoScreen
-      url={`${staff}/prospects`}
-      base={shot("prospects", 1783)}
+      url={`${staff}/communications`}
+      base={shot("comms")}
       spots={[
-        { box: { x: 280, y: 165, w: 1132, h: 345 }, at: 0.6, until: 2.6, label: "Every inquiry, and where it came from" },
-        { box: { x: 1041, y: 529, w: 371, h: 120 }, at: 2.8, label: "Sent on to your sales system", align: "right" },
+        { box: { x: 281, y: 166, w: 358, h: 228 }, at: 0.6, until: 2.6, label: "Inquiries arrive like any conversation" },
+        { box: { x: 671, y: 406, w: 724, h: 186 }, at: 2.8, label: "Your front desk replies by text or email", place: "above", align: "right" },
       ]}
     />
   );
@@ -709,7 +708,7 @@ export const featureVisuals: Record<string, () => ReactNode> = {
   waitlist: Waitlist,
   "inquiry-form": InquiryForm,
   assistant: Assistant,
-  "sales-system": SalesSystem,
+  "front-desk": FrontDesk,
   "tour-booking": TourBooking,
   "tour-confirm": TourConfirm,
   search: Search,

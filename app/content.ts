@@ -58,6 +58,7 @@ export const problems = [
   { text: "Staff build the same calendar three times.", stamp: "Wasted hours" },
   { text: "Families can't find your prices, so they move on.", stamp: "Lost prospect" },
   { text: "Inquiries sit overnight. By morning, that family called someone else.", stamp: "Lost move-in" },
+  { text: "People searching for the right place for a loved one see only a sales brochure, and move on.", stamp: "Lost interest" },
 ];
 
 // Catapult proof points for the band under the hero. Wording deliberately leaves out schools.
@@ -74,7 +75,7 @@ export const proof = {
   value: 45,
   suffix: "%",
   rest: "Loneliness is linked to a 45% higher risk of death in older adults, and social isolation to a 29% higher risk.",
-  link: "Kinlight invites families into their parent's everyday life: the week's highlights and photos, and invitations to join in, all in their own language.",
+  link: "Kinlight invites families into their loved one's everyday life: the week's highlights and photos, and invitations to join in, all in their own language.",
 };
 
 // The four solutions, engagement first. Same names and order in the menu, on the home page and on their pages.
@@ -82,7 +83,7 @@ export const solutions = [
   { id: "family", href: "/solutions/family-connection", title: "Family Connection", problem: "Families call the front desk to ask what's happening this week.", promise: "Families who feel close to daily life, in their own language." },
   { id: "website", href: "/solutions/live-website", title: "Live Website", problem: "Our website is a brochure. It still shows last month's calendar.", promise: "A website that shows what life is really like there, not a brochure." },
   { id: "post", href: "/solutions/post-once", title: "Post Once", problem: "Our activities team builds the same calendar three times.", promise: "One post reaches your website, your families and paper." },
-  { id: "inquiries", href: "/solutions/more-tours", title: "Every Inquiry Answered", problem: "Inquiries sit overnight, and families can't find what they need.", promise: "Every inquiry reaches your team, and your site is built for Google and AI search." },
+  { id: "inquiries", href: "/solutions/more-tours", title: "Every Inquiry Answered", problem: "Families have questions at 11 at night, and the website can only say “book a tour.”", promise: "A website chat that answers real questions about daily life, and every inquiry and tour request at your front desk." },
 ] as const;
 
 /** Where "Solutions" opens: the first solution. */
@@ -151,9 +152,9 @@ export const pilotOffer = [
 export const pilotPromises = [
   { title: "Your website, up and running in 30 days.", body: "Built beside your current site and moved over with nothing lost, with calendars, menus and family texting ready to go.", stamp: "30 days" },
   { title: "Real life on every community page.", body: "This week's menu, the activity calendar and recent news, on every page, every week.", stamp: "Every week" },
-  { title: "No inquiry left waiting.", body: "Every inquiry gets an instant reply, day or night, and reaches your team within minutes.", stamp: "Day or night" },
+  { title: "No question left waiting.", body: "Every website inquiry and tour request gets an automatic reply, day or night, and reaches your front desk within 5 minutes.", stamp: "Day or night" },
   { title: "Found on Google and AI search.", body: "Your communities show up correctly on Google and in AI tools like ChatGPT.", stamp: "Google + AI" },
-  { title: "One post reaches the website, families and print.", body: "Your staff post once. It reaches your website, families' phones in their own language, and large-print paper. Nothing goes out without your approval.", stamp: "Post once" },
+  { title: "One post reaches the website, families and print.", body: "Your staff post once. It reaches your website, families' phones in their own language, and large-print paper. Nothing goes out without the approval your rules require.", stamp: "Post once" },
   { title: "A monthly scorecard.", body: "Every month you see it working, in plain numbers.", stamp: "Every month" },
 ];
 
@@ -188,7 +189,7 @@ export const circle = {
     { who: "Residents", title: "Know what's going on, and join in.", body: "Every week, each resident gets a link to their own week: what's happening, with the activities they'll enjoy picked out. One tap saves their seat." },
     { who: "Families", title: "Feel part of everyday life.", body: "The week's highlights and photos by text and email, in their own language. They can RSVP to family events and know what to ask about when they call.", href: "https://senior-living-demo-five.vercel.app/phones", cta: "See a family's phone" },
     { who: "Your team", title: "Minutes a week, not hours.", body: "Post an activity once. It reaches residents, families, your website and paper. Each morning, everyone sees what needs them today.", href: "https://senior-living-demo-five.vercel.app/staff", cta: "Open the staff area" },
-    { who: "Your next residents", title: "See what makes you different.", body: "This week's activities, meals and photos on your website, so the people deciding where to live see real life, not a brochure.", href: "https://senior-living-demo-five.vercel.app/", cta: "Open a community website" },
+    { who: "Your next residents", title: "See what makes you different.", body: "This week's activities, meals and photos on your website, and a chat that answers their questions about daily life at any hour, in their own language. They see real life, not a brochure.", href: "https://senior-living-demo-five.vercel.app/", cta: "Open a community website" },
   ],
 };
 
